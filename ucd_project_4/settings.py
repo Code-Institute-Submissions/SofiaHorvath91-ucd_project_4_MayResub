@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -69,11 +69,13 @@ WSGI_APPLICATION = 'ucd_project_4.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.postgresql_psycopg2',
     }
 }
+DATABASES['default'] = dj_database_url.config(default='postgres://hjujdeqrdscctf:3dd43f8154d75ae7f71e4ce6dd8bd64dbc355acd5ea3586686e7cc531def07cd@ec2-52-207-74-100.compute-1.amazonaws.com:5432/d2tivqefb2r1fm')
 
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
