@@ -1,0 +1,1 @@
+web: gunicorn ucd_project_4.wsgi
