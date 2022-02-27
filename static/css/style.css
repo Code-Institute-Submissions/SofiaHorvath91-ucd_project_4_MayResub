@@ -1,4 +1,4 @@
-/* Font Style => https://fonts.google.com/specimen/Yuji+Syuku?category=Serif,Display,Handwriting,Monospace */
+/* Font Style => https://fonts.google.com/specimen/Cagliostro?query=Cagliostro */
 @import url('https://fonts.googleapis.com/css2?family=Cagliostro&display=swap');
 
 /* General Styling */
@@ -7,10 +7,10 @@
   --darkgray: rgba(33,37,41);
   --hover-shadow: 0 0 10px black;
   --card-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  --black-text-border: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  --facebook: #3b5998;
-  --twitter: #55acee;
-  --email: #777777;
+  --black-text-border: -1px 0 black, 0 1.2px black, 1.2px 0 black, 0 -1px black;
+  --facebook: #0b5ed7;
+  --twitter: #31d2f2;
+  --email: white;
   --whatsapp: #25d366;
 }
 
@@ -53,7 +53,7 @@ hr{
 
 .bold,
 h1,h2,h3,h4,h5{
-    font-weight: bolder !important;
+    font-weight: bold !important;
 }
 
 .uppercase-txt {
@@ -66,8 +66,13 @@ h1,h2,h3,h4,h5{
 }
 
 label,
-.page-title{
+.page-title,
+h1,h2,h3,h4,h5{
     color: white;
+}
+
+.black-shadow{
+    text-shadow: var(--black-text-border);
 }
 
 .btn-outline-light{
@@ -91,6 +96,7 @@ nav {
   width: 100%;
   position: fixed;
   top: 0;
+  background-image: linear-gradient(rgba(255, 0, 0, 1), transparent) !important;
 }
 
 .navbar-container{
@@ -114,7 +120,7 @@ nav {
     font-size:24px;
     margin: 0px 5px 0px 5px;
     color: white !important;
-    text-shadow: -1px 0 black, 0 1.2px black, 1.2px 0 black, 0 -1px black;
+    text-shadow: var(--black-text-border);
 }
 
 .logo-img:hover,
@@ -144,7 +150,10 @@ nav {
 /* Footer => Source / Inspiration : https://css-tricks.com/couple-takes-sticky-footer/ */
 
 .footer {
-  background-color: transparent;
+  background-color: rgba(230, 230, 230, 0.4);
+  -webkit-box-shadow: 0 8px 6px -6px rgba(200, 200, 200, 0.4);
+  -moz-box-shadow: 8px 0 6px 2px rgba(200, 200, 200, 0.4);
+  box-shadow: 8px 0 6px 2px rgba(200, 200, 200, 0.4);
   display: block;
   position: fixed;
   padding: 0.5rem 0 0.5rem 0;
@@ -156,7 +165,8 @@ nav {
 
 .footer p {
   font-size: 14px !important;
-  color: white;
+  opacity: 1 !important;
+  color: black;
   text-align: center;
   margin: auto;
   margin: auto;
@@ -173,7 +183,7 @@ nav {
   transition: 25ms ease-out;
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial,sans-serif';
-  border: 0.1em solid white;
+  border: 0.1em solid black;
 }
 
 .resp-sharing-button__link,
@@ -183,12 +193,12 @@ nav {
 
 .resp-sharing-button__link {
   text-decoration: none;
-  color: white;
+  color: black;
   margin: 0 0.5em 0 0.5em;
 }
 
 .resp-sharing-button__icon {
-  fill: white;
+  fill: black;
   stroke: none;
 }
 
@@ -236,6 +246,34 @@ nav {
   width: auto;
   align-items: center;
   text-align: center;
+}
+
+.buttons-container {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    width: 50%;
+    margin: auto;
+}
+
+.strong-shadow{
+    text-shadow: 0 0 10px black, 0 0 10px black;
+}
+
+.home-btns{
+    font-size:22px !important;
+    width: 180px !important;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.btn-mg-right{
+    margin-right:0.5rem;
+}
+
+.btn-mg-left{
+    margin-left:0.5rem;
 }
 
 /* Handling Resize */

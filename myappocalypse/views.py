@@ -35,7 +35,7 @@ def signin(request):
 def signout(request):
     if request.user.is_authenticated:
         logout(request)
-        return render(request, 'myappocalypse/logout.html')
+        return render(request, 'myappocalypse/login.html')
     else:
         return redirect('myappocalypse/login.html')
 

@@ -3,7 +3,75 @@
 {% load static %}
 <main>
     <div class="container">
-
+        <article>
+            <header>
+                <div class="row page-title mb-3">
+                    <div class="col-12">
+                        <h1 class="strong-shadow text-center">Ready to hit the road when your world ends ?</h1>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <h4 class="black-shadow text-center">
+                        Time may come when everything you know is gone<br>
+                        and you find yourself on the road in this big world...
+                    </h4>
+                    <h3 class="black-shadow text-center">
+                        Hopefully this day will never arrive but it is never a bad idea to be prepared !
+                    </h3>
+                </div>
+            </header>
+            <section>
+                <div class="row mb-2">
+                    <h1 class="strong-shadow text-center"><br>MyAPPocalypse</h1>
+                </div>
+                <div class="row">
+                    <h4 class="black-shadow text-center">
+                        helps to put together your backpack with the most useful things<br>
+                        which can come handy on the day your world turns upside down<br>
+                        <br>Sign up and pack your bag(s) to give yourself the most of chance !
+                    </h4>
+                </div>
+                <div class="row mt-4 mb-2">
+                    {% if user.is_authenticated %}
+                    <div class="buttons-container">
+                        <div class="center-container">
+                            <a class="btn btn-lg btn-outline-light home-btns" href="">
+                                My Profile
+                            </a>
+                        </div>
+                        <div class="center-container">
+                            <a class="btn btn-lg btn-outline-light home-btns" href="">
+                                My Bags
+                            </a>
+                        </div>
+                        <div class="center-container">
+                            <a class="btn btn-lg btn-outline-light home-btns" href="">
+                                Feedback
+                            </a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="buttons-container">
+                        <div class="center-container">
+                            <a class="btn btn-lg btn-outline-light home-btns" href="">
+                                Why a Bag ?
+                            </a>
+                        </div>
+                        <div class="center-container">
+                            <a class="btn btn-lg btn-outline-light home-btns" href="{% url 'signup' %}">
+                                Sign Up
+                            </a>
+                        </div>
+                        <div class="center-container">
+                            <a class="btn btn-lg btn-outline-light home-btns" href="{% url 'login' %}">
+                                Login
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </section>
+        </article>
     </div>
 </main>
 {% endblock content %}
