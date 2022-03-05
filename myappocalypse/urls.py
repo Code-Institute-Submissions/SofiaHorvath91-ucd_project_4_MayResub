@@ -4,6 +4,7 @@ from .views import (
     signin,
     signout,
     signup,
+    packmybag,
 )
 
 urlpatterns = [
@@ -11,4 +12,5 @@ urlpatterns = [
     path('signup/', signup, name='signup'),
     path('login/', signin, name='login'),
     path('logout/', signout, name='logout'),
+    path('packmybag/', packmybag, name='packmybag'),
 ]

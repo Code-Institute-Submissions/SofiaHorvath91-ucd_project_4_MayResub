@@ -67,3 +67,7 @@ def signup(request):
             return render(request, 'myappocalypse/signup.html', context=context)
     else:
         return render(request, 'myappocalypse/signup.html')
+
+
+def packmybag(request):
+    return render(request, 'myappocalypse/packmybag.html')

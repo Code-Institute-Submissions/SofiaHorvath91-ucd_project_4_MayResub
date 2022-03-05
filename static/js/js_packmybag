@@ -1,0 +1,7 @@
+let bagweight = document.getElementById("bagweight");
+
+$(document).on('input', '#userweight', function(){
+    var userweight = $("#userweight").val();
+    bagweight_kg = Math.round(userweight) * 0.2 + 1;
+    bagweight.value = bagweight_kg.toFixed(2);
+})

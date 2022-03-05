@@ -71,6 +71,10 @@ h1,h2,h3,h4,h5{
     color: white;
 }
 
+label{
+    font-size:18px;
+}
+
 .black-shadow{
     text-shadow: var(--black-text-border);
 }
@@ -114,6 +118,10 @@ nav {
 
 .navbar-toggler{
   margin-right:10px;
+}
+
+.navbar-light .navbar-toggler{
+   border: 2px solid rgba(0,0,0,.55);
 }
 
 .nav-link{
@@ -276,10 +284,55 @@ nav {
     margin-left:0.5rem;
 }
 
+/* Pack My Bag */
+
+#select_items,
+.picklists{
+    width:180px;
+}
+
+.form-inputs{
+    width:250px;
+    font-size: 18px;
+}
+select{
+    font-size: 18px;
+}
+
+#bagweight-div{
+    display:flex;
+}
+
+#bagweight{
+    padding: 0 0 0.15rem 0.75rem;
+}
+
+.form-control:disabled, .form-control[readonly]{
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: white !important;
+}
+
 /* Handling Resize */
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991.5px) {
     .logo-img{
         margin:0px 10px 0px 5px !important;
     }
+
+    body {
+      margin: 0 0 170px 0 !important;
+    }
+
+    nav{
+        margin-bottom: 2rem !important;
+    }
+
+    .navbar {
+      position: static;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
 }
