@@ -1,5 +1,10 @@
+/* DOM elements */
 let bagweight = document.getElementById("bagweight");
 
+/* Variables */
+
+
+/* Calculate weight of bag automatically based on the weight of user (20% + 1kg) */
 $(document).on('input', '#userweight', function(){
     var userweight = $("#userweight").val();
     bagweight_kg = Math.round(userweight) * 0.2 + 1;

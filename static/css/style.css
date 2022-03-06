@@ -248,22 +248,22 @@ nav {
 
 /* Home */
 
-.center-container {
-  margin: auto;
-  display: flex;
-  width: auto;
-  align-items: center;
-  text-align: center;
-}
-
 .buttons-container {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     padding: 0 4px;
-    width: 50%;
+    width: 70%;
     margin: auto;
+}
+
+.center-container {
+  margin: auto;
+  display: flex;
+  width: auto;
+  align-items: center;
+  text-align: center;
 }
 
 .strong-shadow{
@@ -286,6 +286,36 @@ nav {
 
 /* Pack My Bag */
 
+.form-container {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    width: 100%;
+    margin: auto;
+}
+
+.form-section {
+    border: none;
+    border-radius: 0.5rem;
+    margin: auto;
+    -ms-flex: 50%;
+    flex: 50%;
+    width: 300px;
+    height:350px;
+    padding: 0 4px;
+}
+
+.form-section-text{
+  text-align: left !important;
+}
+
+#select-items-btn{
+    display:block !important;
+    width:100%;
+}
+
 #select_items,
 .picklists{
     width:180px;
@@ -305,6 +335,8 @@ select{
 
 #bagweight{
     padding: 0 0 0.15rem 0.75rem;
+    font-size:18px;
+    width:50%;
 }
 
 .form-control:disabled, .form-control[readonly]{
@@ -331,6 +363,28 @@ select{
     .navbar {
       position: static;
     }
+
+    .form-container{
+        display:block;
+    }
+
+    .form-section{
+        width:100%;
+        height:auto;
+        margin-left:1rem;
+    }
+
+    #form-climate-details,
+    #form-resources-details{
+        text-align: left;
+        margin: 1rem 0 1rem 0;
+    }
+
+    #select-items-btn{
+        text-align: left;
+        margin: 2rem 0 0 1.2rem;
+    }
+
 }
 
 @media screen and (max-width: 500px) {

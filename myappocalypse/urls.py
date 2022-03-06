@@ -5,6 +5,7 @@ from .views import (
     signout,
     signup,
     packmybag,
+    add_items,
 )
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path('login/', signin, name='login'),
     path('logout/', signout, name='logout'),
     path('packmybag/', packmybag, name='packmybag'),
+    path('mybag_add_items/<int:id>', add_items, name='mybag_add_items'),
 ]

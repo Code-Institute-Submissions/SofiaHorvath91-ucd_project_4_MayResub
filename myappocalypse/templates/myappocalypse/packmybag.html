@@ -5,105 +5,116 @@
     <div class="container">
         <div class="row page-title mb-3">
             <div class="col-12">
-                <h1 class="black-shadow">Pack My Bag</h1>
-                <h4 class="text-danger">{{ errorMsg }}</h4>
+                <h1 class="black-shadow text-center">Pack My Bag</h1>
+                <h4 class="text-danger text-center">{{ errorMsg }}</h4>
             </div>
         </div>
-        <div class="row">
-            <div class="">
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="form-group mb-3">
-                        <label class="mb-1" for="bagname">Name Your Bag</label>
-                        <input type="text" class="form-control form-inputs" id="bagname" name="bagname" required/>
+        <div>
+            <form class="form-container" method="POST">
+                {% csrf_token %}
+                <div id="form-bag-details" class="center-container form-section-text">
+                    <div class="form-section">
+                        <div class="form-group mb-3">
+                            <label class="mb-1" for="bagname">Name Your Bag</label>
+                            <input type="text" class="form-control form-inputs" id="bagname" name="bagname" required/>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="mb-1" for="userweight">Your Weight (kg)</label>
+                            <input type="number" class="form-control form-inputs" id="userweight"
+                                   name="userweight" min="15" max="250" required/>
+                        </div>
+                        <div class="form-group mb-1" id="bagweight-div">
+                            <label class="mb-1" for="bagweight">Bag Weight (kg) :</label>
+                            <input type="number" class="form-control" id="bagweight" name="bagweight" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1">Company</label>
+                            <br>
+                            <input type="checkbox" id="have_child" name="have_child" value="True">
+                            <label for="have_child">Underage company</label><br>
+                            <input type="checkbox" id="have_elder" name="have_elder" value="True">
+                            <label for="have_elder">Elder company</label><br>
+                            <input type="checkbox" id="have_pet" name="have_pet" value="True">
+                            <label for="have_pet">Pet</label>
+                        </div>
                     </div>
-                    <div class="form-group mb-3">
-                        <label class="mb-1" for="userweight">Your Weight (kg)</label>
-                        <input type="number" class="form-control form-inputs" id="userweight" name="userweight" min="15" max="250" required/>
+                </div>
+                <div id="form-climate-details" class="center-container">
+                    <div class="form-section">
+                        <div class="form-group mb-3">
+                            <label class="mb-1" for="climate">Climate</label>
+                            <br>
+                            <select class="picklists" name="climate" id="climate" required>
+                              <option value="default">--Choose One--</option>
+                              <option value="Dry">Dry</option>
+                              <option value="Tropical">Tropical</option>
+                              <option value="Continental">Continental</option>
+                              <option value="Temperate">Temperate</option>
+                              <option value="Polar">Polar</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="mb-1" for="landform">Landform</label>
+                            <br>
+                            <select class="picklists" name="landform" id="landform" required>
+                              <option value="default">--Choose One--</option>
+                              <option value="Mountains">Mountains</option>
+                              <option value="Hills">Hills</option>
+                              <option value="Plateau">Plateau</option>
+                              <option value="Plain">Plain</option>
+                              <option value="Ocean">Ocean</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1" for="environment">Environment</label>
+                            <br>
+                            <select class="picklists" name="environment" id="environment" required>
+                              <option value="default">--Choose One--</option>
+                              <option value="Forest">Forest</option>
+                              <option value="Rocky">Rocky</option>
+                              <option value="Grassland">Grassland</option>
+                              <option value="Desert">Desert</option>
+                              <option value="Tundra">Tundra</option>
+                              <option value="Marine">Marine</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group mb-1" id="bagweight-div">
-                        <label class="mb-1" for="bagweight">Bag Weight (kg) :</label>
-                        <input type="number" class="form-control form-inputs" id="bagweight" name="bagweight" readonly/>
+                </div>
+                <div id="form-resources-details" class="center-container">
+                    <div class="form-section">
+                        <div class="form-group mb-3">
+                            <label class="mb-1" for="human_infra">Human infrastructure available</label>
+                            <br>
+                            <select class="picklists" name="human_infra" id="human_infra" required>
+                              <option value="default">--Choose One--</option>
+                              <option value="True">Yes</option>
+                              <option value="False">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="mb-1" for="drinking_water">Drinking water available</label>
+                            <br>
+                            <select class="picklists" name="drinking_water" id="drinking_water" required>
+                              <option value="default">--Choose One--</option>
+                              <option value="True">Yes</option>
+                              <option value="False">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1" for="comestible_food">Comestibles (food) available</label>
+                            <br>
+                            <select class="picklists" name="comestible_food" id="comestible_food" required>
+                              <option value="default">--Choose One--</option>
+                              <option value="True">Yes</option>
+                              <option value="False">No</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group mb-3">
-                        <label class="mb-1">Company</label>
-                        <br>
-                        <input type="checkbox" id="have_child" name="have_child" value="Child">
-                        <label for="have_child">Underage company</label><br>
-                        <input type="checkbox" id="have_elder" name="have_elder" value="Elder">
-                        <label for="have_elder">Elder company</label><br>
-                        <input type="checkbox" id="have_pet" name="have_pet" value="Pet">
-                        <label for="have_pet">Pet</label>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="mb-1" for="climate">Climate</label>
-                        <br>
-                        <select class="picklists" name="climate" id="climate" required>
-                          <option value="default">--Choose One--</option>
-                          <option value="dry">Dry</option>
-                          <option value="tropical">Tropical</option>
-                          <option value="continental">Continental</option>
-                          <option value="temperate">Temperate</option>
-                          <option value="polar">Polar</option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="mb-1" for="landform">Landform</label>
-                        <br>
-                        <select class="picklists" name="landform" id="landform" required>
-                          <option value="default">--Choose One--</option>
-                          <option value="mountains">Mountains</option>
-                          <option value="hills">Hills</option>
-                          <option value="plateau">Plateau</option>
-                          <option value="plain">Plain</option>
-                          <option value="ocean">Ocean</option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="mb-1" for="environment">Environment</label>
-                        <br>
-                        <select class="picklists" name="environment" id="environment" required>
-                          <option value="default">--Choose One--</option>
-                          <option value="tropical">Forest</option>
-                          <option value="continental">Rocky</option>
-                          <option value="continental">Grassland</option>
-                          <option value="temperate">Desert</option>
-                          <option value="polar">Tundra</option>
-                          <option value="marine">Marine</option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="mb-1" for="human_infra">Human infrastructure available</label>
-                        <br>
-                        <select class="picklists" name="human_infra" id="human_infra" required>
-                          <option value="default">--Choose One--</option>
-                          <option value="human_infra_yes">Yes</option>
-                          <option value="human_infra_no">No</option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="mb-1" for="drinking_water">Drinking water available</label>
-                        <br>
-                        <select class="picklists" name="drinking_water" id="drinking_water" required>
-                          <option value="default">--Choose One--</option>
-                          <option value="drinking_water_yes">Yes</option>
-                          <option value="drinking_water_no">No</option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-1" for="comestible_food">Comestibles (food) available</label>
-                        <br>
-                        <select class="picklists" name="comestible_food" id="comestible_food" required>
-                          <option value="default">--Choose One--</option>
-                          <option value="drinking_water_yes">Yes</option>
-                          <option value="drinking_water_no">No</option>
-                        </select>
-                    </div>
-                    <input id="select_items" type="button" value="Select Items" class="btn btn-lg btn-outline-light mb-3"/>
-                    <br>
-                    <input type="submit" value="Save Bag" class="btn btn-lg btn-outline-light mt-3"/>
-                </form>
-            </div>
+                </div>
+                <div id="select-items-btn" class="center-container">
+                    <input type="submit" value="Ready to Add My Items" class="btn btn-lg btn-outline-light"/>
+                </div>
+            </form>
         </div>
     </div>
     <script type="text/javascript" src="{% static 'js/js_packmybag' %}"></script>

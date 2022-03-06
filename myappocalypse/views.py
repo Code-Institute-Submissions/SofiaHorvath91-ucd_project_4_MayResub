@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.shortcuts import render, redirect
+from .models import Item, Bag, Climate, Landform, Environment
 
 User = get_user_model()
 
@@ -8,10 +9,7 @@ User = get_user_model()
 def home(request):
     # Collect all houses for introduction on Home page
     context = {}
-
-    return render(request,
-                  'myappocalypse/home.html',
-                  context=context)
+    return render(request, 'myappocalypse/home.html', context=context)
 
 
 def signin(request):
@@ -70,4 +68,44 @@ def signup(request):
 
 
 def packmybag(request):
-    return render(request, 'myappocalypse/packmybag.html')
+    context = {}
+    if request.method == "POST":
+        user = request.user
+        name = request.POST['bagname']
+        userweight = request.POST['userweight']
+        bagweight = request.POST['bagweight']
+        have_child = request.POST.get('have_child', False)
+        have_elder = request.POST.get('have_elder', False)
+        have_pet = request.POST.get('have_pet', False)
+        climate = request.POST['climate']
+        landform = request.POST['landform']
+        environment = request.POST['environment']
+        human_infra = request.POST['human_infra']
+        drinking_water = request.POST['drinking_water']
+        comestible_food = request.POST['comestible_food']
+
+        if climate == 'default' or landform == 'default' or environment == 'default' \
+                or human_infra == 'default' or drinking_water == 'default' or comestible_food == 'default':
+            context['errorMsg'] = 'Choose all types, please'
+            return render(request, 'myappocalypse/packmybag.html', context=context)
+        else:
+            bag = Bag.objects.create(user=user, name=name, weight_bag=bagweight, weight_user=userweight,
+                                     climate=Climate.objects.filter(name=climate).first(),
+                                     landform=Landform.objects.filter(name=landform).first(),
+                                     environment=Environment.objects.filter(name=environment).first(),
+                                     with_child=have_child, with_elder=have_elder, with_pet=have_pet,
+                                     available_infrastructure=human_infra,
+                                     available_water=drinking_water, available_food=comestible_food)
+            bag.save()
+            return redirect('mybag_add_items', id=bag.id)
+
+    return render(request, 'myappocalypse/packmybag.html', context=context)
+
+
+def add_items(request, id):
+    context = {}
+
+    items = Item.objects.all()
+    context['items'] = items
+    return render(request, 'myappocalypse/mybag_add_items.html', context=context)
+
