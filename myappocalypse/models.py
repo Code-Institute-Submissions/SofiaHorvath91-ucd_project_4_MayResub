@@ -8,6 +8,35 @@ User = get_user_model()
 
 
 class Item(models.Model):
+    Clothes = 'Clothes'
+    Linens = 'Linens'
+    Communication = 'Communication'
+    Safety = 'Safety'
+    Cooking = 'Cooking'
+    Food = 'Food'
+    Drink = 'Drink'
+    Hygiene = 'Hygiene'
+    Health = 'Health'
+    Lightning = 'Lightning'
+    Orientation = 'Orientation'
+    Tools = 'Tools'
+    Weapons = 'Weapons'
+    CATEGORIES = [
+        (Clothes, 'Clothes'),
+        (Linens, 'Linens'),
+        (Communication, 'Communication'),
+        (Safety, 'Safety'),
+        (Cooking, 'Cooking'),
+        (Food, 'Food'),
+        (Drink, 'Drink'),
+        (Hygiene, 'Hygiene'),
+        (Health, 'Health'),
+        (Lightning, 'Lightning'),
+        (Orientation, 'Orientation'),
+        (Tools, 'Tools'),
+        (Weapons, 'Weapons'),
+    ]
+
     Dry = 'Dry'
     Tropical = 'Tropical'
     Continental = 'Continental'
@@ -49,7 +78,7 @@ class Item(models.Model):
         (Marine, 'Marine'),
     ]
 
-    category = models.TextField(blank=True, null=True)
+    category = models.CharField(choices=CATEGORIES, max_length=30)
     weight = models.DecimalField(blank=True, max_digits=5, decimal_places=2, null=True)
     usefulness = models.DecimalField(blank=True, max_digits=5, decimal_places=2, null=True)
     climate = models.CharField(choices=CLIMATE_TYPES, max_length=30)
