@@ -104,8 +104,19 @@ def packmybag(request):
 
 def add_items(request, id):
     context = {}
-
+    bag = Bag.objects.filter(id=id).first()
+    context['bag'] = bag
     items = Item.objects.all()
     context['items'] = items
+
+    choices = Item._meta.get_field('category').choices
+    category_choices = []
+    for c in choices:
+        if '_' in c[0]:
+            category_choices.append(c[0].replace('_', ' & '))
+        else:
+            category_choices.append(c[0])
+    context['choices'] = category_choices
+
     return render(request, 'myappocalypse/mybag_add_items.html', context=context)
 

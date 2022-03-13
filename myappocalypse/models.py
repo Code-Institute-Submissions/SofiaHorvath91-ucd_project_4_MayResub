@@ -52,7 +52,7 @@ class Item(models.Model):
     Communication = 'Communication'
     Safety = 'Safety'
     Cooking = 'Cooking'
-    Food = 'Food'
+    Food_Drink = 'Food_Drink'
     Drink = 'Drink'
     Hygiene = 'Hygiene'
     Health = 'Health'
@@ -66,8 +66,7 @@ class Item(models.Model):
         (Communication, 'Communication'),
         (Safety, 'Safety'),
         (Cooking, 'Cooking'),
-        (Food, 'Food'),
-        (Drink, 'Drink'),
+        (Food_Drink, 'Food_Drink'),
         (Hygiene, 'Hygiene'),
         (Health, 'Health'),
         (Lightning, 'Lightning'),

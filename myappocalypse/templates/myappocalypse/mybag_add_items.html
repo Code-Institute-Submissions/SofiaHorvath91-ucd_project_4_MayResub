@@ -5,17 +5,87 @@
     <div class="container">
         <div class="row page-title mb-3">
             <div class="col-12">
-                <h1 class="black-shadow">Items</h1>
+                <h1 class="black-shadow text-center">Add Items</h1>
                 <h4 class="text-danger">{{ errorMsg }}</h4>
             </div>
         </div>
-        <div class="row">
-            <div class="">
-                <form method="POST">
-                    {% csrf_token %}
-
-                </form>
+        <div class="card card-shadow">
+            <div class="collapsible-section" id="section-aboutmybag">
+                <input type="checkbox" name="collapse" id="coll-section-aboutbag">
+                <div class="collapsible-section-title mt-2">
+                    <label id="aboutmybag-title" class="black-shadow text-center"
+                           for="coll-section-aboutbag">About My Bag</label>
+                </div>
+                <div class="collapsible-section-content mt-2">
+                    <div class="form-container">
+                        <div class="center-container items-bag-text mb-3">
+                            <div class="form-section">
+                                <h4 class="bag-label">Basics</h4>
+                                <label class="bag-label">Name : {{bag.name}}</label>
+                                <label class="bag-label">User Weight (kg) : {{bag.weight_user}}</label>
+                                <label class="bag-label">Bag Weight (kg) : {{bag.weight_bag}}</label>
+                            </div>
+                        </div>
+                        <div class="center-container items-bag-text mb-3">
+                            <div class="form-section">
+                                <h4 class="bag-label">Company</h4>
+                                <label class="bag-label">Underage company : {{bag.with_child}}</label>
+                                <label class="bag-label">Elder company : {{bag.with_elder}}</label>
+                                <label class="bag-label">Pet : {{bag.with_pet}}</label>
+                            </div>
+                        </div>
+                        <div class="center-container items-bag-text mb-3">
+                            <div class="form-section">
+                                <h4 class="bag-label">Locale</h4>
+                                <label class="bag-label">Climate : {{bag.climate.name}}</label>
+                                <label class="bag-label">Landform : {{bag.landform.name}}</label>
+                                <label class="bag-label">Environment : {{bag.environment.name}}</label>
+                            </div>
+                        </div>
+                        <div class="center-container items-bag-text mb-3">
+                            <div class="form-section">
+                                <h4 class="bag-label">Conditions</h4>
+                                <label class="bag-label">Human infrastructure : {{bag.available_infrastructure}}</label>
+                                <label class="bag-label">Drinking water : {{bag.available_water}}</label>
+                                <label class="bag-label">Comestibles (food) : {{bag.available_food}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="row page-title mt-4 mb-3">
+            <div class="col-12">
+                <h2 class="black-shadow text-center">Recommended Items</h2>
+            </div>
+        </div>
+        <div>
+            <form class="form-container" method="POST">
+                {% csrf_token %}
+                    {% for c in choices %}
+                    <div class="card">
+                        <div class="collapsible-section" id="section-items-{{c}}">
+                            <input type="checkbox" name="collapse" id="coll-section-{{c}}">
+                            <div class="collapsible-section-title mt-2">
+                                <label id="{{c}}-title" class="black-shadow text-center"
+                                       for="coll-section-{{c}}">{{c}}</label>
+                            </div>
+                            <div class="collapsible-section-content mt-2">
+                                <div class="center-container mb-3">
+                                    <div class="form-section">
+                                     {% for i in items %}
+                                        {% if i.category in c%}
+                                            <input type="checkbox" id="{{i.name}}" name="{{i.name}}" value="True">
+                                            <label for="{{i.name}}">{{i.name}}</label><br>
+                                        {% endif %}
+                                     {% endfor%}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+            </form>
         </div>
     </div>
     <script type="text/javascript" src="{% static 'js/js_packmybag' %}"></script>
