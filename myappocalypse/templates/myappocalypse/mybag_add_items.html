@@ -67,24 +67,58 @@
                         <div class="collapsible-section" id="section-items-{{c}}">
                             <input type="checkbox" name="collapse" id="coll-section-{{c}}">
                             <div class="collapsible-section-title mt-2">
-                                <label id="{{c}}-title" class="black-shadow text-center"
+                                <label id="{{c}}-title" class="black-shadow text-center items-section-title"
                                        for="coll-section-{{c}}">{{c}}</label>
                             </div>
                             <div class="collapsible-section-content mt-2">
-                                <div class="center-container mb-3">
-                                    <div class="form-section">
-                                     {% for i in items %}
-                                        {% if i.category in c%}
-                                            <input type="checkbox" id="{{i.name}}" name="{{i.name}}" value="True">
-                                            <label for="{{i.name}}">{{i.name}}</label><br>
-                                        {% endif %}
-                                     {% endfor%}
+                                <div class="form-container">
+                                    <div class="items-section text-center mb-3">
+                                        <div class="form-group">
+                                            <h5 class="bag-label">Basic Items</h5>
+                                             {% for i in basic_items %}
+                                                {% if i.category in c%}
+                                                    <input type="checkbox" id="{{i.name}}" name="item_checkbox" value="{{i.name}}">
+                                                    <label class="items-list-label" for="{{i.name}}">{{i.name}}</label>
+                                                    <br>
+                                                {% endif %}
+                                             {% endfor%}
+                                        </div>
+                                    </div>
+                                    <div class="items-section text-center mb-3">
+                                        <div class="form-group">
+                                            <h5 class="bag-label">Company-specific Items</h5>
+                                             {% for i2 in items_user_company %}
+                                                {% if i2.category in c%}
+                                                    <input type="checkbox" id="{{i2.name}}" name="item_checkbox" value="{{i2.name}}">
+                                                    <label class="items-list-label" for="{{i2.name}}">{{i2.name}}</label>
+                                                    <br>
+                                                {% endif %}
+                                             {% endfor%}
+                                        </div>
+                                    </div>
+                                    <div class="items-section text-center mb-3">
+                                        <div class="form-group">
+                                            <h5 class="bag-label">Condition-specific Items</h5>
+                                             {% for i3 in items_user_condition %}
+                                                {% if i3.category in c%}
+                                                    <input type="checkbox" id="{{i3.name}}" name="item_checkbox" value="{{i3.name}}">
+                                                    <label class="items-list-label" for="{{i3.name}}">{{i3.name}}</label>
+                                                    <br>
+                                                {% endif %}
+                                             {% endfor%}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
+                    <div class="card mt-4">
+                        <div class="center-container">
+                            <input id="add-items-btn" type="submit" value="Add Items To My Bag"
+                                   class="btn btn-lg btn-outline-light text-center"/>
+                        </div>
+                    </div>
             </form>
         </div>
     </div>

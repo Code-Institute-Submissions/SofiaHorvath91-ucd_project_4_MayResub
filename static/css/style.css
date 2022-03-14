@@ -8,6 +8,7 @@
   --hover-shadow: 0 0 10px black;
   --card-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
   --black-text-border: -1px 0 black, 0 1.2px black, 1.2px 0 black, 0 -1px black;
+  --strong-text-shadow: 0 0 10px black, 0 0 10px black;;
   --facebook: #0b5ed7;
   --twitter: #31d2f2;
   --email: white;
@@ -267,7 +268,7 @@ nav {
 }
 
 .strong-shadow{
-    text-shadow: 0 0 10px black, 0 0 10px black;
+    text-shadow: var(--strong-text-shadow);
 }
 
 .home-btns{
@@ -359,7 +360,7 @@ select{
     border-radius: 0.5rem;
     margin: 0 auto;
     -ms-flex: 50%;
-    flex: 25%;
+    flex: 100%;
     padding: 0 4px;
     background-color: transparent;
 }
@@ -374,6 +375,26 @@ select{
 
 #aboutmybag-title{
     font-size: 1.75rem !important;
+}
+
+.items-section-title{
+    font-size : 1.25rem !important;
+}
+
+.items-section {
+    border: none;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+    -ms-flex: 50%;
+    flex: 33%;
+    padding: 0 4px;
+}
+
+.items-list-label{
+    text-transform: uppercase;
+    font-size : 14px !important;
+    font-weight: bold;
+    text-shadow: var(--black-text-border);
 }
 
 /* Collapsible Sections => Source / Inspiration : https://codepen.io/markcaron/pen/RVvmaz */
@@ -414,6 +435,13 @@ select{
     overflow: visible;
     padding: 10px;
     border-top: 0;
+}
+
+.collapsible-section
+  > input[type='checkbox']:checked
+  ~ .collapsible-section-title
+  label {
+    text-shadow: var(--strong-text-shadow);
 }
 
 /* Handling Resize */
