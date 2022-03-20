@@ -1,5 +1,4 @@
 from django.db import models
-from django.conf import settings
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from rest_framework.validators import UniqueValidator
@@ -120,3 +119,11 @@ class Bag(models.Model):
     available_infrastructure = models.BooleanField(blank=True, null=True)
     available_water = models.BooleanField(blank=True, null=True)
     available_food = models.BooleanField(blank=True, null=True)
+
+
+class Feedback(models.Model):
+    rating_point = models.IntegerField(null=True, blank=True)
+    rating_description = models.CharField(max_length=255, blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)

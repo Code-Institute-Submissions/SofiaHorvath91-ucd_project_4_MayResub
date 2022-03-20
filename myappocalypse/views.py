@@ -1,12 +1,10 @@
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.shortcuts import render, redirect
 from itertools import chain
-
-from django.core import serializers
 from rest_framework.renderers import JSONRenderer
 from django.contrib.auth.decorators import login_required
 
-from .models import Item, Bag, Climate, Landform, Environment, ItemSerializer
+from .models import Item, Bag, Climate, Landform, Environment, ItemSerializer, Feedback
 
 User = get_user_model()
 
@@ -173,6 +171,30 @@ def mybag_details(request, id):
     context['choices'] = get_choices_array()
 
     return render(request, 'myappocalypse/mybag_details.html', context=context)
+
+
+def blog(request):
+    context = {}
+
+    context['feedbacks'] = Feedback.objects.all()
+
+    if request.method == "POST":
+        rating = request.POST.get('rating').split('_')[0]
+        rating_desc = request.POST.get('rating').split('_')[1]
+        content = request.POST['feedback']
+
+        if content or rating is not '0':
+            user = request.user
+            feedback = Feedback.objects.create(rating_point=rating, rating_description=rating_desc,
+                                               content=content, user=user)
+            feedback.save()
+            context['successMsg'] = "Thank you for your feedback!"
+            return render(request, 'myappocalypse/blog.html', context=context)
+        else:
+            context['errorMsg'] = 'Please share your feedback or rating!'
+            return render(request, 'myappocalypse/blog.html', context=context)
+
+    return render(request, 'myappocalypse/blog.html', context=context)
 
 
 # Helper classes
