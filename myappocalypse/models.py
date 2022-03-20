@@ -94,11 +94,14 @@ class Item(models.Model):
 
 class ItemSerializer(serializers.ModelSerializer):
     users = UniqueValidator(queryset=User.objects.all())
+    climate = ClimateSerializer(many=True)
+    environment = EnvironmentSerializer(many=True)
+    landform = LandformSerializer(many=True)
 
     class Meta:
         model = Item
         fields = '__all__'
-        depth = 1
+        depth = 2
 
 
 class Bag(models.Model):

@@ -3,10 +3,79 @@ let bagweight = document.getElementById("bagweight");
 
 /* Variables */
 
-
 /* Calculate weight of bag automatically based on the weight of user (20% + 1kg) */
 $(document).on('input', '#userweight', function(){
-    var userweight = $("#userweight").val();
+    userweight = $("#userweight").val();
     bagweight_kg = Math.round(userweight) * 0.2 + 1;
     bagweight.value = bagweight_kg.toFixed(2);
 })
+
+/* Handle click on information sign / item name to show item details (mybag_add_items / mybag_details)
+=> Source / Inspiration : https://www.w3schools.com/howto/howto_css_modal_images.asp */
+$('.info-item').click(function () {
+    id = this.id;
+    id_name = id.split("-");
+    name = id.split("-")[0];
+
+    if(id_name.includes("additems")){
+        items_additems = add_items_JSON;
+        item = items_additems.find(x => x.name === name);
+        set_dom_elements_items(item, "additems");
+    } else{
+        items_detailsitems = details_items_JSON;
+        item = items_detailsitems.find(x => x.name === name);
+        set_dom_elements_items(item, "detailsitems");
+    }
+});
+
+/* Handle click on close icon to close modal (mybag_add_items)*/
+$('#additems-close-modal').click(function () {
+    document.getElementById("additems-modal").style.display = "none";
+});
+
+/* Handle click on close icon to close modal (mybag_details)*/
+$('#detailsitems-close-modal').click(function () {
+    document.getElementById("detailsitems-modal").style.display = "none";
+});
+
+function set_dom_elements_items(item, name){
+    document.getElementById(name+"-modal").style.display = "block";
+
+    document.getElementById(name+"_item_name").innerHTML = item.name.toUpperCase();
+    document.getElementById(name+"_item_category").innerHTML = "Category : " + item.category;
+    document.getElementById(name+"_item_weight").innerHTML = "Average Weight (kg) : " + item.weight;
+    document.getElementById(name+"_item_usefulness").innerHTML = "Usefulness : " + item.usefulness + " / 10";
+    document.getElementById(name+"_item_external").innerHTML =
+    "Can be brought externally (out of bag) : " + (item.external ? "Yes" : "No");
+
+    document.getElementById(name+"_item_with_child").innerHTML =
+    "Underage company specific : " + (item.with_child == true ? "Yes" : "No");
+    document.getElementById(name+"_item_with_elder").innerHTML =
+    "Elder company specific : " + (item.with_elder == true ? "Yes" : "No");
+    document.getElementById(name+"_item_with_pet").innerHTML =
+    "Pet specific : " + (item.with_pet == true ? "Yes" : "No");
+
+    document.getElementById(name+"_item_climates").innerHTML = "Climates which requires this item :<br>";
+    append_list_elements(document.getElementById(name+"_item_climates"), item.climate);
+    document.getElementById(name+"_item_landforms").innerHTML = "Climates which requires this item :<br>";
+    append_list_elements(document.getElementById(name+"_item_landforms"), item.landform);
+    document.getElementById(name+"_item_environments").innerHTML = "Climates which requires this item :<br>";
+    append_list_elements(document.getElementById(name+"_item_environments"), item.environment);
+
+    document.getElementById(name+"_item_available_infrastructure").innerHTML =
+    "Human infrastructure : " + (item.available_infrastructure == false ? "Yes" : "No");
+    document.getElementById(name+"_item_available_water").innerHTML =
+    "Drinking water : " + (item.available_water == false ? "Yes" : "No");
+    document.getElementById(name+"_available_food").innerHTML =
+    "Comestibles (food) : " + (item.available_food == false ? "Yes" : "No");
+}
+
+function append_list_elements(dom, list){
+    for(i=0;i<list.length;i++){
+        if(i < list.length - 1){
+            dom.innerHTML += list[i].name + ", ";
+        } else{
+            dom.innerHTML += list[i].name
+        }
+    }
+}

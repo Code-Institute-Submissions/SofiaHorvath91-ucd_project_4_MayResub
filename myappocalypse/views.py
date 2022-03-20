@@ -1,7 +1,12 @@
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.shortcuts import render, redirect
 from itertools import chain
-from .models import Item, Bag, Climate, Landform, Environment
+
+from django.core import serializers
+from rest_framework.renderers import JSONRenderer
+from django.contrib.auth.decorators import login_required
+
+from .models import Item, Bag, Climate, Landform, Environment, ItemSerializer
 
 User = get_user_model()
 
@@ -119,32 +124,59 @@ def add_items(request, id):
     bag = Bag.objects.filter(id=id).first()
     context['bag'] = bag
 
-    items_by_locale = Item.objects.filter(climate__in=[bag.climate],
-                                          landform__in=[bag.landform],
+    all_items = Item.objects.all()
+    serializer = ItemSerializer(all_items, many=True)
+    data = JSONRenderer().render(serializer.data)
+    context['items_json'] = data.decode()
+
+    items_by_locale = Item.objects.filter(climate__in=[bag.climate], landform__in=[bag.landform],
                                           environment__in=[bag.environment])
     items_all_company_condition = items_by_locale.filter(with_child=None, with_elder=None, with_pet=None,
-                                                         available_infrastructure=None,
-                                                         available_water=None, available_food=None)
+                                                         available_infrastructure=None, available_water=None,
+                                                         available_food=None)
     context['basic_items'] = items_all_company_condition
+    context['items_user_company'] = get_items_by_company(items_by_locale)
+    context['items_user_condition'] = get_items_by_conditions(items_by_locale, bag)
+    context['choices'] = get_choices_array()
 
-    items_with_child = []
-    items_with_elder = []
-    items_with_pet = []
-    if bag.with_child is True:
-        items_with_child = items_by_locale.filter(with_child=True)
-    if bag.with_elder is True:
-        items_with_elder = items_by_locale.filter(with_elder=True)
-    if bag.with_pet is True:
-        items_with_pet = items_by_locale.filter(with_pet=True)
-    items_user_company = list(chain(items_with_child, items_with_elder, items_with_pet))
-    context['items_user_company'] = items_user_company
+    if request.method == "POST":
+        selected_items = request.POST.getlist('item_checkbox')
+        items_to_create = []
+        for i in all_items:
+            if i.name in selected_items:
+                items_to_create.append(i)
+        bag.items.set(items_to_create)
+        bag.save()
+        return redirect('mybag_details', id=bag.id)
 
-    items_user_humaninfra = items_by_locale.filter(available_infrastructure=bag.available_infrastructure)
-    items_user_water = items_by_locale.filter(available_water=bag.available_water)
-    items_user_food = items_by_locale.filter(available_food=bag.available_food)
-    items_user_condition = list(chain(items_user_humaninfra, items_user_water, items_user_food))
-    context['items_user_condition'] = items_user_condition
+    return render(request, 'myappocalypse/mybag_add_items.html', context=context)
 
+
+def mybag_details(request, id):
+    context = {}
+
+    bag = Bag.objects.filter(id=id).first()
+    context['bag'] = bag
+
+    serializer = ItemSerializer(bag.items, many=True)
+    data = JSONRenderer().render(serializer.data)
+    context['items_json'] = data.decode()
+
+    items_all_company_condition = bag.items.filter(with_child=None, with_elder=None, with_pet=None,
+                                                   available_infrastructure=None, available_water=None,
+                                                   available_food=None)
+    context['basic_items'] = items_all_company_condition
+    context['items_user_company'] = get_items_by_company(bag.items)
+    context['items_user_condition'] = get_items_by_conditions(bag.items, bag)
+    context['choices'] = get_choices_array()
+
+    return render(request, 'myappocalypse/mybag_details.html', context=context)
+
+
+# Helper classes
+
+
+def get_choices_array():
     choices = Item._meta.get_field('category').choices
     category_choices = []
     for c in choices:
@@ -152,18 +184,22 @@ def add_items(request, id):
             category_choices.append(c[0].replace('_', ' & '))
         else:
             category_choices.append(c[0])
-    context['choices'] = category_choices
+    return category_choices
 
-    if request.method == "POST":
-        selected_items = request.POST.getlist('item_checkbox')
-        all_items = Item.objects.all()
-        items_to_create = []
-        for i in all_items:
-            if i.name in selected_items:
-                items_to_create.append(i)
-        bag.items.set(items_to_create)
-        bag.save()
-        return render(request, 'myappocalypse/home.html', context=context)
 
-    return render(request, 'myappocalypse/mybag_add_items.html', context=context)
+def get_items_by_company(items):
+    items_with_child = items.filter(with_child=True)
+    items_with_elder = items.filter(with_elder=True)
+    items_with_pet = items.filter(with_pet=True)
+    items_user_company = list(chain(items_with_child, items_with_elder, items_with_pet))
+    return items_user_company
+
+
+def get_items_by_conditions(items, bag):
+    items_user_humaninfra = items.filter(available_infrastructure=bag.available_infrastructure)
+    items_user_water = items.filter(available_water=bag.available_water)
+    items_user_food = items.filter(available_food=bag.available_food)
+    items_user_condition = list(chain(items_user_humaninfra, items_user_water, items_user_food))
+    return items_user_condition
+
 
