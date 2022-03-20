@@ -56,6 +56,13 @@
         </div>
         <div class="row page-title mt-4 mb-3">
             <div class="col-12">
+                <h4 class="black-shadow text-center">Current weight of bag :</h4>
+                <h4 id="additems_bag_weight" class="black-shadow text-center">0.00 kg</h4>
+            </div>
+            <input type="hidden" value="{{bag.weight_bag}}" id="additems_max_bag_weight">
+        </div>
+        <div class="row page-title mb-3">
+            <div class="col-12">
                 <h2 class="black-shadow text-center">Recommended Items</h2>
             </div>
         </div>
@@ -77,7 +84,7 @@
                                             <h5 class="bag-label">Basic Items</h5>
                                              {% for i in basic_items %}
                                                 {% if i.category in c%}
-                                                    <input type="checkbox" id="{{i.name}}"
+                                                    <input type="checkbox" id="{{i.name}}" class="item_checkbox"
                                                            name="item_checkbox" value="{{i.name}}">
                                                     <label class="items-list-label" for="{{i.name}}">{{i.name}}</label>
                                                     <label class="info-item info-item-modal"
@@ -92,7 +99,7 @@
                                             <h5 class="bag-label">Company-specific Items</h5>
                                              {% for i2 in items_user_company %}
                                                 {% if i2.category in c%}
-                                                    <input type="checkbox" id="{{i2.name}}"
+                                                    <input type="checkbox" id="{{i2.name}}" class="item_checkbox"
                                                            name="item_checkbox" value="{{i2.name}}">
                                                     <label class="items-list-label" for="{{i2.name}}">{{i2.name}}</label>
                                                     <label class="info-item info-item-modal"
@@ -107,7 +114,7 @@
                                             <h5 class="bag-label">Condition-specific Items</h5>
                                              {% for i3 in items_user_condition %}
                                                 {% if i3.category in c%}
-                                                    <input type="checkbox" id="{{i3.name}}"
+                                                    <input type="checkbox" id="{{i3.name}}" class="item_checkbox"
                                                            name="item_checkbox" value="{{i3.name}}">
                                                     <label class="items-list-label" for="{{i3.name}}">{{i3.name}}</label>
                                                     <label class="info-item info-item-modal"
@@ -122,6 +129,7 @@
                         </div>
                     </div>
                     {% endfor %}
+                    <input type="hidden" id="additems_new_bag_weight" name="additems_new_bag_weight">
                     <div class="card mt-4">
                         <div class="center-container">
                             <input id="add-items-btn" type="submit" value="Add Items To My Bag"

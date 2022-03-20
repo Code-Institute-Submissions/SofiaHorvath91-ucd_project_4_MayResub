@@ -1,7 +1,26 @@
 /* DOM elements */
 let bagweight = document.getElementById("bagweight");
+let additems_current_bagweight = document.getElementById("additems_bag_weight");
+let additems_max_bagweight = document.getElementById("additems_max_bag_weight");
+let additems_new_bagweight = document.getElementById("additems_new_bag_weight");
 
 /* Variables */
+
+let max_bagweight;
+let current_bagweight = 0.00;
+let items_additems;
+let items_detailsitems;
+
+$(function () {
+    if(window.location.pathname.includes('mybag_add_items')){
+        items_additems = add_items_JSON;
+        max_bagweight = parseFloat(additems_max_bagweight.value).toFixed(2);
+        additems_current_bagweight.innerHTML = current_bagweight.toFixed(2) + " kg";
+    }
+   if(window.location.pathname.includes('mybag_details')){
+        items_detailsitems = details_items_JSON;
+    }
+});
 
 /* Calculate weight of bag automatically based on the weight of user (20% + 1kg) */
 $(document).on('input', '#userweight', function(){
@@ -9,6 +28,32 @@ $(document).on('input', '#userweight', function(){
     bagweight_kg = Math.round(userweight) * 0.2 + 1;
     bagweight.value = bagweight_kg.toFixed(2);
 })
+
+$(".item_checkbox").change(function() {
+    id = this.id;
+    item = items_additems.find(x => x.name === id);
+
+    if($(this).prop('checked')) {
+        if(item.external == false){
+            current_bagweight += parseFloat(item.weight);
+
+            if(current_bagweight > max_bagweight){
+                alert("You cannot put more items in the bag, remove items before packing new ones.");
+                this.prop('checked', false);
+            }
+            else{
+                set_dom_current_bag_weight();
+                additems_new_bagweight.value = current_bagweight;
+            }
+        }
+    } else {
+        if(item.external == false){
+            current_bagweight -= parseFloat(item.weight);
+        }
+        set_dom_current_bag_weight();
+        additems_new_bagweight.value = current_bagweight;
+    }
+});
 
 /* Handle click on information sign / item name to show item details (mybag_add_items / mybag_details)
 => Source / Inspiration : https://www.w3schools.com/howto/howto_css_modal_images.asp */
@@ -18,13 +63,11 @@ $('.info-item').click(function () {
     name = id.split("-")[0];
 
     if(id_name.includes("additems")){
-        items_additems = add_items_JSON;
         item = items_additems.find(x => x.name === name);
-        set_dom_elements_items(item, "additems");
+        set_modal_dom_elements_items(item, "additems");
     } else{
-        items_detailsitems = details_items_JSON;
         item = items_detailsitems.find(x => x.name === name);
-        set_dom_elements_items(item, "detailsitems");
+        set_modal_dom_elements_items(item, "detailsitems");
     }
 });
 
@@ -38,7 +81,11 @@ $('#detailsitems-close-modal').click(function () {
     document.getElementById("detailsitems-modal").style.display = "none";
 });
 
-function set_dom_elements_items(item, name){
+function set_dom_current_bag_weight(){
+    additems_current_bagweight.innerHTML = Math.abs(current_bagweight).toFixed(2) + " kg";
+}
+
+function set_modal_dom_elements_items(item, name){
     document.getElementById(name+"-modal").style.display = "block";
 
     document.getElementById(name+"_item_name").innerHTML = item.name.toUpperCase();

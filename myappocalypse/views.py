@@ -141,11 +141,13 @@ def add_items(request, id):
 
     if request.method == "POST":
         selected_items = request.POST.getlist('item_checkbox')
+        bagweight = request.POST['additems_new_bag_weight']
         items_to_create = []
         for i in all_items:
             if i.name in selected_items:
                 items_to_create.append(i)
         bag.items.set(items_to_create)
+        bag.weight_bag_actual = bagweight
         bag.save()
         return redirect('mybag_details', id=bag.id)
 

@@ -109,6 +109,7 @@ class Bag(models.Model):
     items = models.ManyToManyField(Item, related_name='items', blank=True)
     name = models.CharField(blank=True, null=True, max_length=50)
     weight_bag = models.DecimalField(blank=True, max_digits=5, decimal_places=2, null=True)
+    weight_bag_actual = models.DecimalField(blank=True, max_digits=5, decimal_places=2, null=True)
     weight_user = models.DecimalField(blank=True, max_digits=5, decimal_places=2, null=True)
     climate = models.ForeignKey(Climate, on_delete=models.CASCADE)
     landform = models.ForeignKey(Landform, on_delete=models.CASCADE)
