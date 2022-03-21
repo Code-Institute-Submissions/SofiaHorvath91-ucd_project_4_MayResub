@@ -37,9 +37,9 @@ def signin(request):
 def signout(request):
     if request.user.is_authenticated:
         logout(request)
-        return render(request, 'myappocalypse/login.html')
+        return redirect('login')
     else:
-        return redirect('myappocalypse/login.html')
+        return redirect('myappocalypse/logout.html')
 
 
 def signup(request):
@@ -197,7 +197,7 @@ def blog(request):
     if request.method == "POST" and request.POST.get('feedback-to-delete'):
         feedback = Feedback.objects.filter(id=request.POST['feedback-to-delete']).first()
         feedback.delete()
-        return render(request, 'myappocalypse/blog.html', context=context)
+        return redirect('blog')
 
     if request.method == "POST" and request.POST.get('item_name'):
         user = request.user
@@ -219,6 +219,32 @@ def blog(request):
         return render(request, 'myappocalypse/blog.html', context=context)
 
     return render(request, 'myappocalypse/blog.html', context=context)
+
+
+def profile(request):
+    context = {}
+    context['user'] = request.user
+    context['bags'] = Bag.objects.filter(user=request.user)
+
+    if request.method == "POST":
+        if request.POST.get('myfeedback-to-delete'):
+            feedback = Feedback.objects.filter(id=request.POST['myfeedback-to-delete']).first()
+            feedback.delete()
+            return redirect('profile')
+        if request.POST.get('mybag-to-delete'):
+            bag = Bag.objects.filter(id=request.POST['mybag-to-delete']).first()
+            bag.delete()
+            return redirect('profile')
+
+    if request.user.is_superuser:
+        context['feedbacks'] = Feedback.objects.all()
+        context['recommendations'] = Recommendation.objects.filter(status='Pending')
+        return render(request, 'myappocalypse/profile.html', context=context)
+
+    else:
+        context['feedbacks'] = Feedback.objects.filter(user=request.user)
+        context['recommendations'] = Recommendation.objects.filter(user=request.user)
+        return render(request, 'myappocalypse/profile.html', context=context)
 
 
 # Helper classes

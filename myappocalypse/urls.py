@@ -8,6 +8,7 @@ from .views import (
     add_items,
     mybag_details,
     blog,
+    profile,
 )
 
 urlpatterns = [
@@ -19,4 +20,5 @@ urlpatterns = [
     path('mybag_add_items/<int:id>', add_items, name='mybag_add_items'),
     path('mybag_details/<int:id>', mybag_details, name='mybag_details'),
     path('blog/', blog, name='blog'),
+    path('profile/', profile, name='profile'),
 ]

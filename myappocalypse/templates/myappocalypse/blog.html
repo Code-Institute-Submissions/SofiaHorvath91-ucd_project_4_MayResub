@@ -24,7 +24,7 @@
                 <form method="POST">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label id="rating-title" for="ratings" class="black-shadow">Rate Your Experience</label>
+                        <label for="ratings" class="black-shadow custom-header">Rate Your Experience</label>
                         <div class="center-container">
                             <fieldset id="ratings" name="ratings"class="center-container starability-fade">
                                 <input type="radio" id="no-rate" class="input-no-rate" name="rating"
@@ -43,7 +43,7 @@
                         </div>
                         <div class="center-container">
                             <div class="row">
-                                <label id="feedback-title" for="feedback" class="black-shadow">
+                                <label for="feedback" class="black-shadow custom-header">
                                     Leave Your Thoughts
                                 </label>
                                 <textarea id="feedback" name="feedback" rows="5" class="form-control"></textarea>
@@ -60,10 +60,10 @@
         <br>
         <div class="row mt-4 mb-3">
             <div class="card card-shadow">
-                <div class="collapsible-section" id="section-aboutmybag">
+                <div class="collapsible-section">
                     <input type="checkbox" name="collapse" id="coll-section-recommend-item">
                     <div class="collapsible-section-title mt-2">
-                        <label id="recommendation-title" class="black-shadow text-center"
+                        <label class="black-shadow text-center custom-header"
                                for="coll-section-recommend-item">Recommend Item</label>
                     </div>
                     <div class="collapsible-section-content mt-2">
@@ -121,10 +121,10 @@
                                             <label for="justification">Justification</label>
                                             <br>
                                             <label class="mb-1 help-txt">
-                                                (Max 600 characters, including related climate/landform,
+                                                Max 600 characters, including related climate/landform,
                                                 special conditions (no available food/drink/infrastructure)
                                                 <br>and/or special company (child, elder person, pet)
-                                                which justifies the item)
+                                                which justifies the item.
                                             </label>
                                             <textarea id="justification" name="justification"
                                                       rows="5" class="form-control"></textarea>
@@ -143,7 +143,7 @@
         </div>
         <br>
         <div class="row mt-3 mb-3">
-            <label id="feedbacks-title" class="black-shadow text-center">Feedbacks</label>
+            <label class="black-shadow text-center custom-header">Feedbacks</label>
         </div>
         <br>
         <div class="row">
@@ -163,7 +163,7 @@
                                 <div class="col-12">
                                     <input type="hidden" id="feedback-to-delete"
                                            name="feedback-to-delete" value="{{f.id}}">
-                                    <input type="submit" value="Delete Comment" class="btn btn-md btn-outline-danger">
+                                    <input type="submit" value="Delete Feedback" class="btn btn-md btn-outline-danger">
                                 </div>
                             </div>
                         </form>

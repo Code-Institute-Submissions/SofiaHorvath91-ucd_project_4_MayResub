@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <div class="container">
+        <div class="row page-title mb-3">
+            <div class="col-12">
+                <h1 class="black-shadow text-center">Profile</h1>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <h4 class="black-shadow text-center">
+                User : {{request.user.username}}
+            </h4>
+        </div>
+        <div class="row mt-4 mb-3">
+            <div class="card card-shadow">
+                <div class="collapsible-section" id="section-aboutmybag">
+                    <input type="checkbox" name="collapse" id="coll-section-my-bags">
+                    <div class="collapsible-section-title mt-2">
+                        <label class="black-shadow text-center custom-header"
+                               for="coll-section-my-bags">My Bags</label>
+                    </div>
+                    <div class="collapsible-section-content mt-2">
+                        <div class="row">
+                            {% for b in bags %}
+                                <div class="card mt-2 mb-3">
+                                    <div class="center-container">
+                                        <div class="items-bag-text mb-3">
+                                            <div class="form-section text-center">
+                                                <h4 class="black-shadow">Bag {{b.name}}</h4>
+                                                <label>User Weight (kg) : {{b.weight_user}}</label><br>
+                                                <label>
+                                                    Bag Weight (kg) : {{b.weight_bag_actual}} / Max {{b.weight_bag}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="center-container">
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <div class="row mb-2">
+                                                <div class="col-12">
+                                                    <input type="hidden" id="mybag-to-delete"
+                                                           name="mybag-to-delete" value="{{b.id}}">
+                                                    <input type="submit" value="Delete Bag"
+                                                           class="btn btn-md btn-danger">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="row mb-2">
+                                            <div class="col-12">
+                                                <a class="btn btn-light" href="{% url 'mybag_details' id=b.id %}">
+                                                    Check Bag
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4 mb-3">
+            <div class="card card-shadow">
+                <div class="collapsible-section">
+                    <input type="checkbox" name="collapse" id="coll-section-my-recommendations">
+                    <div class="collapsible-section-title mt-2">
+                        <label class="black-shadow text-center custom-header"
+                               for="coll-section-my-recommendations">My Recommendations</label>
+                    </div>
+                    <div class="collapsible-section-content mt-2">
+                        <div class="row">
+                            {% for r in recommendations %}
+                                <div class="card mb-3">
+                                    <h5 class="text-center mt-2 mb-3">Recommendation #{{r.id}}</h5>
+                                    <div class="form-container">
+                                        <div class="center-container mb-3">
+                                            <div class="form-section">
+                                                <label class="bag-label">Name : {{r.name}}</label>
+                                                <label class="bag-label">Status : {{r.status}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="center-container mb-3">
+                                            <div class="form-section">
+                                                <label class="bag-label">Category : {{r.category}}</label>
+                                                <label class="bag-label">External : {{r.external}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="center-container mb-3">
+                                            <div class="form-section">
+                                                <label class="bag-label"> Weight (kg) : {{r.weight}}</label>
+                                                <label class="bag-label">Usefulness : {{r.usefulness}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="center-container mb-3">
+                                        <div class="form-section">
+                                            <label class="bag-label">Justification :</label>
+                                            <label class="bag-label">{{r.justification}}</label>
+                                        </div>
+                                    </div>
+                                    {% if request.user == r.user %}
+                                    <div class="center-container mb-2">
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <div class="row mb-2">
+                                                <div class="col-12">
+                                                    <input type="hidden" id="myrecommendations-to-delete"
+                                                           name="myrecommendations-to-delete" value="{{r.id}}">
+                                                    <input type="submit" value="Delete"
+                                                           class="btn btn-md btn-danger">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="row mb-2">
+                                            <div class="col-12">
+                                                <a class="btn btn-light" href="{% url 'blog' %}">
+                                                    Go to Blog
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4 mb-3">
+            <div class="card card-shadow">
+                <div class="collapsible-section">
+                    <input type="checkbox" name="collapse" id="coll-section-my-feedbacks">
+                    <div class="collapsible-section-title mt-2">
+                        <label class="black-shadow text-center custom-header"
+                               for="coll-section-my-feedbacks">My Feedbacks</label>
+                    </div>
+                    <div class="collapsible-section-content mt-2">
+                        <div class="row">
+                            {% for f in feedbacks %}
+                                <div class="card card-shadow card-blog mb-3">
+                                    <div class="row">
+                                        <p class="mt-2"><strong>Feedback #{{f.id}}</strong></p>
+                                        <p class="mt-1">By user : {{f.user}}</p>
+                                        <p>Created on : {{f.created}}</p>
+                                        <p>Rating : {{f.rating_point}} stars ({{f.rating_description}})</p>
+                                        <p>Feedback :<br>{{f.content|default:"N/A"}}</p>
+                                    </div>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="row mb-2">
+                                            <div class="col-12">
+                                                <input type="hidden" id="myfeedback-to-delete"
+                                                       name="myfeedback-to-delete" value="{{f.id}}">
+                                                <input type="submit" value="Delete Feedback"
+                                                       class="btn btn-md btn-outline-danger">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="row mb-2">
+                                        <div class="col-12">
+                                            <a class="btn btn-outline-dark" href="{% url 'blog' %}">
+                                                Go to Blog
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

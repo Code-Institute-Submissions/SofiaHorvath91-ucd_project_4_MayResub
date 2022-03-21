@@ -374,12 +374,9 @@ select{
   text-align: left;
 }
 
-#recommendation-title,
-#feedbacks-title,
-#aboutmybag-title,
-#feedback-title,
-#rating-title{
+.custom-header{
     font-size: 1.75rem !important;
+    font-weight:normal;
 }
 
 .items-section-title{
