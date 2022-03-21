@@ -52,7 +52,6 @@ class Item(models.Model):
     Safety = 'Safety'
     Cooking = 'Cooking'
     Food_Drink = 'Food_Drink'
-    Drink = 'Drink'
     Hygiene = 'Hygiene'
     Health = 'Health'
     Lightning = 'Lightning'
@@ -127,3 +126,26 @@ class Feedback(models.Model):
     content = models.TextField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+
+
+class Recommendation(models.Model):
+    Pending = 'Pending'
+    Approved = 'Approved'
+    Rejected = 'Rejected'
+    STATUSES = [
+        (Pending, 'Pending'),
+        (Approved, 'Approved'),
+        (Rejected, 'Rejected'),
+    ]
+
+    status = models.CharField(choices=STATUSES, max_length=30, default=Pending)
+    category = models.CharField(blank=True, null=True, max_length=100)
+    name = models.CharField(blank=True, null=True, max_length=100)
+    weight = models.DecimalField(blank=True, max_digits=5, decimal_places=2, null=True)
+    usefulness = models.DecimalField(blank=True, max_digits=5, decimal_places=2, null=True)
+    external = models.BooleanField(blank=True, null=True, default=False)
+    justification = models.TextField(blank=True, null=True, max_length=600)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+
+
+

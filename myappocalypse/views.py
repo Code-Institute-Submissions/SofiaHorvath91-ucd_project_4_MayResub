@@ -4,7 +4,7 @@ from itertools import chain
 from rest_framework.renderers import JSONRenderer
 from django.contrib.auth.decorators import login_required
 
-from .models import Item, Bag, Climate, Landform, Environment, ItemSerializer, Feedback
+from .models import Item, Bag, Climate, Landform, Environment, ItemSerializer, Feedback, Recommendation
 
 User = get_user_model()
 
@@ -178,7 +178,7 @@ def blog(request):
 
     context['feedbacks'] = Feedback.objects.all()
 
-    if request.method == "POST":
+    if request.method == "POST" and request.POST.get('feedback') or request.POST.get('rating'):
         rating = request.POST.get('rating').split('_')[0]
         rating_desc = request.POST.get('rating').split('_')[1]
         content = request.POST['feedback']
@@ -193,6 +193,30 @@ def blog(request):
         else:
             context['errorMsg'] = 'Please share your feedback or rating!'
             return render(request, 'myappocalypse/blog.html', context=context)
+
+    if request.method == "POST" and request.POST.get('feedback-to-delete'):
+        feedback = Feedback.objects.filter(id=request.POST['feedback-to-delete']).first()
+        feedback.delete()
+        return render(request, 'myappocalypse/blog.html', context=context)
+
+    if request.method == "POST" and request.POST.get('item_name'):
+        user = request.user
+        name = request.POST['item_name']
+        weight = request.POST['weight']
+        category = request.POST['category']
+        usefulness = request.POST['usefulness']
+        external = request.POST['external']
+        justification = request.POST['justification']
+
+        if category == 'default' or external == 'default':
+            context['errorMsg'] = 'Set value for all fields, please'
+            return render(request, 'myappocalypse/packmybag.html', context=context)
+        else:
+            recommendation = Recommendation.objects.create(user=user, name=name, weight=weight, category=category,
+                                                           justification=justification, usefulness=usefulness,
+                                                           external=external)
+            recommendation.save()
+        return render(request, 'myappocalypse/blog.html', context=context)
 
     return render(request, 'myappocalypse/blog.html', context=context)
 

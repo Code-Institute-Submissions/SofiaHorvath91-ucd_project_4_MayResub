@@ -374,6 +374,7 @@ select{
   text-align: left;
 }
 
+#recommendation-title,
 #feedbacks-title,
 #aboutmybag-title,
 #feedback-title,
@@ -547,6 +548,10 @@ select{
 
 .card-blog{
     background-color: rgba(255,255,255, 0.8);
+}
+
+.help-txt{
+    font-size:12px !important;
 }
 
 /* Star-based Feeback => Source / Inspiration : https://github.com/LunarLogic/starability */
