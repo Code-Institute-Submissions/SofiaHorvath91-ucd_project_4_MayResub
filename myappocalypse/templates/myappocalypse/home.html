@@ -35,18 +35,18 @@
                     {% if user.is_authenticated %}
                     <div class="buttons-container">
                         <div class="center-container">
-                            <a class="btn btn-lg btn-outline-light home-btns" href="">
+                            <a class="btn btn-lg btn-outline-light home-btns" href="{% url 'profile' %}">
                                 My Profile
                             </a>
                         </div>
                         <div class="center-container">
-                            <a class="btn btn-lg btn-outline-light home-btns" href="">
-                                My Bags
+                            <a class="btn btn-lg btn-outline-light home-btns" href="{% url 'packmybag' %}">
+                                New Bag
                             </a>
                         </div>
                         <div class="center-container">
-                            <a class="btn btn-lg btn-outline-light home-btns" href="">
-                                Feedback
+                            <a class="btn btn-lg btn-outline-light home-btns" href="{% url 'blog' %}">
+                                Blog
                             </a>
                         </div>
                     </div>

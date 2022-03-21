@@ -11,9 +11,13 @@ User = get_user_model()
 
 # Home Page (home.html)
 def home(request):
-    # Collect all houses for introduction on Home page
     context = {}
     return render(request, 'myappocalypse/home.html', context=context)
+
+
+def whyabag(request):
+    context = {}
+    return render(request, 'myappocalypse/whyabag.html', context=context)
 
 
 def signin(request):

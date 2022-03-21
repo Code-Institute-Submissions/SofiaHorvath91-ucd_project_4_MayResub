@@ -9,10 +9,12 @@ from .views import (
     mybag_details,
     blog,
     profile,
+    whyabag,
 )
 
 urlpatterns = [
     path('', home, name="home"),
+    path('whyabag/', whyabag, name='whyabag'),
     path('signup/', signup, name='signup'),
     path('login/', signin, name='login'),
     path('logout/', signout, name='logout'),

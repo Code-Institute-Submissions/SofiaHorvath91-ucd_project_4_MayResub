@@ -350,6 +350,14 @@ select{
     color: white !important;
 }
 
+/* Why A Bag */
+
+.whyabag_text{
+    font-size: 20px;
+    color: white;
+
+}
+
 /* Add Items */
 
 .bag-label{
