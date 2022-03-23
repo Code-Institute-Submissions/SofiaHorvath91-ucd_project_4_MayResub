@@ -22,7 +22,6 @@ class Environment(models.Model):
 
 
 class ClimateSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Climate
         fields = '__all__'
@@ -30,7 +29,6 @@ class ClimateSerializer(serializers.ModelSerializer):
 
 
 class LandformSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Landform
         fields = '__all__'
@@ -38,7 +36,6 @@ class LandformSerializer(serializers.ModelSerializer):
 
 
 class EnvironmentSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Environment
         fields = '__all__'

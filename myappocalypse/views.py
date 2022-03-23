@@ -11,13 +11,11 @@ User = get_user_model()
 
 # Home Page (home.html)
 def home(request):
-    context = {}
-    return render(request, 'myappocalypse/home.html', context=context)
+    return render(request, 'myappocalypse/home.html')
 
 
 def whyabag(request):
-    context = {}
-    return render(request, 'myappocalypse/whyabag.html', context=context)
+    return render(request, 'myappocalypse/whyabag.html')
 
 
 def signin(request):
@@ -187,7 +185,7 @@ def blog(request):
         rating_desc = request.POST.get('rating').split('_')[1]
         content = request.POST['feedback']
 
-        if content or rating is not '0':
+        if content or (rating != '0'):
             user = request.user
             feedback = Feedback.objects.create(rating_point=rating, rating_description=rating_desc,
                                                content=content, user=user)
