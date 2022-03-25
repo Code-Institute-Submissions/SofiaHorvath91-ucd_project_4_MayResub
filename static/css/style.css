@@ -430,6 +430,10 @@ select{
 
 /* Pop-up Modal  => Source/inspiration : https://www.w3schools.com/howto/howto_css_modal_images.asp */
 
+.modal-display{
+    display: block !important;
+}
+
 .modal {
     display: none;
     position: fixed;

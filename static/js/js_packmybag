@@ -1,12 +1,9 @@
-/* DOM elements */
-let bagweight = document.getElementById("bagweight");
-let additems_current_bagweight = document.getElementById("additems_bag_weight");
-let additems_max_bagweight = document.getElementById("additems_max_bag_weight");
-let additems_new_bagweight = document.getElementById("additems_new_bag_weight");
-
 /* Variables */
-const $ = require('jquery');
 
+/* Constant to pass jQuery for testing with Jest (js_packmybag.test.js), to be commented out in Production */
+// const $ = require('jquery');
+
+/* Initialize variables of current bag for pages mybag_add_items / mybag_details */
 let currentBagVars = {
     max_bagweight: 0.00,
     current_bagweight: 0.00,
@@ -15,48 +12,33 @@ let currentBagVars = {
     item: {},
 }
 
+/* jQuery */
+
+/* On page load for pages mybag_add_items / mybag_details : pass item list from view to js via json */
 $(function () {
     if(window.location.pathname.includes('mybag_add_items')){
         currentBagVars.items_additems = add_items_JSON;
-        currentBagVars.max_bagweight = parseFloat(additems_max_bagweight.value).toFixed(2);
-        additems_current_bagweight.innerHTML = currentBagVars.current_bagweight.toFixed(2) + " kg";
+        set_current_max_bagweight(); // If adding items, define possible max bag weight
     }
    if(window.location.pathname.includes('mybag_details')){
         currentBagVars.items_detailsitems = details_items_JSON;
     }
 });
 
-/* Calculate weight of bag automatically based on the weight of user (20% + 1kg) */
+/* Calculate bag weight automatically based on the weight of user : 20% of user weight + 1kg (packmybag) */
 $(document).on('input', '#userweight', function(){
-    userweight = $("#userweight").val();
-    bagweight_kg = Math.round(userweight) * 0.2 + 1;
-    bagweight.value = bagweight_kg.toFixed(2);
+    get_bagweight_per_userweight($("#userweight").val());
 })
 
+/* Handle checking item cb to add to bag : Update bag weight & control max items/max bag weight (mybag_add_items) */
 $(".item_checkbox").change(function() {
     id = this.id;
-    currentBagVars.item = currentBagVars.items_additems.find(x => x.name === id);
-
-    if($(this).prop('checked')) {
-        if(currentBagVars.item.external == false){
-            currentBagVars.current_bagweight += parseFloat(currentBagVars.item.weight);
-
-            if(currentBagVars.current_bagweight > currentBagVars.max_bagweight){
-                alert("You cannot put more items in the bag, remove items before packing new ones.");
-                this.prop('checked', false);
-            }
-            else{
-                set_dom_current_bag_weight();
-                additems_new_bagweight.value = currentBagVars.current_bagweight;
-            }
-        }
-    } else {
-        if(currentBagVars.item.external == false){
-            currentBagVars.current_bagweight -= parseFloat(currentBagVars.item.weight);
-        }
-        set_dom_current_bag_weight();
-        additems_new_bagweight.value = currentBagVars.current_bagweight;
-    }
+    name = "#"+id;
+    currentBagVars.item = get_item_from_list(id, currentBagVars.items_additems);
+    add_itemweight_to_bagweight(name,
+                                $(this).prop('checked'),
+                                currentBagVars.item.external,
+                                currentBagVars.item.weight);
 });
 
 /* Handle click on information sign / item name to show item details (mybag_add_items / mybag_details)
@@ -65,38 +47,75 @@ $('.info-item').click(function () {
     id = this.id;
     id_name = id.split("-");
     name = id.split("-")[0];
+    page_name = id.split("-")[2];
 
-    if(id_name.includes("additems")){
-        currentBagVars.item = currentBagVars.items_additems.find(x => x.name === name);
-        set_modal_dom_elements_items(currentBagVars.item, "additems");
+    if(page_name == "additems"){
+        currentBagVars.item = get_item_from_list(name, currentBagVars.items_additems);
     } else{
-        currentBagVars.item = currentBagVars.items_detailsitems.find(x => x.name === name);
-        set_modal_dom_elements_items(currentBagVars.item, "detailsitems");
+        currentBagVars.item = get_item_from_list(name, currentBagVars.items_detailsitems);
     }
+    set_modal_dom_elements_items(currentBagVars.item, page_name);
 });
 
 /* Handle click on close icon to close modal (mybag_add_items)*/
 $('#additems-close-modal').click(function () {
-    document.getElementById("additems-modal").style.display = "none";
+    onclick_hide_modal($, '#additems-modal');
 });
 
 /* Handle click on close icon to close modal (mybag_details)*/
 $('#detailsitems-close-modal').click(function () {
-    document.getElementById("detailsitems-modal").style.display = "none";
+    onclick_hide_modal($, '#detailsitems-modal');
 });
 
-function set_dom_current_bag_weight(){
+/* Javascript functions */
+
+/* Get / set max bag weight for current bag & packing upon page load (mybag_add_items) */
+function set_current_max_bagweight(){
+    additems_max_bagweight = document.getElementById("additems_max_bag_weight").value;
+    currentBagVars.max_bagweight = parseFloat(additems_max_bagweight).toFixed(2);
+    document.getElementById("additems_bag_weight").innerHTML = currentBagVars.current_bagweight.toFixed(2) + " kg";
+}
+ /* While defining bag details, calculate automtically bag max weight based on user weight (packmybag) */
+function get_bagweight_per_userweight(userweight){
+    bagweight_kg = Math.round(userweight) * 0.2 + 1;
+    document.getElementById("bagweight").value = bagweight_kg.toFixed(2);
+}
+
+/* Get current item from list of items based on name (mybag_add_items / mybag_details) */
+function get_item_from_list(name, list){
+   return list.find(x => x.name === name);
+}
+
+/* Add/remove current item's weight to/from bag weight upon checkin/unchecking item checkbox
+if item cannot be carried externally (out of the bag, in hand or hanged on the bag), update UI DOM element,
+and alert/stop user if no more items can be added as max bag weight would be exceeded (mybag_add_items) */
+function add_itemweight_to_bagweight(name, checked, external, weight){
+    if(!external){
+        if(checked){
+            currentBagVars.current_bagweight += parseFloat(weight);
+            if(currentBagVars.current_bagweight > currentBagVars.max_bagweight){
+                alert("You cannot put more items in the bag, remove items before packing new ones.");
+                $(name).prop("checked", false);
+                currentBagVars.current_bagweight -= parseFloat(weight);
+            }
+        } else{
+            currentBagVars.current_bagweight -= parseFloat(weight);
+        }
+    }
+    document.getElementById("additems_new_bag_weight").value = currentBagVars.current_bagweight.toFixed(2);
     document.getElementById("additems_bag_weight").innerHTML =
     Math.abs(currentBagVars.current_bagweight).toFixed(2) + " kg";
 }
 
+/* Show pop-up modal with item details (fields of Item model for current item) when user clicks on name of item
+(mybag_add_items / mybag_details) */
 function set_modal_dom_elements_items(item, name){
-    document.getElementById(name+"-modal").style.display = "block";
+    document.getElementById(name+"-modal").classList.add("modal-display");
 
     document.getElementById(name+"_item_name").innerHTML = item.name.toUpperCase();
     document.getElementById(name+"_item_category").innerHTML = "Category : " + item.category;
     document.getElementById(name+"_item_weight").innerHTML = "Average Weight (kg) : " + item.weight;
-    document.getElementById(name+"_item_usefulness").innerHTML = "Usefulness : " + item.usefulness + " / 10";
+    document.getElementById(name+"_item_usefulness").innerHTML = "Usefulness : " + item.usefulness.toFixed(2) + " / 10";
     document.getElementById(name+"_item_external").innerHTML =
     "Can be brought externally (out of bag) : " + (item.external ? "Yes" : "No");
 
@@ -109,9 +128,9 @@ function set_modal_dom_elements_items(item, name){
 
     document.getElementById(name+"_item_climates").innerHTML = "Climates which requires this item :<br>";
     append_list_elements(document.getElementById(name+"_item_climates"), item.climate);
-    document.getElementById(name+"_item_landforms").innerHTML = "Climates which requires this item :<br>";
+    document.getElementById(name+"_item_landforms").innerHTML = "Landforms which requires this item :<br>";
     append_list_elements(document.getElementById(name+"_item_landforms"), item.landform);
-    document.getElementById(name+"_item_environments").innerHTML = "Climates which requires this item :<br>";
+    document.getElementById(name+"_item_environments").innerHTML = "Environments which requires this item :<br>";
     append_list_elements(document.getElementById(name+"_item_environments"), item.environment);
 
     document.getElementById(name+"_item_available_infrastructure").innerHTML =
@@ -122,14 +141,30 @@ function set_modal_dom_elements_items(item, name){
     "Comestibles (food) : " + (item.available_food == false ? "Yes" : "No");
 }
 
+/* Format list elements into string when having multiple values associated to a field to show in pop-up modal on UI
+(mybag_add_items / mybag_details) */
 function append_list_elements(dom, list){
     for(i=0;i<list.length;i++){
         if(i < list.length - 1){
             dom.innerHTML += list[i].name + ", ";
         } else{
-            dom.innerHTML += list[i].name
+            dom.innerHTML += list[i].name;
         }
     }
 }
 
-module.exports = { currentBagVars, set_dom_current_bag_weight };
+/* Close pop-up modal when clicking on exit sign 'X' (mybag_add_items / mybag_details) */
+function onclick_hide_modal($, name){
+    $(name).removeClass( 'modal-display' );
+}
+
+/* Export modules for testing with Jest (js_packmybag.test.js), to be commented out in Production */
+
+/* module.exports = { currentBagVars,
+                   set_current_max_bagweight,
+                   get_bagweight_per_userweight,
+                   get_item_from_list,
+                   add_itemweight_to_bagweight,
+                   set_modal_dom_elements_items,
+                   append_list_elements,
+                   onclick_hide_modal }; */
