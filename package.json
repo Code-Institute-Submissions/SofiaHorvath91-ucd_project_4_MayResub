@@ -1,0 +1,26 @@
+{
+  "name": "ucd_project_4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SofiaHorvath91/ucd_project_4.git"
+  },
+  "author": "Sofia Horvath",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SofiaHorvath91/ucd_project_4/issues"
+  },
+  "homepage": "https://github.com/SofiaHorvath91/ucd_project_4#readme",
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "ts-node": "^10.7.0"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}

@@ -5,20 +5,24 @@ let additems_max_bagweight = document.getElementById("additems_max_bag_weight");
 let additems_new_bagweight = document.getElementById("additems_new_bag_weight");
 
 /* Variables */
+const $ = require('jquery');
 
-let max_bagweight;
-let current_bagweight = 0.00;
-let items_additems;
-let items_detailsitems;
+let currentBagVars = {
+    max_bagweight: 0.00,
+    current_bagweight: 0.00,
+    items_additems: [],
+    items_detailsitems: [],
+    item: {},
+}
 
 $(function () {
     if(window.location.pathname.includes('mybag_add_items')){
-        items_additems = add_items_JSON;
-        max_bagweight = parseFloat(additems_max_bagweight.value).toFixed(2);
-        additems_current_bagweight.innerHTML = current_bagweight.toFixed(2) + " kg";
+        currentBagVars.items_additems = add_items_JSON;
+        currentBagVars.max_bagweight = parseFloat(additems_max_bagweight.value).toFixed(2);
+        additems_current_bagweight.innerHTML = currentBagVars.current_bagweight.toFixed(2) + " kg";
     }
    if(window.location.pathname.includes('mybag_details')){
-        items_detailsitems = details_items_JSON;
+        currentBagVars.items_detailsitems = details_items_JSON;
     }
 });
 
@@ -31,27 +35,27 @@ $(document).on('input', '#userweight', function(){
 
 $(".item_checkbox").change(function() {
     id = this.id;
-    item = items_additems.find(x => x.name === id);
+    currentBagVars.item = currentBagVars.items_additems.find(x => x.name === id);
 
     if($(this).prop('checked')) {
-        if(item.external == false){
-            current_bagweight += parseFloat(item.weight);
+        if(currentBagVars.item.external == false){
+            currentBagVars.current_bagweight += parseFloat(currentBagVars.item.weight);
 
-            if(current_bagweight > max_bagweight){
+            if(currentBagVars.current_bagweight > currentBagVars.max_bagweight){
                 alert("You cannot put more items in the bag, remove items before packing new ones.");
                 this.prop('checked', false);
             }
             else{
                 set_dom_current_bag_weight();
-                additems_new_bagweight.value = current_bagweight;
+                additems_new_bagweight.value = currentBagVars.current_bagweight;
             }
         }
     } else {
-        if(item.external == false){
-            current_bagweight -= parseFloat(item.weight);
+        if(currentBagVars.item.external == false){
+            currentBagVars.current_bagweight -= parseFloat(currentBagVars.item.weight);
         }
         set_dom_current_bag_weight();
-        additems_new_bagweight.value = current_bagweight;
+        additems_new_bagweight.value = currentBagVars.current_bagweight;
     }
 });
 
@@ -63,11 +67,11 @@ $('.info-item').click(function () {
     name = id.split("-")[0];
 
     if(id_name.includes("additems")){
-        item = items_additems.find(x => x.name === name);
-        set_modal_dom_elements_items(item, "additems");
+        currentBagVars.item = currentBagVars.items_additems.find(x => x.name === name);
+        set_modal_dom_elements_items(currentBagVars.item, "additems");
     } else{
-        item = items_detailsitems.find(x => x.name === name);
-        set_modal_dom_elements_items(item, "detailsitems");
+        currentBagVars.item = currentBagVars.items_detailsitems.find(x => x.name === name);
+        set_modal_dom_elements_items(currentBagVars.item, "detailsitems");
     }
 });
 
@@ -82,7 +86,8 @@ $('#detailsitems-close-modal').click(function () {
 });
 
 function set_dom_current_bag_weight(){
-    additems_current_bagweight.innerHTML = Math.abs(current_bagweight).toFixed(2) + " kg";
+    document.getElementById("additems_bag_weight").innerHTML =
+    Math.abs(currentBagVars.current_bagweight).toFixed(2) + " kg";
 }
 
 function set_modal_dom_elements_items(item, name){
@@ -126,3 +131,5 @@ function append_list_elements(dom, list){
         }
     }
 }
+
+module.exports = { currentBagVars, set_dom_current_bag_weight };
