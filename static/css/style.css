@@ -563,6 +563,11 @@ select{
     font-size:12px !important;
 }
 
+.feedback-post-title{
+    color:black !important;
+    padding-left:0.8rem;
+}
+
 /* Star-based Feeback => Source / Inspiration : https://github.com/LunarLogic/starability */
 
 .starability-result {

@@ -3,148 +3,159 @@
 {% load static %}
 <main>
     <div class="container">
-        <div class="row page-title mb-3">
-            <div class="col-12">
-                <h1 class="black-shadow text-center">My Bag '{{bag.name}}'</h1>
-            </div>
-        </div>
-        <div class="card card-shadow">
-            <div>
-                <div class="text-center mt-2">
-                    <h2 class="black-shadow">Bag Details</h2>
-                </div>
-                <div class="form-container">
-                    <div class="center-container items-bag-text mb-3">
-                        <div class="form-section">
-                            <h4 class="bag-label">Basics</h4>
-                            <label class="bag-label">Name : {{bag.name}}</label>
-                            <label class="bag-label">User Weight (kg) : {{bag.weight_user}}</label>
-                            <label class="bag-label">
-                                Bag Weight (kg) : {{bag.weight_bag_actual}} / Max  {{bag.weight_bag}}
-                            </label>
-                        </div>
-                    </div>
-                    <div class="center-container items-bag-text mb-3">
-                        <div class="form-section">
-                            <h4 class="bag-label">Company</h4>
-                            <label class="bag-label">Underage company : {{bag.with_child}}</label>
-                            <label class="bag-label">Elder company : {{bag.with_elder}}</label>
-                            <label class="bag-label">Pet : {{bag.with_pet}}</label>
-                        </div>
-                    </div>
-                    <div class="center-container items-bag-text mb-3">
-                        <div class="form-section">
-                            <h4 class="bag-label">Locale</h4>
-                            <label class="bag-label">Climate : {{bag.climate.name}}</label>
-                            <label class="bag-label">Landform : {{bag.landform.name}}</label>
-                            <label class="bag-label">Environment : {{bag.environment.name}}</label>
-                        </div>
-                    </div>
-                    <div class="center-container items-bag-text mb-3">
-                        <div class="form-section">
-                            <h4 class="bag-label">Conditions</h4>
-                            <label class="bag-label">Human infrastructure : {{bag.available_infrastructure}}</label>
-                            <label class="bag-label">Drinking water : {{bag.available_water}}</label>
-                            <label class="bag-label">Comestibles (food) : {{bag.available_food}}</label>
-                        </div>
+        <article>
+            <header>
+                <div class="row page-title mb-3">
+                    <div class="col-12">
+                        <h1 class="black-shadow text-center">My Bag '{{bag.name}}'</h1>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row page-title mt-4 mb-3">
-            <div class="col-12">
-                <h2 class="black-shadow text-center">Bag Items</h2>
-            </div>
-        </div>
-         <div>
-            <div class="form-container">
-                {% for c in choices %}
-                <div class="card">
-                    <div class="collapsible-section" id="details-section-items-{{c}}">
-                        <input type="checkbox" name="collapse" id="coll-section-details-{{c}}">
-                        <div class="collapsible-section-title mt-2">
-                            <label id="{{c}}-title-details" class="black-shadow text-center items-section-title"
-                                   for="coll-section-details-{{c}}">{{c}}</label>
+            </header>
+            <section>
+                <article class="card card-shadow">
+                    <div>
+                        <header class="text-center mt-2">
+                            <h2 class="black-shadow">Bag Details</h2>
+                        </header>
+                        <section class="form-container">
+                            <div class="center-container items-bag-text mb-3">
+                                <div class="form-section">
+                                    <h4 class="bag-label">Basics</h4>
+                                    <label class="bag-label">Name : {{bag.name}}</label>
+                                    <label class="bag-label">User Weight (kg) : {{bag.weight_user}}</label>
+                                    <label class="bag-label">
+                                        Bag Weight (kg) : {{bag.weight_bag_actual}} / Max  {{bag.weight_bag}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="center-container items-bag-text mb-3">
+                                <div class="form-section">
+                                    <h4 class="bag-label">Company</h4>
+                                    <label class="bag-label">Underage company : {{bag.with_child}}</label>
+                                    <label class="bag-label">Elder company : {{bag.with_elder}}</label>
+                                    <label class="bag-label">Pet : {{bag.with_pet}}</label>
+                                </div>
+                            </div>
+                            <div class="center-container items-bag-text mb-3">
+                                <div class="form-section">
+                                    <h4 class="bag-label">Locale</h4>
+                                    <label class="bag-label">Climate : {{bag.climate.name}}</label>
+                                    <label class="bag-label">Landform : {{bag.landform.name}}</label>
+                                    <label class="bag-label">Environment : {{bag.environment.name}}</label>
+                                </div>
+                            </div>
+                            <div class="center-container items-bag-text mb-3">
+                                <div class="form-section">
+                                    <h4 class="bag-label">Conditions</h4>
+                                    <label class="bag-label">
+                                        Human infrastructure : {{bag.available_infrastructure}}
+                                    </label>
+                                    <label class="bag-label">Drinking water : {{bag.available_water}}</label>
+                                    <label class="bag-label">Comestibles (food) : {{bag.available_food}}</label>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+                <article>
+                    <header class="row page-title mt-4 mb-3">
+                        <div class="col-12">
+                            <h2 class="black-shadow text-center">Bag Items</h2>
                         </div>
-                        <div class="collapsible-section-content mt-2">
-                            <div class="form-container">
-                                <div class="items-section text-center mb-3">
-                                    <div class="form-group">
-                                        <h5 class="bag-label">Basic Items</h5>
-                                         {% for i in basic_items %}
-                                            {% if i.category in c%}
-                                                <label class="info-item items-list-label details-list"
-                                                       id="{{i.name}}-info-detailsitems">
-                                                    {{i.name}}
-                                                </label>
-                                                <br>
-                                            {% endif %}
-                                         {% endfor%}
+                    </header>
+                     <section>
+                        <div class="form-container">
+                            {% for c in choices %}
+                            <div class="card">
+                                <div class="collapsible-section" id="details-section-items-{{c}}">
+                                    <input type="checkbox" name="collapse" id="coll-section-details-{{c}}">
+                                    <div class="collapsible-section-title mt-2">
+                                        <label id="{{c}}-title-details"
+                                               class="black-shadow text-center items-section-title"
+                                               for="coll-section-details-{{c}}">{{c}}</label>
+                                    </div>
+                                    <div class="collapsible-section-content mt-2">
+                                        <div class="form-container">
+                                            <div class="items-section text-center mb-3">
+                                                <div class="form-group">
+                                                    <h5 class="bag-label">Basic Items</h5>
+                                                     {% for i in basic_items %}
+                                                        {% if i.category in c%}
+                                                            <label class="info-item items-list-label details-list"
+                                                                   id="{{i.name}}-info-detailsitems">
+                                                                {{i.name}}
+                                                            </label>
+                                                            <br>
+                                                        {% endif %}
+                                                     {% endfor%}
+                                                </div>
+                                            </div>
+                                            <div class="items-section text-center mb-3">
+                                                <div class="form-group">
+                                                    <h5 class="bag-label">Company-specific Items</h5>
+                                                     {% for i2 in items_user_company %}
+                                                        {% if i2.category in c%}
+                                                            <label class="info-item items-list-label details-list"
+                                                                   id="{{i2.name}}-info-detailsitems">
+                                                                {{i2.name}}
+                                                            </label>
+                                                            <br>
+                                                        {% endif %}
+                                                     {% endfor%}
+                                                </div>
+                                            </div>
+                                            <div class="items-section text-center mb-3">
+                                                <div class="form-group">
+                                                    <h5 class="bag-label">Condition-specific Items</h5>
+                                                     {% for i3 in items_user_condition %}
+                                                        {% if i3.category in c%}
+                                                            <label class="info-item items-list-label details-list"
+                                                                   id="{{i3.name}}-info-detailsitems">
+                                                                {{i3.name}}
+                                                            </label>
+                                                            <br>
+                                                        {% endif %}
+                                                     {% endfor%}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="items-section text-center mb-3">
-                                    <div class="form-group">
-                                        <h5 class="bag-label">Company-specific Items</h5>
-                                         {% for i2 in items_user_company %}
-                                            {% if i2.category in c%}
-                                                <label class="info-item items-list-label details-list"
-                                                       id="{{i2.name}}-info-detailsitems">
-                                                    {{i2.name}}
-                                                </label>
-                                                <br>
-                                            {% endif %}
-                                         {% endfor%}
-                                    </div>
-                                </div>
-                                <div class="items-section text-center mb-3">
-                                    <div class="form-group">
-                                        <h5 class="bag-label">Condition-specific Items</h5>
-                                         {% for i3 in items_user_condition %}
-                                            {% if i3.category in c%}
-                                                <label class="info-item items-list-label details-list"
-                                                       id="{{i3.name}}-info-detailsitems">
-                                                    {{i3.name}}
-                                                </label>
-                                                <br>
-                                            {% endif %}
-                                         {% endfor%}
-                                    </div>
-                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                </article>
+                <div id="detailsitems-modal" class="modal">
+                    <span id="detailsitems-close-modal" class="close-modal">&times;</span>
+                    <img class="modal-content" id="detailsitems-modal-img" src="" alt="">
+                    <h3 class="text-center" id="detailsitems_item_name"></h3>
+                    <div class="row mb-3">
+                        <div class="center-container">
+                            <div class="form-section">
+                                <h4 class="mt-1">Basics</h4>
+                                <label class="modal-label mb-2" id="detailsitems_item_category"></label>
+                                <label class="modal-label mb-2" id="detailsitems_item_weight"></label>
+                                <label class="modal-label mb-2" id="detailsitems_item_usefulness"></label>
+                                <label class="modal-label mb-2" id="detailsitems_item_external"></label>
+                                <h4 class="mt-1">Related to special company</h4>
+                                <label class="modal-label mb-2" id="detailsitems_item_with_child"></label>
+                                <label class="modal-label mb-2" id="detailsitems_item_with_elder"></label>
+                                <label class="modal-label mb-2" id="detailsitems_item_with_pet"></label>
+                                <h4 class="mt-1">Locale</h4>
+                                <label class="modal-label mb-2" id="detailsitems_item_climates"></label>
+                                <label class="modal-label mb-2" id="detailsitems_item_landforms"></label>
+                                <label class="modal-label mb-2" id="detailsitems_item_environments"></label>
+                                <h4 class="mt-1">Related to special condition</h4>
+                                <label class="modal-label mb-2" id="detailsitems_item_available_infrastructure"></label>
+                                <label class="modal-label mb-2" id="detailsitems_item_available_water"></label>
+                                <label class="modal-label mb-2" id="detailsitems_available_food"></label>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div id="detailsitems-modal" class="modal">
-            <span id="detailsitems-close-modal" class="close-modal">&times;</span>
-            <img class="modal-content" id="detailsitems-modal-img" src="" alt="">
-            <h3 class="text-center" id="detailsitems_item_name"></h3>
-            <div class="row mb-3">
-                <div class="center-container">
-                    <div class="form-section">
-                        <h4 class="mt-1">Basics</h4>
-                        <label class="modal-label mb-2" id="detailsitems_item_category"></label>
-                        <label class="modal-label mb-2" id="detailsitems_item_weight"></label>
-                        <label class="modal-label mb-2" id="detailsitems_item_usefulness"></label>
-                        <label class="modal-label mb-2" id="detailsitems_item_external"></label>
-                        <h4 class="mt-1">Related to special company</h4>
-                        <label class="modal-label mb-2" id="detailsitems_item_with_child"></label>
-                        <label class="modal-label mb-2" id="detailsitems_item_with_elder"></label>
-                        <label class="modal-label mb-2" id="detailsitems_item_with_pet"></label>
-                        <h4 class="mt-1">Locale</h4>
-                        <label class="modal-label mb-2" id="detailsitems_item_climates"></label>
-                        <label class="modal-label mb-2" id="detailsitems_item_landforms"></label>
-                        <label class="modal-label mb-2" id="detailsitems_item_environments"></label>
-                        <h4 class="mt-1">Related to special condition</h4>
-                        <label class="modal-label mb-2" id="detailsitems_item_available_infrastructure"></label>
-                        <label class="modal-label mb-2" id="detailsitems_item_available_water"></label>
-                        <label class="modal-label mb-2" id="detailsitems_available_food"></label>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </section>
+        </article>
     </div>
     <script type="text/javascript">
         window.details_items_JSON = {{items_json|safe}};

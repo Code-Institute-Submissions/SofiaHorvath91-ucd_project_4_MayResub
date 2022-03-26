@@ -1,24 +1,20 @@
 import os
-from pathlib import Path
 import django_heroku
 from decouple import config
 import dj_database_url
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Path toward directories
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')  # Configure path toward static html templates
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+# Quick-start development settings
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -29,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'social_django',
+    'social_django', # social login
     'myappocalypse',
 ]
 
@@ -67,30 +63,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ucd_project_4.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+# Database (Connected to Heroku / Postgres)
 
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.postgresql_psycopg2',
-#     }
-# }
-
-# Default DB connection used to run tests
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.postgresql_psycopg2',
     }
 }
 
-# DATABASES['default'] = dj_database_url.config(default='postgres://hjujdeqrdscctf:3dd43f8154d75ae7f71e4ce6dd8bd64dbc355acd5ea3586686e7cc531def07cd@ec2-52-207-74-100.compute-1.amazonaws.com:5432/d2tivqefb2r1fm')
+# Default DB connection used to run unit tests
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#     }
+# }
+
+DATABASES['default'] = dj_database_url.config(default='postgres://hjujdeqrdscctf:3dd43f8154d75ae7f71e4ce6dd8bd64dbc355acd5ea3586686e7cc531def07cd@ec2-52-207-74-100.compute-1.amazonaws.com:5432/d2tivqefb2r1fm')
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+# Password validation / Social login
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -119,6 +112,7 @@ AUTH_USER_MODEL = "auth.User"
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'home'
 SOCIAL_AUTH_LOGIN_URL = '/'
 
+# Social login with Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY')
 SOCIAL_AUTH_FACEBOOK_SECRET = config('SOCIAL_AUTH_FACEBOOK_SECRET')
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
@@ -132,9 +126,11 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('link', 'profile_url'),
 ]
 
+# Social login with Twitter
 SOCIAL_AUTH_TWITTER_KEY = config('SOCIAL_AUTH_TWITTER_KEY')
 SOCIAL_AUTH_TWITTER_SECRET = config('SOCIAL_AUTH_TWITTER_SECRET')
 
+# Social login with Google
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SOCIAL_AUTH_GOOGLE_OAUTH2_PROFILE_EXTRA_PARAMS = {
@@ -148,7 +144,6 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -162,7 +157,6 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -175,5 +169,9 @@ STATICFILES_FINDERS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Default primary key field type
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(locals())
