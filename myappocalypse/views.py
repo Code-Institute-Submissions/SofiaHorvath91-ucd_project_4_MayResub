@@ -42,16 +42,6 @@ def signin(request):
         return render(request, 'myappocalypse/login.html')
 
 
-# Logout Page (logout.html)
-# => Page Aim : Allow already logged in users to logout
-def signout(request):
-    if request.user.is_authenticated:
-        logout(request)
-        return redirect('login')
-    else:
-        return redirect('myappocalypse/logout.html')
-
-
 # Sign Up Page (signup.html)
 # => Page Aim : Allow not registered users to sign up via standard form / social login (Facebook, Twitter, Google)
 def signup(request):
@@ -89,8 +79,20 @@ def signup(request):
         return render(request, 'myappocalypse/signup.html')
 
 
+# Logout Page (logout.html)
+# => Page Aim : Allow already logged in users to logout
+@login_required
+def signout(request):
+    if request.user.is_authenticated:
+        logout(request)
+        return redirect('login')
+    else:
+        return redirect('myappocalypse/logout.html')
+
+
 # Pack A Bag Page (packmybag.html)
 # => Page Aim : Allow logged in users to create a new bag in which one can pack items after
+@login_required
 def packmybag(request):
     context = {}
 
@@ -145,6 +147,7 @@ def packmybag(request):
 
 # Add Items Page (mybag_add_items/<bag ID>.html, redirect from packmybag.html after bag creation)
 # => Page Aim : Allow logged in users to add items recommended based on bag details to newly created bag
+@login_required
 def add_items(request, id):
     context = {}
 
@@ -195,6 +198,7 @@ def add_items(request, id):
 
 # Detail of a Bag Page (mybag_details/<bag ID>.html)
 # => Page Aim : Allow logged in users to checks details of an already created bag
+@login_required
 def mybag_details(request, id):
     context = {}
 
@@ -222,6 +226,7 @@ def mybag_details(request, id):
 # Blog Page (blog.html)
 # => Page Aim : Allow logged in users to leave star-based feedback & comment about the site,
 # recommend an item and consult existing feedbacks
+@login_required
 def blog(request):
     context = {}
 
@@ -278,6 +283,7 @@ def blog(request):
 
 # Profile Page (profile.html)
 # => Page Aim : Allow logged in users to consult their bags, feedbacks and recommendations in one place
+@login_required
 def profile(request):
     context = {}
     context['user'] = request.user

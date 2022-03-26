@@ -5,6 +5,8 @@
     <div class="container">
         <article>
             <!-- Page Title -->
+            <!-- If current user is owner of the bag, allow to add items -->
+            {% if request.user == bag.user %}
             <header>
                 <div class="row page-title mb-3">
                     <div class="col-12">
@@ -192,6 +194,21 @@
                     </div>
                 </div>
             </section>
+            {% elif %}
+            <!-- If current user is not owner of the bag, show error message -->
+            <header>
+                <div class="row page-title mb-3">
+                    <div class="col-12">
+                        <h1 class="black-shadow text-center">Wrong Bag!</h1>
+                    </div>
+                </div>
+            </header>
+            <div class="row">
+                <div class="center-container">
+                    <h4 class="black-shadow text-danger text-center">Hands off, this is not your bag!</h4>
+                </div>
+            </div>
+            {% endif %}
         </article>
     </div>
     <!-- Passing list of Item objects to javascript from Django view (View 'add_items') -->
