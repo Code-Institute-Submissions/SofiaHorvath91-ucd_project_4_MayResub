@@ -1,6 +1,8 @@
 import decimal
+import datetime
 
 from django.test import TestCase
+from django.contrib.auth import get_user_model
 from myappocalypse.models import Climate, Landform, Environment, Item, Bag, Feedback, Recommendation
 
 
@@ -244,3 +246,38 @@ class BagModelTest(TestCase):
         self.assertEqual(bag_climate_all_items, bag.items.count())
         self.assertEqual(bag_landform_all_items, bag.items.count())
         self.assertEqual(bag_environment_all_items, bag.items.count())
+
+
+class FeedbackModelTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        User = get_user_model()
+        ratings = {
+            1: "Terrible",
+            2: "Not good",
+            3: "Average",
+            4: "Very good",
+            5: "Amazing",
+        }
+        user = User.objects.create_user(username="test_user", email="test@test.com")
+        Feedback.objects.create(rating_point=min(ratings, key=lambda k: ratings[k][4]), rating_description=ratings[4],
+                                content="good", created=datetime.date.today(), user=user)
+
+    def test_rating(self):
+        feedback = Feedback.objects.get(id=1)
+        self.assertEqual(feedback.rating_point, 4)
+        self.assertEqual(feedback.rating_description, "Very good")
+
+    def test_description_max_length(self):
+        feedback = Feedback.objects.get(id=1)
+        max_length = feedback._meta.get_field('rating_description').max_length
+        self.assertEqual(max_length, 255)
+
+    def test_created_date(self):
+        feedback = Feedback.objects.get(id=1)
+        self.assertEqual(feedback.created.date(), datetime.date.today())
+
+    def test_user(self):
+        feedback = Feedback.objects.get(id=1)
+        self.assertEqual(feedback.user.username, "test_user")
+        self.assertEqual(feedback.user.email, "test@test.com")
