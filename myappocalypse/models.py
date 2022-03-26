@@ -1,7 +1,8 @@
 from django.db import models
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from rest_framework.validators import UniqueValidator
+from ucd_project_4 import settings
+
 
 User = get_user_model()
 
@@ -88,7 +89,6 @@ class Item(models.Model):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    users = UniqueValidator(queryset=User.objects.all())
     climate = ClimateSerializer(many=True)
     environment = EnvironmentSerializer(many=True)
     landform = LandformSerializer(many=True)
@@ -100,7 +100,7 @@ class ItemSerializer(serializers.ModelSerializer):
 
 
 class Bag(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     items = models.ManyToManyField(Item, related_name='items', blank=True)
     name = models.CharField(blank=True, null=True, max_length=50)
     weight_bag = models.DecimalField(blank=True, max_digits=5, decimal_places=2, null=True)
@@ -122,7 +122,7 @@ class Feedback(models.Model):
     rating_description = models.CharField(max_length=255, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
 
 
 class Recommendation(models.Model):
@@ -142,7 +142,7 @@ class Recommendation(models.Model):
     usefulness = models.DecimalField(blank=True, max_digits=5, decimal_places=2, null=True)
     external = models.BooleanField(blank=True, null=True, default=False)
     justification = models.TextField(blank=True, null=True, max_length=600)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
 
 
 
