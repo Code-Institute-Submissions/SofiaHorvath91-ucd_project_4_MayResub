@@ -115,7 +115,8 @@ function set_modal_dom_elements_items(item, name){
     document.getElementById(name+"_item_name").innerHTML = item.name.toUpperCase();
     document.getElementById(name+"_item_category").innerHTML = "Category : " + item.category;
     document.getElementById(name+"_item_weight").innerHTML = "Average Weight (kg) : " + item.weight;
-    document.getElementById(name+"_item_usefulness").innerHTML = "Usefulness : " + item.usefulness.toFixed(2) + " / 10";
+    usefulness_item = parseFloat(item.usefulness).toFixed(2)
+    document.getElementById(name+"_item_usefulness").innerHTML = "Usefulness : " + usefulness_item + " / 10";
     document.getElementById(name+"_item_external").innerHTML =
     "Can be brought externally (out of bag) : " + (item.external ? "Yes" : "No");
 

@@ -87,6 +87,7 @@ p, label{
 /* Navbar => Source / Inspiration :
 https://getbootstrap.com/docs/4.4/components/navs/
 https://www.w3schools.com/howto/howto_js_navbar_sticky.asp */
+
 .bg-light{
     background:transparent !important;
 }
@@ -549,6 +550,7 @@ select{
 }
 
 /* My Bag Details */
+
 .details-list:hover{
     cursor:pointer;
 }
@@ -568,7 +570,7 @@ select{
     padding-left:0.8rem;
 }
 
-/* Star-based Feeback => Source / Inspiration : https://github.com/LunarLogic/starability */
+/* Star-based Feedback => Source / Inspiration : https://github.com/LunarLogic/starability */
 
 .starability-result {
   position: relative;

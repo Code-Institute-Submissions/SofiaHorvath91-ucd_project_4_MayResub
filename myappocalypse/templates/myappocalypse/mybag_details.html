@@ -4,6 +4,7 @@
 <main>
     <div class="container">
         <article>
+            <!-- Page Title -->
             <header>
                 <div class="row page-title mb-3">
                     <div class="col-12">
@@ -11,6 +12,7 @@
                     </div>
                 </div>
             </header>
+            <!-- Details of current bag -->
             <section>
                 <article class="card card-shadow">
                     <div>
@@ -57,6 +59,7 @@
                         </section>
                     </div>
                 </article>
+                <!-- List of items per categories which were added to bag -->
                 <article>
                     <header class="row page-title mt-4 mb-3">
                         <div class="col-12">
@@ -76,6 +79,8 @@
                                     </div>
                                     <div class="collapsible-section-content mt-2">
                                         <div class="form-container">
+                                            <!-- Basic items which are needed under all conditions,
+                                            regardless company or locale -->
                                             <div class="items-section text-center mb-3">
                                                 <div class="form-group">
                                                     <h5 class="bag-label">Basic Items</h5>
@@ -90,6 +95,7 @@
                                                      {% endfor%}
                                                 </div>
                                             </div>
+                                            <!-- Items specific to special company (child, elder person, pet) -->
                                             <div class="items-section text-center mb-3">
                                                 <div class="form-group">
                                                     <h5 class="bag-label">Company-specific Items</h5>
@@ -104,6 +110,7 @@
                                                      {% endfor%}
                                                 </div>
                                             </div>
+                                            <!-- Items specific to special conditions (no human infra, water or food)-->
                                             <div class="items-section text-center mb-3">
                                                 <div class="form-group">
                                                     <h5 class="bag-label">Condition-specific Items</h5>
@@ -126,9 +133,9 @@
                         </div>
                     </section>
                 </article>
-                <div id="detailsitems-modal" class="modal">
+                <!-- Pop-up modal to show item details upon clicking on information sign next to item name -->
+                <section id="detailsitems-modal" class="modal">
                     <span id="detailsitems-close-modal" class="close-modal">&times;</span>
-                    <img class="modal-content" id="detailsitems-modal-img" src="" alt="">
                     <h3 class="text-center" id="detailsitems_item_name"></h3>
                     <div class="row mb-3">
                         <div class="center-container">
@@ -153,13 +160,15 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </section>
         </article>
     </div>
+    <!-- Passing list of Item objects to javascript from Django view (View 'mybag_details') -->
     <script type="text/javascript">
         window.details_items_JSON = {{items_json|safe}};
     </script>
+    <!-- Inclusion of JS file -->
     <script type="text/javascript" src="{% static 'js/js_packmybag' %}"></script>
 </main>
 {% endblock content %}

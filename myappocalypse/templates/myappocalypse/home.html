@@ -4,6 +4,7 @@
 <main>
     <div class="container">
         <article>
+            <!-- Page Title = Site Title as Home page -->
             <header>
                 <div class="row page-title mb-3">
                     <div class="col-12">
@@ -20,6 +21,7 @@
                     </h3>
                 </div>
             </header>
+            <!-- Site Objective & Quick links to accessible pages based on login status -->
             <section>
                 <div class="row mb-2">
                     <h1 class="strong-shadow text-center"><br>MyAPPocalypse</h1>
@@ -33,6 +35,7 @@
                 </div>
                 <div class="row mt-4 mb-2">
                     {% if user.is_authenticated %}
+                    <!-- User logged in : Quick links to User Profile, Main Application (Pack Bag), Blog -->
                     <div class="buttons-container">
                         <div class="center-container">
                             <a class="btn btn-lg btn-outline-light home-btns" href="{% url 'profile' %}">
@@ -51,6 +54,7 @@
                         </div>
                     </div>
                     {% else %}
+                    <!-- User not logged in : Quick links to site description (Why A Bag) and Login / Signup pages -->
                     <div class="buttons-container">
                         <div class="center-container">
                             <a class="btn btn-lg btn-outline-light home-btns" href="{% url 'whyabag' %}">

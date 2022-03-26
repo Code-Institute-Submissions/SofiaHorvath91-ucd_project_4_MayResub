@@ -2,6 +2,7 @@
 {% block content %}
 <main>
     <div class="container">
+        <!-- Page Title -->
         <header>
             <div class="row page-title mb-3">
                 <div class="col-12">
@@ -15,6 +16,7 @@
                 </h4>
             </div>
         </header>
+        <!-- Section to leave star-based and written comment about site -->
         <section>
             <div class="row mt-3">
                 <div class="row">
@@ -59,7 +61,10 @@
                     </form>
                 </div>
             </div>
-            <br>
+        </section>
+        <br>
+        <!-- Section to recommend new item which will be added to avaiable items by admin if it is approved -->
+        <section>
             <div class="row mt-4 mb-3">
                 <div class="card card-shadow">
                     <div class="collapsible-section">
@@ -144,7 +149,10 @@
                     </div>
                 </div>
             </div>
-            <br>
+        </section>
+        <br>
+        <!-- Section to see the list of all feedbacks left so far about site by users -->
+        <section>
             <div class="row mt-3 mb-3">
                 <label class="black-shadow text-center custom-header">Feedbacks</label>
             </div>
@@ -163,6 +171,7 @@
                                 <p>Feedback :<br>{{f.content|default:"N/A"}}</p>
                             </section>
                         </article>
+                        <!-- Feedback owner user or admin (superuser) can delete feedback -->
                         {% if request.user == f.user or request.user.is_superuser %}
                             <form method="POST">
                                 {% csrf_token %}

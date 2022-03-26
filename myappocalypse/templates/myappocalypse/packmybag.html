@@ -4,6 +4,7 @@
 <main>
     <div class="container">
         <article>
+            <!-- Page Title -->
             <header>
                 <div class="row page-title mb-3">
                     <div class="col-12">
@@ -12,9 +13,11 @@
                     </div>
                 </div>
             </header>
+            <!-- Form to create a new bag with all necessary required / optional information -->
             <section>
                 <form class="form-container" method="POST">
                     {% csrf_token %}
+                    <!-- Basic & Company-specific information -->
                     <div id="form-bag-details" class="center-container form-section-text">
                         <div class="form-section packing-form">
                             <div class="form-group mb-3">
@@ -26,6 +29,7 @@
                                 <input type="number" class="form-control form-inputs" id="userweight"
                                        name="userweight" min="15" max="250" required/>
                             </div>
+                            <!-- Bag weight calculated automatically by JS, based on user's weight -->
                             <div class="form-group mb-1" id="bagweight-div">
                                 <label class="mb-1" for="bagweight">Bag Weight (kg) :</label>
                                 <input type="number" class="form-control" id="bagweight" name="bagweight" readonly/>
@@ -42,6 +46,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Locale-specific information -->
                     <div id="form-climate-details" class="center-container">
                         <div class="form-section packing-form">
                             <div class="form-group mb-3">
@@ -83,6 +88,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Condition-specific information -->
                     <div id="form-resources-details" class="center-container">
                         <div class="form-section packing-form">
                             <div class="form-group mb-3">

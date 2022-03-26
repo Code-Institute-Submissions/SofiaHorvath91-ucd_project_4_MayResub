@@ -4,6 +4,7 @@
 <main>
     <div class="container">
         <article>
+            <!-- Page Title -->
             <header>
                 <div class="row page-title mb-3">
                     <div class="col-12">
@@ -12,54 +13,56 @@
                     </div>
                 </div>
             </header>
-            <section>
-                <div class="card card-shadow">
-                    <div class="collapsible-section" id="section-aboutmybag">
-                        <input type="checkbox" name="collapse" id="coll-section-aboutbag">
-                        <div class="collapsible-section-title mt-2">
-                            <label class="black-shadow text-center custom-header"
-                                   for="coll-section-aboutbag">About My Bag</label>
-                        </div>
-                        <div class="collapsible-section-content mt-2">
-                            <div class="form-container">
-                                <div class="center-container items-bag-text mb-3">
-                                    <div class="form-section">
-                                        <h4 class="bag-label">Basics</h4>
-                                        <label class="bag-label">Name : {{bag.name}}</label>
-                                        <label class="bag-label">User Weight (kg) : {{bag.weight_user}}</label>
-                                        <label class="bag-label">Bag Weight (kg) : {{bag.weight_bag}}</label>
-                                    </div>
+            <!-- Details of current bag to which items are added -->
+            <section class="card card-shadow">
+                <div class="collapsible-section" id="section-aboutmybag">
+                    <input type="checkbox" name="collapse" id="coll-section-aboutbag">
+                    <div class="collapsible-section-title mt-2">
+                        <label class="black-shadow text-center custom-header"
+                               for="coll-section-aboutbag">About My Bag</label>
+                    </div>
+                    <div class="collapsible-section-content mt-2">
+                        <div class="form-container">
+                            <div class="center-container items-bag-text mb-3">
+                                <div class="form-section">
+                                    <h4 class="bag-label">Basics</h4>
+                                    <label class="bag-label">Name : {{bag.name}}</label>
+                                    <label class="bag-label">User Weight (kg) : {{bag.weight_user}}</label>
+                                    <label class="bag-label">Bag Weight (kg) : {{bag.weight_bag}}</label>
                                 </div>
-                                <div class="center-container items-bag-text mb-3">
-                                    <div class="form-section">
-                                        <h4 class="bag-label">Company</h4>
-                                        <label class="bag-label">Underage company : {{bag.with_child}}</label>
-                                        <label class="bag-label">Elder company : {{bag.with_elder}}</label>
-                                        <label class="bag-label">Pet : {{bag.with_pet}}</label>
-                                    </div>
+                            </div>
+                            <div class="center-container items-bag-text mb-3">
+                                <div class="form-section">
+                                    <h4 class="bag-label">Company</h4>
+                                    <label class="bag-label">Underage company : {{bag.with_child}}</label>
+                                    <label class="bag-label">Elder company : {{bag.with_elder}}</label>
+                                    <label class="bag-label">Pet : {{bag.with_pet}}</label>
                                 </div>
-                                <div class="center-container items-bag-text mb-3">
-                                    <div class="form-section">
-                                        <h4 class="bag-label">Locale</h4>
-                                        <label class="bag-label">Climate : {{bag.climate.name}}</label>
-                                        <label class="bag-label">Landform : {{bag.landform.name}}</label>
-                                        <label class="bag-label">Environment : {{bag.environment.name}}</label>
-                                    </div>
+                            </div>
+                            <div class="center-container items-bag-text mb-3">
+                                <div class="form-section">
+                                    <h4 class="bag-label">Locale</h4>
+                                    <label class="bag-label">Climate : {{bag.climate.name}}</label>
+                                    <label class="bag-label">Landform : {{bag.landform.name}}</label>
+                                    <label class="bag-label">Environment : {{bag.environment.name}}</label>
                                 </div>
-                                <div class="center-container items-bag-text mb-3">
-                                    <div class="form-section">
-                                        <h4 class="bag-label">Conditions</h4>
-                                        <label class="bag-label">
-                                            Human infrastructure : {{bag.available_infrastructure}}
-                                        </label>
-                                        <label class="bag-label">Drinking water : {{bag.available_water}}</label>
-                                        <label class="bag-label">Comestibles (food) : {{bag.available_food}}</label>
-                                    </div>
+                            </div>
+                            <div class="center-container items-bag-text mb-3">
+                                <div class="form-section">
+                                    <h4 class="bag-label">Conditions</h4>
+                                    <label class="bag-label">
+                                        Human infrastructure : {{bag.available_infrastructure}}
+                                    </label>
+                                    <label class="bag-label">Drinking water : {{bag.available_water}}</label>
+                                    <label class="bag-label">Comestibles (food) : {{bag.available_food}}</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
+            <!-- Dynamic calculation of bag's current weight based on the weight of the items added -->
+            <section>
                 <div class="row page-title mt-4 mb-3">
                     <div class="col-12">
                         <h4 class="black-shadow text-center">Current weight of bag :</h4>
@@ -67,123 +70,135 @@
                     </div>
                     <input type="hidden" value="{{bag.weight_bag}}" id="additems_max_bag_weight">
                 </div>
+            </section>
+            <!-- List of recommended items per categories which can be added to bag (with respect to max weight) -->
+            <section>
                 <div class="row page-title mb-3">
                     <div class="col-12">
                         <h2 class="black-shadow text-center">Recommended Items</h2>
                     </div>
                 </div>
-                <div>
-                    <form class="form-container" method="POST">
-                        {% csrf_token %}
-                            {% for c in choices %}
-                            <div class="card">
-                                <div class="collapsible-section" id="section-items-{{c}}">
-                                    <input type="checkbox" name="collapse" id="coll-section-{{c}}">
-                                    <div class="collapsible-section-title mt-2">
-                                        <label id="{{c}}-title" class="black-shadow text-center items-section-title"
-                                               for="coll-section-{{c}}">{{c}}</label>
-                                    </div>
-                                    <div class="collapsible-section-content mt-2">
-                                        <div class="form-container">
-                                            <div class="items-section text-center mb-3">
-                                                <div class="form-group">
-                                                    <h5 class="bag-label">Basic Items</h5>
-                                                     {% for i in basic_items %}
-                                                        {% if i.category in c%}
-                                                            <input type="checkbox" id="{{i.name}}" class="item_checkbox"
-                                                                   name="item_checkbox" value="{{i.name}}">
-                                                            <label class="items-list-label" for="{{i.name}}">
-                                                                {{i.name}}
-                                                            </label>
-                                                            <label class="info-item info-item-modal"
-                                                                   id="{{i.name}}-info-additems">?</label>
-                                                            <br>
-                                                        {% endif %}
-                                                     {% endfor%}
-                                                </div>
+                <div class="row">
+                    <div class="center-container">
+                        <h4 class="black-shadow text-danger text-center">{{ errorMsg }}</h4>
+                    </div>
+                </div>
+                <form class="form-container" method="POST">
+                    {% csrf_token %}
+                        {% for c in choices %}
+                        <div class="card">
+                            <div class="collapsible-section" id="section-items-{{c}}">
+                                <input type="checkbox" name="collapse" id="coll-section-{{c}}">
+                                <div class="collapsible-section-title mt-2">
+                                    <label id="{{c}}-title" class="black-shadow text-center items-section-title"
+                                           for="coll-section-{{c}}">{{c}}</label>
+                                </div>
+                                <div class="collapsible-section-content mt-2">
+                                    <div class="form-container">
+                                        <!-- Basic items which are needed under all conditions,
+                                        regardless company or locale -->
+                                        <div class="items-section text-center mb-3">
+                                            <div class="form-group">
+                                                <h5 class="bag-label">Basic Items</h5>
+                                                 {% for i in basic_items %}
+                                                    {% if i.category in c%}
+                                                        <input type="checkbox" id="{{i.name}}" class="item_checkbox"
+                                                               name="item_checkbox" value="{{i.name}}">
+                                                        <label class="items-list-label" for="{{i.name}}">
+                                                            {{i.name}}
+                                                        </label>
+                                                        <label class="info-item info-item-modal"
+                                                               id="{{i.name}}-info-additems">?</label>
+                                                        <br>
+                                                    {% endif %}
+                                                 {% endfor%}
                                             </div>
-                                            <div class="items-section text-center mb-3">
-                                                <div class="form-group">
-                                                    <h5 class="bag-label">Company-specific Items</h5>
-                                                     {% for i2 in items_user_company %}
-                                                        {% if i2.category in c%}
-                                                            <input type="checkbox" id="{{i2.name}}" class="item_checkbox"
-                                                                   name="item_checkbox" value="{{i2.name}}">
-                                                            <label class="items-list-label" for="{{i2.name}}">
-                                                                {{i2.name}}
-                                                            </label>
-                                                            <label class="info-item info-item-modal"
-                                                                   id="{{i2.name}}-info-additems">?</label>
-                                                            <br>
-                                                        {% endif %}
-                                                     {% endfor%}
-                                                </div>
+                                        </div>
+                                        <!-- Items specific to special company (child, elder person, pet) -->
+                                        <div class="items-section text-center mb-3">
+                                            <div class="form-group">
+                                                <h5 class="bag-label">Company-specific Items</h5>
+                                                 {% for i2 in items_user_company %}
+                                                    {% if i2.category in c%}
+                                                        <input type="checkbox" id="{{i2.name}}" class="item_checkbox"
+                                                               name="item_checkbox" value="{{i2.name}}">
+                                                        <label class="items-list-label" for="{{i2.name}}">
+                                                            {{i2.name}}
+                                                        </label>
+                                                        <label class="info-item info-item-modal"
+                                                               id="{{i2.name}}-info-additems">?</label>
+                                                        <br>
+                                                    {% endif %}
+                                                 {% endfor%}
                                             </div>
-                                            <div class="items-section text-center mb-3">
-                                                <div class="form-group">
-                                                    <h5 class="bag-label">Condition-specific Items</h5>
-                                                     {% for i3 in items_user_condition %}
-                                                        {% if i3.category in c%}
-                                                            <input type="checkbox" id="{{i3.name}}" class="item_checkbox"
-                                                                   name="item_checkbox" value="{{i3.name}}">
-                                                            <label class="items-list-label" for="{{i3.name}}">
-                                                                {{i3.name}}
-                                                            </label>
-                                                            <label class="info-item info-item-modal"
-                                                                   id="{{i3.name}}-info-additems">?</label>
-                                                            <br>
-                                                        {% endif %}
-                                                     {% endfor%}
-                                                </div>
+                                        </div>
+                                        <!-- Items specific to special conditions (no human infra, water or food) -->
+                                        <div class="items-section text-center mb-3">
+                                            <div class="form-group">
+                                                <h5 class="bag-label">Condition-specific Items</h5>
+                                                 {% for i3 in items_user_condition %}
+                                                    {% if i3.category in c%}
+                                                        <input type="checkbox" id="{{i3.name}}" class="item_checkbox"
+                                                               name="item_checkbox" value="{{i3.name}}">
+                                                        <label class="items-list-label" for="{{i3.name}}">
+                                                            {{i3.name}}
+                                                        </label>
+                                                        <label class="info-item info-item-modal"
+                                                               id="{{i3.name}}-info-additems">?</label>
+                                                        <br>
+                                                    {% endif %}
+                                                 {% endfor%}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {% endfor %}
-                            <input type="hidden" id="additems_new_bag_weight" name="additems_new_bag_weight">
-                            <div class="card mt-4">
-                                <div class="center-container">
-                                    <input id="add-items-btn" type="submit" value="Add Items To My Bag"
-                                           class="btn btn-lg btn-outline-light text-center"/>
-                                </div>
+                        </div>
+                        {% endfor %}
+                        <input type="hidden" id="additems_new_bag_weight" name="additems_new_bag_weight">
+                        <div class="card mt-4">
+                            <div class="center-container">
+                                <input id="add-items-btn" type="submit" value="Add Items To My Bag"
+                                       class="btn btn-lg btn-outline-light text-center"/>
                             </div>
-                    </form>
-                </div>
-                <div id="additems-modal" class="modal">
-                    <span id="additems-close-modal" class="close-modal">&times;</span>
-                    <img class="modal-content" id="additems-model-img" src="" alt="">
-                    <h3 class="text-center" id="additems_item_name"></h3>
-                    <div class="row mb-3">
-                        <div class="center-container">
-                            <div class="form-section">
-                                <h4 class="mt-1">Basics</h4>
-                                <label class="modal-label mb-2" id="additems_item_category"></label>
-                                <label class="modal-label mb-2" id="additems_item_weight"></label>
-                                <label class="modal-label mb-2" id="additems_item_usefulness"></label>
-                                <label class="modal-label mb-2" id="additems_item_external"></label>
-                                <h4 class="mt-1">Related to special company</h4>
-                                <label class="modal-label mb-2" id="additems_item_with_child"></label>
-                                <label class="modal-label mb-2" id="additems_item_with_elder"></label>
-                                <label class="modal-label mb-2" id="additems_item_with_pet"></label>
-                                <h4 class="mt-1">Locale</h4>
-                                <label class="modal-label mb-2" id="additems_item_climates"></label>
-                                <label class="modal-label mb-2" id="additems_item_landforms"></label>
-                                <label class="modal-label mb-2" id="additems_item_environments"></label>
-                                <h4 class="mt-1">Related to special condition</h4>
-                                <label class="modal-label mb-2" id="additems_item_available_infrastructure"></label>
-                                <label class="modal-label mb-2" id="additems_item_available_water"></label>
-                                <label class="modal-label mb-2" id="additems_available_food"></label>
-                            </div>
+                        </div>
+                </form>
+            </section>
+            <!-- Pop-up modal to show item details upon clicking on information sign next to item name -->
+            <section id="additems-modal" class="modal">
+                <span id="additems-close-modal" class="close-modal">&times;</span>
+                <h3 class="text-center" id="additems_item_name"></h3>
+                <div class="row mb-3">
+                    <div class="center-container">
+                        <div class="form-section">
+                            <h4 class="mt-1">Basics</h4>
+                            <label class="modal-label mb-2" id="additems_item_category"></label>
+                            <label class="modal-label mb-2" id="additems_item_weight"></label>
+                            <label class="modal-label mb-2" id="additems_item_usefulness"></label>
+                            <label class="modal-label mb-2" id="additems_item_external"></label>
+                            <h4 class="mt-1">Related to special company</h4>
+                            <label class="modal-label mb-2" id="additems_item_with_child"></label>
+                            <label class="modal-label mb-2" id="additems_item_with_elder"></label>
+                            <label class="modal-label mb-2" id="additems_item_with_pet"></label>
+                            <h4 class="mt-1">Locale</h4>
+                            <label class="modal-label mb-2" id="additems_item_climates"></label>
+                            <label class="modal-label mb-2" id="additems_item_landforms"></label>
+                            <label class="modal-label mb-2" id="additems_item_environments"></label>
+                            <h4 class="mt-1">Related to special condition</h4>
+                            <label class="modal-label mb-2" id="additems_item_available_infrastructure"></label>
+                            <label class="modal-label mb-2" id="additems_item_available_water"></label>
+                            <label class="modal-label mb-2" id="additems_available_food"></label>
                         </div>
                     </div>
                 </div>
             </section>
         </article>
     </div>
+    <!-- Passing list of Item objects to javascript from Django view (View 'add_items') -->
     <script type="text/javascript">
         window.add_items_JSON = {{items_json|safe}};
     </script>
+    <!-- Inclusion of JS file -->
     <script type="text/javascript" src="{% static 'js/js_packmybag' %}"></script>
 </main>
 {% endblock content %}
