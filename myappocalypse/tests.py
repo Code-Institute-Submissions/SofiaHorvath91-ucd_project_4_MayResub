@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 from myappocalypse.models import Climate, Landform, Environment, Item, Bag, Feedback, Recommendation
 
 
-# Create your tests here.
+# Unit tests for Climate model
 class ClimateModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -26,6 +26,7 @@ class ClimateModelTest(TestCase):
         self.assertEqual(climate.name, 'Continental')
 
 
+# Unit tests for Landform model
 class LandformModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -45,6 +46,7 @@ class LandformModelTest(TestCase):
         self.assertEqual(landform.name, 'Mountains')
 
 
+# Unit tests for Environment model
 class EnvironmentModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -64,6 +66,7 @@ class EnvironmentModelTest(TestCase):
         self.assertEqual(environment.name, 'Grassland')
 
 
+# Unit tests for Item model
 class ItemModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -144,6 +147,7 @@ class ItemModelTest(TestCase):
         self.assertEqual(str(choices[3]), item.category)
 
 
+# Unit tests for Bag model
 class BagModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -248,6 +252,7 @@ class BagModelTest(TestCase):
         self.assertEqual(bag_environment_all_items, bag.items.count())
 
 
+# Unit tests for Feedback model
 class FeedbackModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -281,3 +286,60 @@ class FeedbackModelTest(TestCase):
         feedback = Feedback.objects.get(id=1)
         self.assertEqual(feedback.user.username, "test_user")
         self.assertEqual(feedback.user.email, "test@test.com")
+
+
+# Unit tests for Recommendation model
+class RecommendationModelTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        User = get_user_model()
+        statuses = Recommendation._meta.get_field('status').choices
+        user = User.objects.create_user(username="test_user", email="test@test.com")
+        Recommendation.objects.create(status=statuses[1], category="Lightning", name="candle", external=False,
+                                      weight=0.4, usefulness=10, user=user,
+                                      justification="Useful as night always comes")
+
+    def test_text_char_fields_max_length(self):
+        recommendation = Recommendation.objects.get(id=1)
+        status_max_length = recommendation._meta.get_field('status').max_length
+        category_max_length = recommendation._meta.get_field('category').max_length
+        name_max_length = recommendation._meta.get_field('name').max_length
+        justification_max_length = recommendation._meta.get_field('justification').max_length
+        self.assertEqual(status_max_length, 30)
+        self.assertEqual(category_max_length, 100)
+        self.assertEqual(name_max_length, 100)
+        self.assertEqual(justification_max_length, 600)
+
+    def test_number_fields_max_digits(self):
+        recommendation = Recommendation.objects.get(id=1)
+        weight_max_digits = recommendation._meta.get_field('weight').max_digits
+        usefulness_max_digits = recommendation._meta.get_field('usefulness').max_digits
+        self.assertEqual(weight_max_digits, 5)
+        self.assertEqual(usefulness_max_digits, 5)
+
+    def test_number_fields_decimal_places(self):
+        recommendation = Recommendation.objects.get(id=1)
+        weight_decimal_places = recommendation._meta.get_field('weight').decimal_places
+        usefulness_decimal_places = recommendation._meta.get_field('usefulness').decimal_places
+        self.assertEqual(weight_decimal_places, 2)
+        self.assertEqual(usefulness_decimal_places, 2)
+
+    def test_status(self):
+        recommendation = Recommendation.objects.get(id=1)
+        statuses = Recommendation._meta.get_field('status').choices
+        self.assertEqual(statuses[1][0], 'Approved')
+        self.assertEqual(len(statuses), 3)
+        self.assertEqual(str(statuses[1]), recommendation.status)
+
+    def test_category(self):
+        recommendation = Recommendation.objects.get(id=1)
+        categories = Item._meta.get_field('category').choices
+        category_choices = []
+        for c in categories:
+            category_choices.append(c[0])
+        self.assertIn(recommendation.category, category_choices)
+
+    def test_user(self):
+        recommendation = Recommendation.objects.get(id=1)
+        self.assertEqual(recommendation.user.username, "test_user")
+        self.assertEqual(recommendation.user.email, "test@test.com")
