@@ -12,6 +12,7 @@ from .views import (
     whyabag,
 )
 
+# MyAPPocalypse application's internal urls
 urlpatterns = [
     path('', home, name="home"),
     path('whyabag/', whyabag, name='whyabag'),
