@@ -10,10 +10,39 @@
             <header>
                 <div class="row page-title mb-3">
                     <div class="col-12">
-                        <h1 class="black-shadow text-center">My Bag '{{bag.name}}'</h1>
+                        <h1 class="black-shadow text-center">My Bag<br>'{{bag.name}}'</h1>
                     </div>
                 </div>
             </header>
+            <div class="card mb-3">
+                <div class="center-container profile-buttons">
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <a class="btn btn-lg btn-light" href="{% url 'mybag_add_items' id=bag.id %}">
+                                Edit Items
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <a class="btn btn-lg btn-light" href="{% url 'profile' %}">
+                                Bag List
+                            </a>
+                        </div>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row mb-2">
+                            <div class="col-12">
+                                <input type="hidden" id="thisbag-to-delete"
+                                       name="thisbag-to-delete" value="{{bag.id}}">
+                                <input type="submit" value="Delete Bag"
+                                       class="btn btn-lg btn-danger">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <!-- Details of current bag -->
             <section>
                 <article class="card card-shadow">
@@ -164,7 +193,7 @@
                     </div>
                 </section>
             </section>
-            {% elif %}
+            {% else %}
             <!-- If current user is not owner of the bag, show error message -->
             <header>
                 <div class="row page-title mb-3">

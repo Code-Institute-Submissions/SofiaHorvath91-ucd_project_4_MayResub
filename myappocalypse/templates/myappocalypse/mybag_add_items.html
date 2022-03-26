@@ -67,8 +67,10 @@
             <section>
                 <div class="row page-title mt-4 mb-3">
                     <div class="col-12">
-                        <h4 class="black-shadow text-center">Current weight of bag :</h4>
-                        <h4 id="additems_bag_weight" class="black-shadow text-center">0.00 kg</h4>
+                        <h4 class="black-shadow text-center">Current weight of bag :
+                        <input type="hidden" id="starting_bag_weight" value="{{bag.weight_bag_actual}}">
+                        <h4 id="additems_bag_weight" class="black-shadow text-center">0.00 kg
+                        </h4>
                     </div>
                     <input type="hidden" value="{{bag.weight_bag}}" id="additems_max_bag_weight">
                 </div>
@@ -104,13 +106,20 @@
                                                 <h5 class="bag-label">Basic Items</h5>
                                                  {% for i in basic_items %}
                                                     {% if i.category in c%}
-                                                        <input type="checkbox" id="{{i.name}}" class="item_checkbox"
-                                                               name="item_checkbox" value="{{i.name}}">
-                                                        <label class="items-list-label" for="{{i.name}}">
-                                                            {{i.name}}
+                                                        {% if i in existing_items %}
+                                                        <input type="checkbox" id="{{i.name}}_checked"
+                                                               class="item_checkbox" name="item_checkbox"
+                                                               value="{{i.name}}" checked>
+                                                        {% else %}
+                                                        <input type="checkbox" id="{{i.name}}"
+                                                               class="item_checkbox" name="item_checkbox"
+                                                               value="{{i.name}}">
+                                                        {% endif %}
+                                                        <label class="items-list-label" for="{{i.name}}">{{i.name}}
                                                         </label>
                                                         <label class="info-item info-item-modal"
-                                                               id="{{i.name}}-info-additems">?</label>
+                                                               id="{{i.name}}-info-additems">?
+                                                        </label>
                                                         <br>
                                                     {% endif %}
                                                  {% endfor%}
@@ -122,13 +131,20 @@
                                                 <h5 class="bag-label">Company-specific Items</h5>
                                                  {% for i2 in items_user_company %}
                                                     {% if i2.category in c%}
-                                                        <input type="checkbox" id="{{i2.name}}" class="item_checkbox"
-                                                               name="item_checkbox" value="{{i2.name}}">
-                                                        <label class="items-list-label" for="{{i2.name}}">
-                                                            {{i2.name}}
+                                                        {% if i2 in existing_items %}
+                                                        <input type="checkbox" id="{{i2.name}}_checked"
+                                                               class="item_checkbox" name="item_checkbox"
+                                                               value="{{i2.name}}" checked>
+                                                        {% else %}
+                                                        <input type="checkbox" id="{{i2.name}}"
+                                                               class="item_checkbox" name="item_checkbox"
+                                                               value="{{i2.name}}">
+                                                        {% endif %}
+                                                        <label class="items-list-label" for="{{i2.name}}">{{i2.name}}
                                                         </label>
                                                         <label class="info-item info-item-modal"
-                                                               id="{{i2.name}}-info-additems">?</label>
+                                                               id="{{i2.name}}-info-additems">?
+                                                        </label>
                                                         <br>
                                                     {% endif %}
                                                  {% endfor%}
@@ -140,13 +156,20 @@
                                                 <h5 class="bag-label">Condition-specific Items</h5>
                                                  {% for i3 in items_user_condition %}
                                                     {% if i3.category in c%}
-                                                        <input type="checkbox" id="{{i3.name}}" class="item_checkbox"
-                                                               name="item_checkbox" value="{{i3.name}}">
-                                                        <label class="items-list-label" for="{{i3.name}}">
-                                                            {{i3.name}}
+                                                        {% if i in existing_items %}
+                                                        <input type="checkbox" id="{{i3.name}}_checked"
+                                                               class="item_checkbox" name="item_checkbox"
+                                                               value="{{i3.name}}" checked>
+                                                        {% else %}
+                                                        <input type="checkbox" id="{{i3.name}}"
+                                                               class="item_checkbox" name="item_checkbox"
+                                                               value="{{i3.name}}">
+                                                        {% endif %}
+                                                        <label class="items-list-label" for="{{i3.name}}">{{i3.name}}
                                                         </label>
                                                         <label class="info-item info-item-modal"
-                                                               id="{{i3.name}}-info-additems">?</label>
+                                                               id="{{i3.name}}-info-additems">?
+                                                        </label>
                                                         <br>
                                                     {% endif %}
                                                  {% endfor%}
@@ -194,7 +217,7 @@
                     </div>
                 </div>
             </section>
-            {% elif %}
+            {% else %}
             <!-- If current user is not owner of the bag, show error message -->
             <header>
                 <div class="row page-title mb-3">

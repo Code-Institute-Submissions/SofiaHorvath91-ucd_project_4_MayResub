@@ -118,15 +118,15 @@ def packmybag(request):
             context['errorMsg'] = 'Choose all types, please'
             return render(request, 'myappocalypse/packmybag.html', context=context)
         # Check if climate Dry was paired with matching Desert environment
-        if climate == 'Dry' and environment != 'Desert':
+        if (climate == 'Dry' and landform != 'Ocean') and environment != 'Desert':
             context['errorMsg'] = 'For Dry climate, please choose Desert environment'
             return render(request, 'myappocalypse/packmybag.html', context=context)
         # Check if climate Polar was paired with matching Tundra environment
-        if climate == 'Polar' and environment != 'Tundra':
+        if (climate == 'Polar' and landform != 'Ocean') and environment != 'Tundra':
             context['errorMsg'] = 'For Polar climate, please choose Tundra environment'
             return render(request, 'myappocalypse/packmybag.html', context=context)
         # Check if landform Ocean was paired with matching Marine environment
-        if landform == 'Ocean' and environment != 'Marine':
+        if landform == 'Ocean' and (environment != 'Marine' or climate == 'Dry'):
             context['errorMsg'] = 'For Ocean landform, please choose Marine environment'
             return render(request, 'myappocalypse/packmybag.html', context=context)
         else:
@@ -146,7 +146,7 @@ def packmybag(request):
 
 
 # Add Items Page (mybag_add_items/<bag ID>.html, redirect from packmybag.html after bag creation)
-# => Page Aim : Allow logged in users to add items recommended based on bag details to newly created bag
+# => Page Aim : Allow logged in users to add items recommended based on bag details to newly created or existing bag
 @login_required
 def add_items(request, id):
     context = {}
@@ -154,6 +154,11 @@ def add_items(request, id):
     # Get newly created bag
     bag = Bag.objects.filter(id=id).first()
     context['bag'] = bag
+
+    # Pass existing items' list and actual bag weight for use in case of edit, not creation
+    if bag.weight_bag_actual is not None:
+        context['existing_items'] = bag.items.all()
+        context['actual_weight'] = round(bag.weight_bag_actual)
 
     # Pass all items to Javascript via json
     all_items = Item.objects.all()
@@ -220,6 +225,14 @@ def mybag_details(request, id):
     context['items_user_condition'] = get_items_by_conditions(bag.items, bag)
     context['choices'] = get_choices_array()
 
+    # Quick actions from page
+    if request.method == "POST":
+        # Delete a bag
+        if request.POST.get('thisbag-to-delete'):
+            bag = Bag.objects.filter(id=request.POST['thisbag-to-delete']).first()
+            bag.delete()
+            return redirect('profile')
+
     return render(request, 'myappocalypse/mybag_details.html', context=context)
 
 
@@ -269,12 +282,12 @@ def blog(request):
         # Check if category / external picklists are selected (value true or false, not default)
         if category == 'default' or external == 'default':
             context['errorMsg'] = 'Set value for all fields, please'
-            return render(request, 'myappocalypse/packmybag.html', context=context)
+            return render(request, 'myappocalypse/blog.html', context=context)
         else:
             # If all recommendation details are filled out appropriately, create recommendation for admin approval
             recommendation = Recommendation.objects.create(user=user, name=name, weight=weight, category=category,
                                                            justification=justification, usefulness=usefulness,
-                                                           external=external)
+                                                           external=external, status='Pending')
             recommendation.save()
         return render(request, 'myappocalypse/blog.html', context=context)
 
@@ -307,6 +320,16 @@ def profile(request):
         if request.POST.get('myrecommendations-to-delete'):
             recommendation = Recommendation.objects.filter(id=request.POST['myrecommendations-to-delete']).first()
             recommendation.delete()
+            return redirect('profile')
+        if request.POST.get('recommendations-to-approve') and request.user.is_superuser:
+            recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-approve']).first()
+            recommendation.status = 'Approved'
+            recommendation.save()
+            return redirect('profile')
+        if request.POST.get('recommendations-to-reject') and request.user.is_superuser:
+            recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-approve']).first()
+            recommendation.status = 'Rejected'
+            recommendation.save()
             return redirect('profile')
 
     # Select feedbacks and recommendations

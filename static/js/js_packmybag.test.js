@@ -52,6 +52,7 @@ beforeAll(() => {
     + "<input type='number' id='bagweight' name='bagweight' readonly/>"
     + "<input type='hidden' id='additems_new_bag_weight' name='additems_new_bag_weight'>"
     + "<input type='hidden' id='additems_max_bag_weight'>"
+    + "<input type='hidden' id='starting_bag_weight'>"
     + "<div id='additems-modal'></div>"
     + "<h3 class='text-center' id='additems_item_name'></h3>"
     + "<label class='modal-label mb-2' id='additems_item_category'></label>"
@@ -73,13 +74,14 @@ beforeAll(() => {
 describe("Current and max bag weight calculated/shown correctly upon loading page for adding items", () => {
     beforeAll(() => {
         document.getElementById("additems_max_bag_weight").value = 13;
-        currentBagVars.current_bagweight = 0;
+        document.getElementById("starting_bag_weight").value = 0;
+        currentBagVars.current_bagweight = 5.3;
         set_current_max_bagweight();
     });
-    test("Display current bag weight with 2 decimals (0 at page load)", () => {
-        expect(document.getElementById("additems_bag_weight").innerHTML).toEqual("0.00 kg");
+    test("Display current bag weight", () => {
+        expect(document.getElementById("additems_bag_weight").innerHTML).toEqual("5.3 kg");
     });
-    test("Calculate maximum bag weight with 2 decimals", () => {
+    test("Calculate maximum bag weight", () => {
         expect(currentBagVars.max_bagweight).toBe("13.00");
     });
 });

@@ -41,7 +41,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="center-container">
+                                        <div class="center-container profile-buttons">
+                                            <div class="row mb-2">
+                                                <div class="col-12">
+                                                    <a class="btn btn-light" href="{% url 'mybag_details' id=b.id %}">
+                                                        Check Bag
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-12">
+                                                    <a class="btn btn-light" href="{% url 'mybag_add_items' id=b.id %}">
+                                                        Edit Items
+                                                    </a>
+                                                </div>
+                                            </div>
                                             <form method="POST">
                                                 {% csrf_token %}
                                                 <div class="row mb-2">
@@ -53,13 +67,6 @@
                                                     </div>
                                                 </div>
                                             </form>
-                                            <div class="row mb-2">
-                                                <div class="col-12">
-                                                    <a class="btn btn-light" href="{% url 'mybag_details' id=b.id %}">
-                                                        Check Bag
-                                                    </a>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 {% endfor %}
@@ -112,28 +119,57 @@
                                                     <label class="bag-label">{{r.justification}}</label>
                                                 </div>
                                             </div>
-                                            {% if request.user == r.user %}
-                                            <div class="center-container mb-2">
-                                                <form method="POST">
-                                                    {% csrf_token %}
+                                            <div class="card">
+                                                <div class="center-container profile-buttons">
+                                                    {% if request.user == r.user %}
                                                     <div class="row mb-2">
                                                         <div class="col-12">
-                                                            <input type="hidden" id="myrecommendations-to-delete"
-                                                                   name="myrecommendations-to-delete" value="{{r.id}}">
-                                                            <input type="submit" value="Delete"
-                                                                   class="btn btn-md btn-danger">
+                                                            <a class="btn btn-light" href="{% url 'blog' %}">
+                                                                Create New
+                                                            </a>
                                                         </div>
                                                     </div>
-                                                </form>
-                                                <div class="row mb-2">
-                                                    <div class="col-12">
-                                                        <a class="btn btn-light" href="{% url 'blog' %}">
-                                                            Recommend Item
-                                                        </a>
-                                                    </div>
+                                                    <form method="POST">
+                                                        {% csrf_token %}
+                                                        <div class="row mb-2">
+                                                            <div class="col-12">
+                                                                <input type="hidden" id="myrecommendations-to-delete"
+                                                                       name="myrecommendations-to-delete"
+                                                                       value="{{r.id}}">
+                                                                <input type="submit" value="Delete"
+                                                                       class="btn btn-md btn-danger">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    {% endif %}
+                                                    {% if request.user.is_superuser and r.status == 'Pending' %}
+                                                    <form method="POST">
+                                                        {% csrf_token %}
+                                                        <div class="row mb-2">
+                                                            <div class="col-12">
+                                                                <input type="hidden" id="recommendations-to-approve"
+                                                                       name="recommendations-to-approve"
+                                                                       value="{{r.id}}">
+                                                                <input type="submit" value="Approve"
+                                                                       class="btn btn-md btn-light">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <form method="POST">
+                                                        {% csrf_token %}
+                                                        <div class="row mb-2">
+                                                            <div class="col-12">
+                                                                <input type="hidden" id="recommendations-to-reject"
+                                                                       name="recommendations-to-reject"
+                                                                       value="{{r.id}}">
+                                                                <input type="submit" value="Reject"
+                                                                       class="btn btn-md btn-danger">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    {% endif %}
                                                 </div>
                                             </div>
-                                            {% endif %}
                                         </section>
                                     </article>
                                 {% endfor %}
@@ -169,6 +205,13 @@
                                                 <p>Feedback :<br>{{f.content|default:"N/A"}}</p>
                                             </section>
                                         </article>
+                                        <div class="row mb-2">
+                                            <div class="col-12">
+                                                <a class="btn btn-outline-dark" href="{% url 'blog' %}">
+                                                    Go to Blog
+                                                </a>
+                                            </div>
+                                        </div>
                                         <form method="POST">
                                             {% csrf_token %}
                                             <div class="row mb-2">
@@ -180,13 +223,6 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <div class="row mb-2">
-                                            <div class="col-12">
-                                                <a class="btn btn-outline-dark" href="{% url 'blog' %}">
-                                                    Go to Blog
-                                                </a>
-                                            </div>
-                                        </div>
                                     </div>
                                 {% endfor %}
                             </div>

@@ -293,19 +293,16 @@ class RecommendationModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         User = get_user_model()
-        statuses = Recommendation._meta.get_field('status').choices
         user = User.objects.create_user(username="test_user", email="test@test.com")
-        Recommendation.objects.create(status=statuses[1], category="Lightning", name="candle", external=False,
+        Recommendation.objects.create(status='Pending', category="Lightning", name="candle", external=False,
                                       weight=0.4, usefulness=10, user=user,
                                       justification="Useful as night always comes")
 
     def test_text_char_fields_max_length(self):
         recommendation = Recommendation.objects.get(id=1)
-        status_max_length = recommendation._meta.get_field('status').max_length
         category_max_length = recommendation._meta.get_field('category').max_length
         name_max_length = recommendation._meta.get_field('name').max_length
         justification_max_length = recommendation._meta.get_field('justification').max_length
-        self.assertEqual(status_max_length, 30)
         self.assertEqual(category_max_length, 100)
         self.assertEqual(name_max_length, 100)
         self.assertEqual(justification_max_length, 600)
@@ -326,10 +323,9 @@ class RecommendationModelTest(TestCase):
 
     def test_status(self):
         recommendation = Recommendation.objects.get(id=1)
-        statuses = Recommendation._meta.get_field('status').choices
-        self.assertEqual(statuses[1][0], 'Approved')
-        self.assertEqual(len(statuses), 3)
-        self.assertEqual(str(statuses[1]), recommendation.status)
+        self.assertEqual(recommendation.status, 'Pending')
+        status_max_length = recommendation._meta.get_field('status').max_length
+        self.assertEqual(status_max_length, 30)
 
     def test_category(self):
         recommendation = Recommendation.objects.get(id=1)

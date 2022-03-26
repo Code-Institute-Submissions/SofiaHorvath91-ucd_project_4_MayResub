@@ -1,7 +1,7 @@
 /* Variables */
 
 /* Constant to pass jQuery for testing with Jest (js_packmybag.test.js), to be commented out in Production */
-// const $ = require('jquery');
+//const $ = require('jquery');
 
 /* Initialize variables of current bag for pages mybag_add_items / mybag_details */
 let currentBagVars = {
@@ -32,8 +32,15 @@ $(document).on('input', '#userweight', function(){
 
 /* Handle checking item cb to add to bag : Update bag weight & control max items/max bag weight (mybag_add_items) */
 $(".item_checkbox").change(function() {
+    if(this.checked){
+        console.log("checked");
+    }
     id = this.id;
-    name = "#"+id;
+    if(id.includes("_checked")){
+        name = "#"+id.split("_")[0];
+    } else{
+        name = "#"+id;
+    }
     currentBagVars.item = get_item_from_list(id, currentBagVars.items_additems);
     add_itemweight_to_bagweight(name,
                                 $(this).prop('checked'),
@@ -73,7 +80,13 @@ $('#detailsitems-close-modal').click(function () {
 function set_current_max_bagweight(){
     additems_max_bagweight = document.getElementById("additems_max_bag_weight").value;
     currentBagVars.max_bagweight = parseFloat(additems_max_bagweight).toFixed(2);
-    document.getElementById("additems_bag_weight").innerHTML = currentBagVars.current_bagweight.toFixed(2) + " kg";
+    additems_actual_bagweight = document.getElementById("starting_bag_weight").value;
+    if(additems_actual_bagweight > 0){
+        currentBagVars.current_bagweight = parseFloat(additems_actual_bagweight);
+    } else {
+        currentBagVars.current_bagweight = currentBagVars.current_bagweight;
+    }
+    document.getElementById("additems_bag_weight").innerHTML = currentBagVars.current_bagweight + " kg";
 }
  /* While defining bag details, calculate automtically bag max weight based on user weight (packmybag) */
 function get_bagweight_per_userweight(userweight){
@@ -83,7 +96,11 @@ function get_bagweight_per_userweight(userweight){
 
 /* Get current item from list of items based on name (mybag_add_items / mybag_details) */
 function get_item_from_list(name, list){
-   return list.find(x => x.name === name);
+   if(name.includes("_checked")){
+        return list.find(x => x.name === name.split("_")[0]);
+    } else{
+        return list.find(x => x.name === name);
+    }
 }
 
 /* Add/remove current item's weight to/from bag weight upon checkin/unchecking item checkbox

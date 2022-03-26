@@ -873,4 +873,8 @@ select{
   .modal-content {
     width: 100%;
   }
+
+  .profile-buttons{
+    display:block !important;
+  }
 }

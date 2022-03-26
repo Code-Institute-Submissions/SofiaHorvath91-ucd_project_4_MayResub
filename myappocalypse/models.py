@@ -150,16 +150,7 @@ class Feedback(models.Model):
 # => Aim of object/model : Capture details of item recommended by a standard user for the approval of admin user
 # => Models/objects connected to Recommendation model/object via ForeignKey relation : User (Owner)
 class Recommendation(models.Model):
-    Pending = 'Pending'
-    Approved = 'Approved'
-    Rejected = 'Rejected'
-    STATUSES = [
-        (Pending, 'Pending'),
-        (Approved, 'Approved'),
-        (Rejected, 'Rejected'),
-    ]
-
-    status = models.CharField(choices=STATUSES, max_length=30, default=Pending)
+    status = models.CharField(max_length=30, blank=True, null=True)
     category = models.CharField(blank=True, null=True, max_length=100)
     name = models.CharField(blank=True, null=True, max_length=100)
     weight = models.DecimalField(blank=True, max_digits=5, decimal_places=2, null=True)
