@@ -8,6 +8,7 @@
                 <div class="col-12">
                     <h1 class="black-shadow">Sign Up</h1>
                     <h4 class="text-danger">{{ errorMsg }}</h4>
+                    <h4 class="text-success">{{ successMsg }}</h4>
                 </div>
             </header>
             <!-- Signup form -->
@@ -36,6 +37,21 @@
                     </form>
                 </div>
             </section>
+            <br>
+             <!-- Sign Up with social media accounts (Facebook / Twitter / Google) -->
+             <footer class="row">
+                 <div class="d-grid gap-2 col-6">
+                     <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary mb-2">
+                         Sign Up with Facebook
+                     </a>
+                     <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-info mb-2">
+                         Sign Up with Twitter
+                     </a>
+                     <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger mb-2">
+                         Sign Up with Google
+                     </a>
+                 </div>
+            </footer>
         </article>
     </div>
 </main>
