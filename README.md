@@ -92,7 +92,7 @@ The backend consists of Python built with the Django framework with a database o
 [Postgres](https://www.postgresql.org/) is an open source object-relational database system with powerful features
 [SQLLite](https://www.sqlite.org/index.html) database was used for local development and testing.
 * Models\
-The following models were created to represent the database model structure for the website.\
+The following models were created to represent the database model structure for the website.
 * User Model
   * The User model contains information about the user. It is part of the Django social auth library. As no particular customization was needed ofr User model, get_user_model() lazy loading ws used.
 * Climate
@@ -288,39 +288,40 @@ As a general user, I expect to be able to share this site via social media butto
 * Give image to item details pop-up modal to illustrate item
   * User story : As an authenticated user, I expect an illustration for the recommended item while checking details in pop-up for better understanding
 ### 3. Technologies Used
-Languages
-* HTML : The project uses html to build the relevant pages
-* CSS : The project uses CSS to style the relevant pages
-* Javascript : Used for client-side scripting on the site
-* Django : Django is the framework used in this project
+* Languages
+  * HTML : The project uses html to build the relevant pages
+  * CSS : The project uses CSS to style the relevant pages
+  * Javascript : Used for client-side scripting on the site
+  * Django : Django is the framework used in this project
   * The Django templating language was used to render pages
   * The Django unit test library was used for unit tests
   * The Django social authentication application was used for social login
-* Python v3.9 : Used for server side coding with a number of libraries (listed in requirements.txt)
-APIs used for social login feature
-* Facebook API (https://developers.facebook.com/)
-* Twitter API (https://developer.twitter.com/)
-* Google API (https://console.cloud.google.com/)
-Libraries and other resources
-* Bootstrap 5.0 (https://getbootstrap.com/docs/5.0)
-* Postgres (https://www.postgresql.org/)
-* SQLLite (https://www.sqlite.org/index.html)
-* GitBash (https://git-scm.com/downloads)
-* Pycharm (https://www.jetbrains.com/pycharm/)
-* Github (https://github.com/)
-* Google Fonts (https://fonts.google.com/)
-* Balsamiq (https://balsamiq.com/)
-* Font Awesome (https://fontawesome.com/)
-* JQuery (https://jquery.com)
-* TinyPNG (https://tinypng.com/)
-* CSS Validation Service (https://jigsaw.w3.org/css-validator/)
-* HTML Markup Validation Service (https://validator.w3.org/)
-* Chrome dev tools (https://developers.google.com/web/tools/chrome-devtools)
-* Responsive Design (http://ami.responsivedesign.is/)
-* Unittest (https://docs.djangoproject.com/en/3.2/topics/testing/overview/)
-* JSHint (https://jshint.com/)
-* PEP8 (https://www.python.org/dev/peps/pep-0008/)
-* Jest (https://jestjs.io/)
+  * Python v3.9 : Used for server side coding with a number of libraries (listed in requirements.txt)
+* APIs used for social login feature
+  * Facebook API (https://developers.facebook.com/)
+  * Twitter API (https://developer.twitter.com/)
+  * Google API (https://console.cloud.google.com/)
+* Libraries and other resources
+  * Bootstrap 5.0 (https://getbootstrap.com/docs/5.0)
+  * Postgres (https://www.postgresql.org/)
+  * SQLLite (https://www.sqlite.org/index.html)
+  * GitBash (https://git-scm.com/downloads)
+  * Pycharm (https://www.jetbrains.com/pycharm/)
+  * Node JS (https://nodejs.org/en/)
+  * Github (https://github.com/)
+  * Google Fonts (https://fonts.google.com/)
+  * Balsamiq (https://balsamiq.com/)
+  * Font Awesome (https://fontawesome.com/)
+  * JQuery (https://jquery.com)
+  * TinyPNG (https://tinypng.com/)
+  * CSS Validation Service (https://jigsaw.w3.org/css-validator/)
+  * HTML Markup Validation Service (https://validator.w3.org/)
+  * Chrome dev tools (https://developers.google.com/web/tools/chrome-devtools)
+  * Responsive Design (http://ami.responsivedesign.is/)
+  * Unittest (https://docs.djangoproject.com/en/3.2/topics/testing/overview/)
+  * JSHint (https://jshint.com/)
+  * PEP8 (https://www.python.org/dev/peps/pep-0008/)
+  * Jest (https://jestjs.io/)
 ### 4. Automated tests
 * HTML\
 Passing the HTML of all pages through the [W3C Markup Validator](https://validator.w3.org/) and errors are only related to special format of input calculated by Python logic and passed to html page via Django.
