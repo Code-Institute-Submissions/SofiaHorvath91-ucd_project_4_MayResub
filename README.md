@@ -191,7 +191,7 @@ Warnings are coming from dynamic CSS variables and imported style sheets which a
   * [CSS Style Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/w3validator-css-style.pdf)
 * Javascript/jQuery\
 Passing all Javascript code (static/js/js_packmybag.js) through the [JSHint](https://jshint.com/) with [these configurations](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jshint-configuration.PNG) and no errors have been found, only 1 warning shown (for not initialized variable - the value of these variables passed via page script from django view).
-  * [JSHint Validation Validation](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jshint-result.PNG)
+  * [JSHint Validation Validation](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jshint-result.PNG)\
 Passing all Javascript (static/js/js_packmybag.js) code through [Jest](https://jshint.com/) tests (static/js/js_packmybag.test.js) and all tests passed, but one console error was shown as console cannot handle Javascript alert() function.\
   * [Jest Test Validation](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jest_testing_test_suite.PNG)
   * [Jest Test Console Error](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jest_testing_console_error.PNG)
@@ -199,7 +199,7 @@ Passing all Javascript (static/js/js_packmybag.js) code through [Jest](https://j
 Passing the python logic file (hogwarts_quiz/views.py) through the [PEP8 Validator](http://pep8online.com/) and no errors have been found.\
   * [PEP8 Validation - Pyhthon View - Text file](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/python_pep8_view.txt)
   * [PEP8 Validation - Python Models - Text file](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/python_pep8_model.txt)
-  * [PEP8 Validation - Python Tests - Text file](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/python_pep8_test.txt)
+  * [PEP8 Validation - Python Tests - Text file](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/python_pep8_test.txt)\
 Passing the python models through Django unit tests (myappocalypse/test.py) and all tests passed.\
   * [Django Unit Tests](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/jest_testing_test_suite.PNG)
 ### 2. Manual tests
