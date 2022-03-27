@@ -146,7 +146,7 @@ As an authenticated user, I expect to see all avaiable site features in navbar
 Home Page - Logged Out\
 ![Home Page](/static/img/readme/page-home-loggout.png)
 Home Page - Logged In\
-![Home Page](/static/img/readme/page-home-loggin.png)\
+![Home Page](/static/img/readme/page-home-loggin.png)
 
 User stories :\
 As a not authenticated user, I expect to understand site's objective and easily find sign up link\
@@ -158,7 +158,7 @@ As an authenticated user, I expect to easily navigate to my profile and to site 
 Login Page\
 ![Login Page](/static/img/readme/page-login.png)
 Sign Up Page\
-![Sign Up Page](/static/img/readme/page-signup.png)\
+![Sign Up Page](/static/img/readme/page-signup.png)
 
 User stories :\
 As a not authenticated user with account, I expect to login via standard form or social auth buttons (Facebook, Twitter, Google)\
@@ -345,7 +345,7 @@ Passing all Javascript (static/js/js_packmybag.js) code through [Jest](https://j
   * [Jest Test Validation](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jest_testing_test_suite.PNG)
   * [Jest Test Console Error](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jest_testing_console_error.PNG)
 * Python Code\
-Passing the python logic file (hogwarts_quiz/views.py) through the [PEP8 Validator](http://pep8online.com/) and no errors have been found.\
+Passing the python logic file (hogwarts_quiz/views.py) through the [PEP8 Validator](http://pep8online.com/), errors only due to sometimes long lines (I found that after revision, further breaking would be distracting, and lines stayed in margot in Pycharm tool).\
 Passing the python models through Django unit tests (myappocalypse/test.py) and all tests passed.
   * [PEP8 Validation - Pyhthon View - Text file](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/python_pep8_view.txt)
   * [PEP8 Validation - Python Models - Text file](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/python_pep8_model.txt)
@@ -404,9 +404,9 @@ Pictures were treated with [Photoshop](http://www.apsportable.com/photoshop-cs6-
 ### 4. Acknowledgements
 * To the Code Institute for the great course material
 * To the [Stack Overflow](https://stackoverflow.com/) & [W3Schools](https://www.w3schools.com/) as a valuable resource for solving issues.
-* To Udemy platform users [tutorial](https://www.udemy.com/) for their wonderful tutorials
+* To [Udemy](https://www.udemy.com/) platform users for their wonderful tutorials
 * To the people of Ukrania - I wish I could give everybody the biggest bag possible with all the best things on the world!
 ### 5. Special Thanks
 * My mentor Rahul Lakhanpal for his time, kind words and support.
-* My previous private mentor Samu Gábor Tamás who taught me all I know in the last two years
+* My previous private mentor Samu Gábor Tamás who taught me all I knew before UCD
 * My Mother who is always there for me and supports me through the hard times
