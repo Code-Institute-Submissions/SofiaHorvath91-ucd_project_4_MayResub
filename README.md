@@ -81,7 +81,7 @@ The very basic skeleton of the site was modelled by Wireframes via Balsamiq, and
 Navbar on Desktop - Logged Out\
 ![Navbar desktop](/static/img/readme/navbar-desktop-loggedout.png)
 Navbar on Desktop - Logged In\
-![Navbar mobile](/static/img/readme/navbar-mobile-loggedin.png)
+![Navbar mobile](/static/img/readme/navbar-desktop-loggedin.png)
 Navbar on Mobile - Logged In\
 ![Navbar mobile](/static/img/readme/navbar-mobile.png)
 
