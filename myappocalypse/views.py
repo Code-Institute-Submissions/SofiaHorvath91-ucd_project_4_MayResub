@@ -121,10 +121,6 @@ def packmybag(request):
         drinking_water = request.POST['drinking_water']
         comestible_food = request.POST['comestible_food']
 
-        # Check if climate / landform / environment picklists are selected
-        if climate and landform and environment and human_infra and drinking_water and comestible_food:
-            context['errorMsg'] = 'Choose all types, please'
-            return render(request, 'myappocalypse/packmybag.html', context=context)
         # Check if climate Dry was paired with matching Desert environment
         if (climate == 'Dry' and landform != 'Ocean') and environment != 'Desert':
             context['errorMsg'] = 'For Dry climate, please choose Desert environment'
@@ -193,7 +189,7 @@ def add_items(request, id):
                                                          available_water=None,
                                                          available_food=None)
     context['basic_items'] = items_all_company_condition
-    context['items_user_company'] = get_items_by_company(items_by_locale)
+    context['items_user_company'] = get_items_by_company(items_by_locale, bag)
     context['items_user_condition'] = get_items_by_conditions(items_by_locale, bag)
     context['choices'] = get_choices_array()
 
@@ -397,10 +393,10 @@ def get_choices_array():
 
 
 # Get all items specific to special company
-def get_items_by_company(items):
-    items_with_child = items.filter(with_child=True)
-    items_with_elder = items.filter(with_elder=True)
-    items_with_pet = items.filter(with_pet=True)
+def get_items_by_company(items, bag):
+    items_with_child = items.filter(with_child=bag.with_child)
+    items_with_elder = items.filter(with_elder=bag.with_elder)
+    items_with_pet = items.filter(with_pet=bag.with_pet)
     items_user_company = list(chain(items_with_child,
                                     items_with_elder,
                                     items_with_pet))
