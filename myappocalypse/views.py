@@ -385,10 +385,7 @@ def get_choices_array():
     choices = Item._meta.get_field('category').choices
     category_choices = []
     for c in choices:
-        if '_' in c[0]:
-            category_choices.append(c[0].replace('_', ' & '))
-        else:
-            category_choices.append(c[0])
+        category_choices.append(c[0])
     return category_choices
 
 
