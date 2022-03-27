@@ -9,7 +9,7 @@ Sign up (even with your social media accounts) and look around, prepare your bag
 ![Responsive Layouts](/static/img/readme/responsive-design.PNG)
 
 Deployed app on [Heroku](https://heroku.com) : https://vast-shore-97005.herokuapp.com / \
-Technologies : Python + Django + HTML + CSS \
+Technologies : Python + Django + HTML + CSS + Javascript/jQuery \
 Software : [PyCharm](https://www.jetbrains.com/pycharm/)
 
 ## UX
