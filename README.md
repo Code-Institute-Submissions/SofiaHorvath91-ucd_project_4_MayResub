@@ -74,7 +74,7 @@ The very basic skeleton of the site was modelled by Wireframes via Balsamiq, and
 * Font Selection
   * The main font type was chosen with [Google Fonts](https://fonts.google.com/) and is used across the whole of the website: [Cagliostro](https://fonts.google.com/specimen/Cagliostro?query=Cagliostro). This is a well readable font type which yet gives a practical, yet personal feeling feeling which I found suitable for the subject of the site : the topic itself is pragmatic, but the circonstances are very personal.
 ### 7. Code Structure and Database
-* Code Structure
+* Code Structure\
 The project is consisted of one application, MyAPPocalypse, built by using the Django Framework. The business logic is executed by this application, based on the ucd_projct_4 settings, using the statis resources like HTML page frame / CSS stylesheet / Javascript-jQuery script.\
 The application is completed by the following files/directories :
   * ucd_project_4: Containing settings.py(Settings) and urls.py(Website urls)
@@ -86,7 +86,7 @@ The application is completed by the following files/directories :
   * README.md: Readme documentation
   * Procfile: To run the application
   * Requirements.txt: Containing the python libraries installed
-* Database
+* Database\
 The website is a data-centric one with frontend built with HTML, Javascript, CSS along with Bootstrap framework.
 The backend consists of Python built with the Django framework with a database of a Postgres for the deployed Heroku version (Production)
 [Postgres](https://www.postgresql.org/) is an open source object-relational database system with powerful features
