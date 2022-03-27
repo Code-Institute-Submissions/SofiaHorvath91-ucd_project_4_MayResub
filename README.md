@@ -32,3 +32,44 @@ Software : [PyCharm](https://www.jetbrains.com/pycharm/)
   * the users' item recommendations for approval / reject to be easily managed.
   * the users' contributions to be easily controlled by admin.
   * the users enjoy spending time with the application, get inspired for a real bag and learn something new.
+### 2. Strategy
+* Purpose of Project
+  * To make sure users have the chance to virtually prepare for a heavy real-life scenario
+  * To have users to pack one or more bags with chosen items, depending on user-defined special conditions
+  * To allow users leave their toughts and recommendations for further site improvement.
+  * To give users an overview and educate them about what is needed in vis-major situations.
+### 3. Scope
+* I wanted a simple, evident and user-friendly UX experience.
+* I wanted clear and informative content.
+* I wanted a visually appealing, yet solid design.
+* I wanted interesting and thought-provoking site description.
+* I wanted smooth and interactive bag-packing and feedback experience.
+### 4. Structure
+* The layout is simple and clear to ensure the easy navigation through site content by users
+* The navigation bar is clear, fixed, visible and responsive with matching site logo. 
+* The content is easy to read, bag packing function and feedback-leaving function are smooth with self-explanatory steps.
+* The Home page displays clearly the site’s main subject, allows to explore site content, and appeal visitors to stay and sign up / login to discover.
+* The Why a Bag page allows users to discover the site's objective and verify the usefulness of site.
+* The Login / Sign Up pages allows users to register or to connect if already registered, via standard form or vi social account.
+* The Logout page allows logged in users to disconnect from site.
+* The Pack A Bag page allows logged in users to define the basic and special parameters of a bag, and then create it.
+* The Add Items page allows logged in users to add condition-specific items to their newly created bag, as well as modify the items in their existing bag(s).
+* The Bag Details page allows logged in users to consult one of their bags for modification / removal option if needed.
+* The Blog page allows users to consult previous feedbacks, as well as the creation of their own star-based / comment feedback(s) and the recommendation of new item(s).
+* The Profile page allows users to see their own bags / feedbacks / recommendations in one place, with quick links for delete / new record / modification.
+* In the Footer, users can find copyrights and the icon buttons to share site on different social media platforms.
+### 5. Skeleton
+The very basic skeleton of the site was modelled by Wireframes via Balsamiq, and during site development, additional design elements was added for better UX.
+* [Home Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-home.png)
+* [Why A Bag Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-whyabag.png)
+* [Pack A Bag Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-packmybag.png)
+* [Add Items Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-mybag_add_items.png)
+* [Bag Details Bag Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-mybag_details.png)
+* [Blog Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-blog.png)
+* [Profile Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-profile.png)
+* [Sign Up / Login Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-login_signup.png)
+### 6. Style
+* Design & Colours
+  * When planning the project, I wanted a very simple design, not too grim but neither too playful, so I decided to rely on a visually appealing, reddish background image with matching theme, and white text with black border to ease the effect of the heavy subject. I wanted to avoid too much black or too dark theme as I wanted to emphasize the hope and the chance you give to yourself, not the sad conditions what give the context.
+* Font Selection
+  * The main font type was chosen with [Google Fonts](https://fonts.google.com/) and is used across the whole of the website: [Cagliostro](https://fonts.google.com/specimen/Cagliostro?query=Cagliostro). This is a well readable font type which yet gives a practical, yet personal feeling feeling which I found suitable for the subject of the site : the topic itself is pragmatic, but the circonstances are very personal.
