@@ -91,7 +91,7 @@ The website is a data-centric one with frontend built with HTML, Javascript, CSS
 The backend consists of Python built with the Django framework with a database of a Postgres for the deployed Heroku version (Production)
 [Postgres](https://www.postgresql.org/) is an open source object-relational database system with powerful features
 [SQLLite](https://www.sqlite.org/index.html) database was used for local development and testing.
-* Models
+* Models\
 The following models were created to represent the database model structure for the website.\
 * User Model
   * The User model contains information about the user. It is part of the Django social auth library. As no particular customization was needed ofr User model, get_user_model() lazy loading ws used.
@@ -136,9 +136,9 @@ Navbar on Desktop - Logged In\
 Navbar on Mobile - Logged In\
 ![Navbar mobile](/static/img/readme/navbar-mobile.png)
 
-User stories :
-  * As a not authenticated user, I expect to see the basic links and easily find sign up to see more
-  * As an authenticated user, I expect to see all avaiable site features in navbar
+User stories :\
+- As a not authenticated user, I expect to see the basic links and easily find sign up to see more\
+- As an authenticated user, I expect to see all avaiable site features in navbar
 
 * __Home Page__
   * Presenting MyAPPocalypse, the home page clearly and briefly indicates site objective and also offers entry point to available sites based on  on user's authentication status which allow users to immediately dive into the app. Unregistered or logged out users can know more about the site and/or sign up, logged in users can consult their profile, navigate to the blog or create a new bag.
@@ -148,9 +148,9 @@ Home Page - Logged Out\
 Home Page - Logged In\
 ![Home Page](/static/img/readme/page-home-loggin.png)\
 
-User stories :
-  * As a not authenticated user, I expect to understand site's objective and easily find sign up link
-  * As an authenticated user, I expect to easily navigate to my profile and to site actions (bag creation, feedback)
+User stories :\
+- As a not authenticated user, I expect to understand site's objective and easily find sign up link\
+- As an authenticated user, I expect to easily navigate to my profile and to site actions (bag creation, feedback)
 
 * __Login / Sign Up Page__
   * These pages allow user to sign up or to login via standard verification form, or via social media account (Facebook, Twitter, Google).
