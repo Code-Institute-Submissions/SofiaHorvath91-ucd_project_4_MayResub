@@ -166,3 +166,98 @@ Blog Page - Check All Feedbacks\
 
 Footer\
 ![Footer](/static/img/readme/page-footer.png)
+
+### 2. Future Features
+* Adding item creation page for admin (for giving option between UI and Django admin site)
+* Save latest user session information in forms if page rerendered
+* Add descriptive pop-up for company / locale / condition selection
+* Give image to item details pop-up modal to illustrate item
+## Code validation
+### 1. Automated tests
+* HTML\
+Passing the HTML of all pages through the [W3C Markup Validator](https://validator.w3.org/) and errors are only related to special format of input calculated by Python logic and passed to html page via Django.
+  * [Home Page Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/w3validator-html-home.pdf)
+  * [Why A Bag Page Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/w3validator-html-whyabag.pdf)
+  * [Pack A Bag Page Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/w3validator-html-packmybag.pdf)
+  * [Add Items Page Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/w3validator-html-mybag_add_items.pdf)
+  * [Bag Details Page Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/w3validator-html-mybag_details.pdf)
+  * [Profile Page Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/w3validator-html-profile.pdf)
+  * [Blog Page Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/w3validator-html-blog.pdf)
+  * [Login Page Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/w3validator-html-login.pdf)
+  * [Sign Up Page Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/w3validator-html-signup.pdf)
+* CSS\
+Passing the global CSS file through the [W3C Jigsaw Validator](https://jigsaw.w3.org/css-validator/) and no errors have been found.\
+Warnings are coming from dynamic CSS variables and imported style sheets which are out of scope of validator. Also warning appears concerning -webkit/-moz effects, as these elements are out of scope for validator.
+  * [CSS Style Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/w3validator-css-style.pdf)
+* Javascript/jQuery\
+Passing all Javascript code (static/js/js_packmybag.js) through the [JSHint](https://jshint.com/) with [these configurations](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jshint-configuration.PNG) and no errors have been found, only 1 warning shown (for not initialized variable - the value of these variables passed via page script from django view).
+  * [JSHint Validation Validation](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jshint-result.PNG)
+Passing all Javascript (static/js/js_packmybag.js) code through [Jest](https://jshint.com/) tests (static/js/js_packmybag.test.js) and all tests passed, but one console error was shown as console cannot handle Javascript alert() function.\
+  * [Jest Test Validation](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jest_testing_test_suite.PNG)
+  * [Jest Test Console Error](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jest_testing_console_error.PNG)
+* Python Code\
+Passing the python logic file (hogwarts_quiz/views.py) through the [PEP8 Validator](http://pep8online.com/) and no errors have been found.\
+  * [PEP8 Validation - Pyhthon View - Text file](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/python_pep8_view.txt)
+  * [PEP8 Validation - Python Models - Text file](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/python_pep8_model.txt)
+  * [PEP8 Validation - Python Tests - Text file](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/python_pep8_test.txt)
+Passing the python models through Django unit tests (myappocalypse/test.py) and all tests passed.\
+  * [Django Unit Tests](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/jest_testing_test_suite.PNG)
+### 2. Manual tests
+* Desktop\
+Mozilla Firefox, Google Chrome, Microsoft Edge: pages are working fine and have the corresponding style, social login works as expected.
+* Mobile\
+Tested with Samsung A5, Galaxy Fold, iPhone 5, and iPad, and webpage works well, responsive as intended and no style deformations.
+* Mozilla Developer Tools\
+Tested for available devices, webpage works well, responsive as intended, no style deformations and no error messages in Pycharm debug tool.
+### 3. Accessibility tests
+The pages available before login were verified about accessibility using [Wave](https://wave.webaim.org/) as Wave cannot handle login feature. Few stylistic errors found (low contrast errors for color), alerts related to heading elements hierarchy, one error for empty header (filled out by Django). As other pages are very similar in terms of HTML-Styling, same results are assumed for them too.
+* [Home Page Wave Result](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/wave-home.PNG)
+* [Why A Bag Page Wave Result](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/wave-whyabag.PNG)
+* [Login Page Wave Result](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/wave-login.PNG)
+* [Sign Up Page Wave Result](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/wave-signup.PNG)
+### 4. Bugs and Solution
+While building the application, I encountered the difficulty of passing information (Item model records from database) from Django view to Javascript code for display on UI. I found the solution in form of transforming the information to Json value in Django view, passing it to script on HTML page and retrieve it by main Javascript from page script. This slows the site a bit, but no timing-out and information is thus consistent through different technologies.
+## Deployment
+The site was deployed to Heroku (find it [here](https://vast-shore-97005.herokuapp.com/)) while building it with [PyCharm](https://www.jetbrains.com/pycharm/) and pushing it to GitHub Repository and Heroku via [Git Bash](https://git-scm.com/downloads).
+1.	GitHub repository => Settings => GitHub Pages
+2.	Source => Selecting Branch + Folder (main/docs)
+3.	With branch/folder selected, the page refreshes to show deployment status
+### 1. Forking Repository
+By forking the GitHub Repository, the user can copy the original repository in his/her own GitHub account, allowing the user to view and/or make changes without affecting the original repository.
+1.	Open GitHub => GitHub Repository
+2.	Top of Repository => Fork option
+3.	Copy of the original repository appears in your GitHub account
+### 2. Local Clone
+1.	Open GitHub => GitHub Repository
+2.	Under Repository name => Clone or download option
+3.	Clone Repository using HTTPS => Clone with HTTPS => Copy URL
+4.	Open Git Bash
+5.	Current working directory => Choose location where you want the directory to be cloned
+6.	Type git clone, and then paste the URL copied in Step 3.\
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+7.	Press Enter
+## Credits
+### 1. Content
+* The site is based on an original idea and beside verifying general details (like average weight for items based on different products), the words presented on site are my own.
+### 2. Media
+Pictures were treated with [Photoshop](http://www.apsportable.com/photoshop-cs6-portable-download-4/) and [tinyPNG](https://tinypng.com/) to have a better size for online presentation.
+* Site Logo was made by me
+* Background image : [WallpaperSafari](https://wallpapersafari.com/w/rOkxIt)
+### 3. External Codes used as source / inspiration
+* Sticky Menu (Navigation Bar) : [W3Schools](https://www.w3schools.com/howto/howto_js_navbar_sticky.asp)
+* Responsive Menu (Navigation Bar) : [Bootstrap](https://getbootstrap.com/docs/4.4/components/navbar/) (also used for general styling like margins, rows)
+* Sticky Footer (Footer) : [CSS Tricks](https://css-tricks.com/couple-takes-sticky-footer/)
+* Social Media Sharing Buttons (Footer) : [SharingButtons](https://sharingbuttons.io/)
+* Pure CSS Collapsible Sections : [Mark Caron (CodePen)](https://codepen.io/markcaron/pen/RVvmaz)
+* Pop-up Modal : [W3Schools](https://www.w3schools.com/howto/howto_css_modal_images.asp)
+* Universal Amazon Link : [AskDaveTaylor](https://www.askdavetaylor.com/how_to_create_amazon_search_links/)
+* Star-based Feedback : [LunarLogic (GitHub)](https://github.com/LunarLogic/starability)
+### 4. Acknowledgements
+* To the Code Institute for the great course material
+* To the [Stack Overflow](https://stackoverflow.com/) & [W3Schools](https://www.w3schools.com/) as a valuable resource for solving issues.
+* To Udemy platform users [tutorial](https://www.udemy.com/) for their wonderful tutorials
+* To the people of Ukrania - I wish I could give everybody the biggest bag possible with all the best things on the world!
+### 5. Special Thanks
+* My mentor Rahul Lakhanpal for his time, kind words and support.
+* My previous private mentor Samu Gábor Tamás who taught me all I know in the last two years
+* My Mother who is always there for me and supports me through the hard times
