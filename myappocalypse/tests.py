@@ -86,10 +86,17 @@ class ItemModelTest(TestCase):
         environment3 = Environment.objects.create(name='Grassland')
         environments = [environment1, environment2, environment3]
 
-        item = Item.objects.create(name='rope', category=choices[3],
-                            weight=1.00, usefulness=8.00,
-                            external=True, with_child=False, with_elder=False, with_pet=False,
-                            available_infrastructure=False, available_water=True, available_food=False)
+        item = Item.objects.create(name='rope',
+                                   category=choices[3],
+                                   weight=1.00,
+                                   usefulness=8.00,
+                                   external=True,
+                                   with_child=False,
+                                   with_elder=False,
+                                   with_pet=False,
+                                   available_infrastructure=False,
+                                   available_water=True,
+                                   available_food=False)
         item.climate.set(climates)
         item.landform.set(landforms)
         item.environment.set(environments)
@@ -167,16 +174,32 @@ class BagModelTest(TestCase):
         environment3 = Environment.objects.create(name='Grassland')
         environments = [environment1, environment2, environment3]
 
-        item1 = Item.objects.create(name='rope', category=choices[3], weight=1.00, usefulness=8.00,
-                                    external=True, with_child=False, with_elder=False, with_pet=False,
-                                    available_infrastructure=False, available_water=True, available_food=False)
+        item1 = Item.objects.create(name='rope',
+                                    category=choices[3],
+                                    weight=1.00,
+                                    usefulness=8.00,
+                                    external=True,
+                                    with_child=False,
+                                    with_elder=False,
+                                    with_pet=False,
+                                    available_infrastructure=False,
+                                    available_water=True,
+                                    available_food=False)
         item1.climate.set(climates)
         item1.landform.set(landforms)
         item1.environment.set(environments)
 
-        item2 = Item.objects.create(name='radio', category=choices[2], weight=0.50, usefulness=9.00,
-                                    external=False, with_child=False, with_elder=False, with_pet=False,
-                                    available_infrastructure=True, available_water=False, available_food=False)
+        item2 = Item.objects.create(name='radio',
+                                    category=choices[2],
+                                    weight=0.50,
+                                    usefulness=9.00,
+                                    external=False,
+                                    with_child=False,
+                                    with_elder=False,
+                                    with_pet=False,
+                                    available_infrastructure=True,
+                                    available_water=False,
+                                    available_food=False)
         item2.climate.set(climates)
         item2.landform.set(landforms)
         item2.environment.set(environments)
@@ -189,10 +212,18 @@ class BagModelTest(TestCase):
         weight_bag = round((weight_user * 0.2) + 1, 2)
 
         bag = Bag.objects.create(name='my_bag',
-                                 weight_user=weight_user, weight_bag=weight_bag, weight_bag_actual=items_weight,
-                                 climate=climate1, landform=landform1, environment=environment1,
-                                 with_child=False, with_elder=False, with_pet=False,
-                                 available_infrastructure=True, available_water=False, available_food=False)
+                                 weight_user=weight_user,
+                                 weight_bag=weight_bag,
+                                 weight_bag_actual=items_weight,
+                                 climate=climate1,
+                                 landform=landform1,
+                                 environment=environment1,
+                                 with_child=False,
+                                 with_elder=False,
+                                 with_pet=False,
+                                 available_infrastructure=True,
+                                 available_water=False,
+                                 available_food=False)
         bag.items.set(items)
 
     def test_name_category_max_length(self):
@@ -264,9 +295,13 @@ class FeedbackModelTest(TestCase):
             4: "Very good",
             5: "Amazing",
         }
-        user = User.objects.create_user(username="test_user", email="test@test.com")
-        Feedback.objects.create(rating_point=min(ratings, key=lambda k: ratings[k][4]), rating_description=ratings[4],
-                                content="good", created=datetime.date.today(), user=user)
+        user = User.objects.create_user(username="test_user",
+                                        email="test@test.com")
+        Feedback.objects.create(rating_point=min(ratings, key=lambda k: ratings[k][4]),
+                                rating_description=ratings[4],
+                                content="good",
+                                created=datetime.date.today(),
+                                user=user)
 
     def test_rating(self):
         feedback = Feedback.objects.get(id=1)
@@ -293,9 +328,15 @@ class RecommendationModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         User = get_user_model()
-        user = User.objects.create_user(username="test_user", email="test@test.com")
-        Recommendation.objects.create(status='Pending', category="Lightning", name="candle", external=False,
-                                      weight=0.4, usefulness=10, user=user,
+        user = User.objects.create_user(username="test_user",
+                                        email="test@test.com")
+        Recommendation.objects.create(status='Pending',
+                                      category="Lightning",
+                                      name="candle",
+                                      external=False,
+                                      weight=0.4,
+                                      usefulness=10,
+                                      user=user,
                                       justification="Useful as night always comes")
 
     def test_text_char_fields_max_length(self):

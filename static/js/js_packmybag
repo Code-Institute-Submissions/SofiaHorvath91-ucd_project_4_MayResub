@@ -1,7 +1,7 @@
 /* Variables */
 
 /* Constant to pass jQuery for testing with Jest (js_packmybag.test.js), to be commented out in Production */
-//const $ = require('jquery');
+// const $ = require('jquery');
 
 /* Initialize variables of current bag for pages mybag_add_items / mybag_details */
 let currentBagVars = {
@@ -127,6 +127,21 @@ function add_itemweight_to_bagweight(name, checked, external, weight){
 /* Show pop-up modal with item details (fields of Item model for current item) when user clicks on name of item
 (mybag_add_items / mybag_details) */
 function set_modal_dom_elements_items(item, name){
+    link = "http://www.amazon.com/s?url=search-alias%3Daps&field-keywords=";
+    if(item.name.includes(" ")){
+        name_list = item.name.split(" ");
+        for(i=0;i<name_list.length;i++){
+            if(i < name_list.length - 1){
+                link += name_list[i] + "+";
+            } else{
+                link += name_list[i];
+            }
+        }
+        document.getElementById(name+"_item_amazon_btn").href = link;
+    } else{
+       document.getElementById(name+"_item_amazon_btn").href = link + item.name;
+    }
+
     document.getElementById(name+"-modal").classList.add("modal-display");
 
     document.getElementById(name+"_item_name").innerHTML = item.name.toUpperCase();

@@ -4,26 +4,30 @@ from django.contrib.auth import get_user_model
 from ucd_project_4 import settings
 
 # Referencing the standard Django User model
-# => Aim of object/model : Capture details of connected user for login/signup function
+# => Aim of object/model :
+# Capture details of connected user for login/signup function
 User = get_user_model()
 
 
 # Climate object/model to connect to Items (via ManyToMany relation) / Bags (via ForeignKey relation)
-# => Aim of object/model : Capture details of possible climates to associate to the road where the bag will be used
+# => Aim of object/model :
+# Capture details of possible climates to associate to the road where the bag will be used
 class Climate(models.Model):
     name = models.CharField(blank=True, null=True, max_length=100)
     pass
 
 
 # Landform object/model to connect to Items (via ManyToMany relation) / Bags (via ForeignKey relation)
-# => Aim of object/model : Capture details of possible landforms to associate to the road where the bag will be used
+# => Aim of object/model :
+# Capture details of possible landforms to associate to the road where the bag will be used
 class Landform(models.Model):
     name = models.CharField(blank=True, null=True, max_length=100)
     pass
 
 
 # Environment object/model to connect to Items (via ManyToMany relation) / Bags (via ForeignKey relation)
-# => Aim of object/model : Capture details of possible environments to associate to the road where the bag will be used
+# => Aim of object/model :
+# Capture details of possible environments to associate to the road where the bag will be used
 class Environment(models.Model):
     name = models.CharField(blank=True, null=True, max_length=100)
     pass
@@ -54,8 +58,10 @@ class EnvironmentSerializer(serializers.ModelSerializer):
 
 
 # Item object/model to connect to Bags (via ManyToMany relation)
-# => Aim of object/model : Capture details of physical objects to be packed in the bag
-# => Models/objects connected to Item model/object via ManyToMany relation : Climate, Landform, Environment
+# => Aim of object/model :
+# Capture details of physical objects to be packed in the bag
+# => Models/objects connected to Item model/object via ManyToMany relation :
+# Climate, Landform, Environment
 class Item(models.Model):
     Clothes = 'Clothes'
     Linens = 'Linens'
@@ -114,9 +120,12 @@ class ItemSerializer(serializers.ModelSerializer):
 
 
 # Bag object/model : Main object/model of the application
-# => Aim of object/model : Capture details of bag packed for a given scenario (general details & related items)
-# => Models/objects connected to Bag model/object via ManyToMany relation : Items
-# => Models/objects connected to Bag model/object via ForeignKey relation : Climate, Landform, Environment, User (Owner)
+# => Aim of object/model :
+# Capture details of bag packed for a given scenario (general details & related items)
+# => Models/objects connected to Bag model/object via ManyToMany relation :
+# Items
+# => Models/objects connected to Bag model/object via ForeignKey relation :
+# Climate, Landform, Environment, User (Owner)
 class Bag(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     items = models.ManyToManyField(Item, related_name='items', blank=True)
@@ -136,8 +145,10 @@ class Bag(models.Model):
 
 
 # Feedback object/model
-# => Aim of object/model : Capture details of feedback provided by the user about the site (rating & comment)
-# => Models/objects connected to Feedback model/object via ForeignKey relation : User (Owner)
+# => Aim of object/model :
+# Capture details of feedback provided by the user about the site (rating & comment)
+# => Models/objects connected to Feedback model/object via ForeignKey relation :
+# User (Owner)
 class Feedback(models.Model):
     rating_point = models.IntegerField(null=True, blank=True)
     rating_description = models.CharField(max_length=255, blank=True, null=True)
@@ -147,8 +158,10 @@ class Feedback(models.Model):
 
 
 # Recommendation object/model
-# => Aim of object/model : Capture details of item recommended by a standard user for the approval of admin user
-# => Models/objects connected to Recommendation model/object via ForeignKey relation : User (Owner)
+# => Aim of object/model :
+# Capture details of item recommended by a standard user for the approval of admin user
+# => Models/objects connected to Recommendation model/object via ForeignKey relation :
+# User (Owner)
 class Recommendation(models.Model):
     status = models.CharField(max_length=30, blank=True, null=True)
     category = models.CharField(blank=True, null=True, max_length=100)
@@ -158,6 +171,3 @@ class Recommendation(models.Model):
     external = models.BooleanField(blank=True, null=True, default=False)
     justification = models.TextField(blank=True, null=True, max_length=600)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
-
-
-

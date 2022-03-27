@@ -67,10 +67,9 @@
             <section>
                 <div class="row page-title mt-4 mb-3">
                     <div class="col-12">
-                        <h4 class="black-shadow text-center">Current weight of bag :
+                        <h4 class="black-shadow text-center">Current weight of bag :</h4>
                         <input type="hidden" id="starting_bag_weight" value="{{bag.weight_bag_actual}}">
-                        <h4 id="additems_bag_weight" class="black-shadow text-center">0.00 kg
-                        </h4>
+                        <h4 id="additems_bag_weight" class="black-shadow text-center">0.00 kg</h4>
                     </div>
                     <input type="hidden" value="{{bag.weight_bag}}" id="additems_max_bag_weight">
                 </div>
@@ -192,7 +191,15 @@
             <!-- Pop-up modal to show item details upon clicking on information sign next to item name -->
             <section id="additems-modal" class="modal">
                 <span id="additems-close-modal" class="close-modal">&times;</span>
-                <h3 class="text-center" id="additems_item_name"></h3>
+                <h3 class="text-center" id="additems_item_name">Name</h3>
+                <div class="row mb-3">
+                    <div class="center-container">
+                        <a class="btn btn-lg btn-warning text-center" id="additems_item_amazon_btn"
+                           target=" _blank" rel="noopener noreferrer" aria-label="" href="">
+                            Check on Amazon
+                        </a>
+                    </div>
+                </div>
                 <div class="row mb-3">
                     <div class="center-container">
                         <div class="form-section">
@@ -235,10 +242,10 @@
         </article>
     </div>
     <!-- Passing list of Item objects to javascript from Django view (View 'add_items') -->
-    <script type="text/javascript">
+    <script>
         window.add_items_JSON = {{items_json|safe}};
     </script>
     <!-- Inclusion of JS file -->
-    <script type="text/javascript" src="{% static 'js/js_packmybag' %}"></script>
+    <script src="{% static 'js/js_packmybag' %}"></script>
 </main>
 {% endblock content %}

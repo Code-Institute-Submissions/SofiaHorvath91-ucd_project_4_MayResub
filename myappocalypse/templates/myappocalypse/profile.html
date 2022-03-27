@@ -18,7 +18,7 @@
             </header>
             <br>
             <!-- List of created bags with links for each toward the Bag Details page and Delete option -->
-            <section class="row mt-4 mb-3">
+            <div class="row mt-4 mb-3">
                 <div class="card card-shadow">
                     <div class="collapsible-section" id="section-aboutmybag">
                         <input type="checkbox" name="collapse" id="coll-section-my-bags">
@@ -74,10 +74,10 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
             <!-- List of item recommendations made by user with links for each toward the Blog page
              where user can create new recommendation and Delete option-->
-            <section class="row mt-4 mb-3">
+            <div class="row mt-4 mb-3">
                 <div class="card card-shadow">
                     <div class="collapsible-section">
                         <input type="checkbox" name="collapse" id="coll-section-my-recommendations">
@@ -92,7 +92,7 @@
                                         <header>
                                             <h5 class="text-center mt-2 mb-3">Recommendation #{{r.id}}</h5>
                                         </header>
-                                        <section>
+                                        <div>
                                             <div class="form-container">
                                                 <div class="center-container mb-3">
                                                     <div class="form-section">
@@ -170,17 +170,17 @@
                                                     {% endif %}
                                                 </div>
                                             </div>
-                                        </section>
+                                        </div>
                                     </article>
                                 {% endfor %}
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
             <!-- List of feedbacks made by user with links for each toward the Blog page where user can leave new
              feedback and Delete option-->
-            <section class="row mt-4 mb-3">
+            <div class="row mt-4 mb-3">
                 <div class="card card-shadow">
                     <div class="collapsible-section">
                         <input type="checkbox" name="collapse" id="coll-section-my-feedbacks">
@@ -198,12 +198,12 @@
                                                     <strong>Feedback #{{f.id}}</strong>
                                                 </h5>
                                             </header>
-                                            <section>
+                                            <div>
                                                 <p class="mt-1">By user : {{f.user}}</p>
                                                 <p>Created on : {{f.created}}</p>
                                                 <p>Rating : {{f.rating_point}} stars ({{f.rating_description}})</p>
                                                 <p>Feedback :<br>{{f.content|default:"N/A"}}</p>
-                                            </section>
+                                            </div>
                                         </article>
                                         <div class="row mb-2">
                                             <div class="col-12">
@@ -229,7 +229,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </article>
     </div>
 </main>

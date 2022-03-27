@@ -55,6 +55,7 @@ beforeAll(() => {
     + "<input type='hidden' id='starting_bag_weight'>"
     + "<div id='additems-modal'></div>"
     + "<h3 class='text-center' id='additems_item_name'></h3>"
+    + "<a class='btn btn-lg btn-warning text-center' id='additems_item_amazon_btn'></a>"
     + "<label class='modal-label mb-2' id='additems_item_category'></label>"
     + "<label class='modal-label mb-2' id='additems_item_weight'></label>"
     + "<label class='modal-label mb-2' id='additems_item_usefulness'></label>"
@@ -198,6 +199,10 @@ describe("Current item details shows correctly in pop-up modal", () => {
     test("Display item name not is lowercase", () => {
         expect(document.getElementById(name+"_item_name").innerHTML)
         .not.toEqual("rope");
+    });
+    test("Dispay Amazon link with current item name", () => {
+        expect(document.getElementById(name+"_item_amazon_btn").href)
+        .toEqual("http://www.amazon.com/s?url=search-alias%3Daps&field-keywords=rope");
     });
     test("Display number value with two decimals", () => {
         expect(document.getElementById(name+"_item_usefulness").innerHTML)

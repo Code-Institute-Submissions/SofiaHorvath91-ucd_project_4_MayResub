@@ -20,7 +20,9 @@ def whyabag(request):
 
 
 # Login Page (login.html)
-# => Page Aim : Allow already registered users to login via standard form / social login (Facebook, Twitter, Google)
+# => Page Aim :
+# Allow registered users to login
+# via standard form / social login (Facebook, Twitter, Google)
 def signin(request):
     context = {}
 
@@ -43,7 +45,9 @@ def signin(request):
 
 
 # Sign Up Page (signup.html)
-# => Page Aim : Allow not registered users to sign up via standard form / social login (Facebook, Twitter, Google)
+# => Page Aim :
+# Allow not registered users to sign up via
+# standard form / social login (Facebook, Twitter, Google)
 def signup(request):
     context = {}
 
@@ -69,7 +73,9 @@ def signup(request):
                     return render(request, 'myappocalypse/signup.html', context=context)
                 except User.DoesNotExist:
                     # If email and username are unique, create user
-                    user = User.objects.create_user(username=username, email=email, password=password1)
+                    user = User.objects.create_user(username=username,
+                                                    email=email,
+                                                    password=password1)
                     context['successMsg'] = "Thank you for signing up!"
                     return redirect('home')
         else:
@@ -80,7 +86,8 @@ def signup(request):
 
 
 # Logout Page (logout.html)
-# => Page Aim : Allow already logged in users to logout
+# => Page Aim :
+# Allow already logged in users to logout
 @login_required
 def signout(request):
     if request.user.is_authenticated:
@@ -91,7 +98,9 @@ def signout(request):
 
 
 # Pack A Bag Page (packmybag.html)
-# => Page Aim : Allow logged in users to create a new bag in which one can pack items after
+# => Page Aim :
+# Allow logged in users to create a new bag
+# in which one can pack items after
 @login_required
 def packmybag(request):
     context = {}
@@ -112,7 +121,8 @@ def packmybag(request):
         drinking_water = request.POST['drinking_water']
         comestible_food = request.POST['comestible_food']
 
-        # Check if climate / landform / environment picklists are selected (value true or false, not default)
+        # Check if climate / landform / environment picklists are selected
+        # (value true or false, not default)
         if climate == 'default' or landform == 'default' or environment == 'default' \
                 or human_infra == 'default' or drinking_water == 'default' or comestible_food == 'default':
             context['errorMsg'] = 'Choose all types, please'
@@ -131,13 +141,19 @@ def packmybag(request):
             return render(request, 'myappocalypse/packmybag.html', context=context)
         else:
             # If all bag details are filled out appropriately, create bag,
-            bag = Bag.objects.create(user=user, name=name, weight_bag=bagweight, weight_user=userweight,
+            bag = Bag.objects.create(user=user,
+                                     name=name,
+                                     weight_bag=bagweight,
+                                     weight_user=userweight,
                                      climate=Climate.objects.filter(name=climate).first(),
                                      landform=Landform.objects.filter(name=landform).first(),
                                      environment=Environment.objects.filter(name=environment).first(),
-                                     with_child=have_child, with_elder=have_elder, with_pet=have_pet,
+                                     with_child=have_child,
+                                     with_elder=have_elder,
+                                     with_pet=have_pet,
                                      available_infrastructure=human_infra,
-                                     available_water=drinking_water, available_food=comestible_food)
+                                     available_water=drinking_water,
+                                     available_food=comestible_food)
             bag.save()
             # Once bag is created, redirect user to page to add items to bag
             return redirect('mybag_add_items', id=bag.id)
@@ -145,8 +161,10 @@ def packmybag(request):
     return render(request, 'myappocalypse/packmybag.html', context=context)
 
 
-# Add Items Page (mybag_add_items/<bag ID>.html, redirect from packmybag.html after bag creation)
-# => Page Aim : Allow logged in users to add items recommended based on bag details to newly created or existing bag
+# Add Items Page (mybag_add_items/<bag ID>.html)
+# => Page Aim :
+# Allow logged in users to add items recommended
+# based on bag details to newly created or existing bag
 @login_required
 def add_items(request, id):
     context = {}
@@ -167,10 +185,14 @@ def add_items(request, id):
     context['items_json'] = data.decode()
 
     # Set items recommended based on bag details
-    items_by_locale = Item.objects.filter(climate__in=[bag.climate], landform__in=[bag.landform],
+    items_by_locale = Item.objects.filter(climate__in=[bag.climate],
+                                          landform__in=[bag.landform],
                                           environment__in=[bag.environment])
-    items_all_company_condition = items_by_locale.filter(with_child=None, with_elder=None, with_pet=None,
-                                                         available_infrastructure=None, available_water=None,
+    items_all_company_condition = items_by_locale.filter(with_child=None,
+                                                         with_elder=None,
+                                                         with_pet=None,
+                                                         available_infrastructure=None,
+                                                         available_water=None,
                                                          available_food=None)
     context['basic_items'] = items_all_company_condition
     context['items_user_company'] = get_items_by_company(items_by_locale)
@@ -183,7 +205,8 @@ def add_items(request, id):
 
         # Check if any item selected
         if len(selected_items) > 0:
-            # Get items from database based on user input of selected items and add them to bag 'items' field as list
+            # Get items from database based on user input of selected items
+            # and add them to bag 'items' field as list
             bagweight = request.POST['additems_new_bag_weight']
             items_to_create = []
             for i in all_items:
@@ -202,7 +225,8 @@ def add_items(request, id):
 
 
 # Detail of a Bag Page (mybag_details/<bag ID>.html)
-# => Page Aim : Allow logged in users to checks details of an already created bag
+# => Page Aim :
+# Allow logged in users to checks details of an already created bag
 @login_required
 def mybag_details(request, id):
     context = {}
@@ -217,8 +241,11 @@ def mybag_details(request, id):
     context['items_json'] = data.decode()
 
     # Get an sort bag items to show them in sections / category on UI
-    items_all_company_condition = bag.items.filter(with_child=None, with_elder=None, with_pet=None,
-                                                   available_infrastructure=None, available_water=None,
+    items_all_company_condition = bag.items.filter(with_child=None,
+                                                   with_elder=None,
+                                                   with_pet=None,
+                                                   available_infrastructure=None,
+                                                   available_water=None,
                                                    available_food=None)
     context['basic_items'] = items_all_company_condition
     context['items_user_company'] = get_items_by_company(bag.items)
@@ -237,7 +264,8 @@ def mybag_details(request, id):
 
 
 # Blog Page (blog.html)
-# => Page Aim : Allow logged in users to leave star-based feedback & comment about the site,
+# => Page Aim :
+# Allow logged in users to leave star-based feedback & comment about the site,
 # recommend an item and consult existing feedbacks
 @login_required
 def blog(request):
@@ -246,24 +274,29 @@ def blog(request):
     # Pass all existing feedbacks to show them as list
     context['feedbacks'] = Feedback.objects.all()
 
-    # Get star-based rating and/or text-based comment from user (Click on Send Feedback button)
+    # Get star-based rating and/or text-based comment from user
+    # (Click on Send Feedback button)
     if request.method == "POST" and request.POST.get('feedback') or request.POST.get('rating'):
         rating = request.POST.get('rating').split('_')[0]
         rating_desc = request.POST.get('rating').split('_')[1]
         content = request.POST['feedback']
 
-        # Create feedback only if either star-based rating, either text-based comment, either both were provided
+        # Create feedback only if either star-based rating,
+        # either text-based comment, either both were provided
         if content or (rating != '0'):
             user = request.user
-            feedback = Feedback.objects.create(rating_point=rating, rating_description=rating_desc,
-                                               content=content, user=user)
+            feedback = Feedback.objects.create(rating_point=rating,
+                                               rating_description=rating_desc,
+                                               content=content,
+                                               user=user)
             feedback.save()
             return redirect('blog')
         else:
             context['errorMsg'] = 'Please share your feedback or rating!'
             return render(request, 'myappocalypse/blog.html', context=context)
 
-    # Allow feedback owner or admin user (superuser) to delete feedback from list (Click on Delete button of a feedback)
+    # Allow feedback owner or admin user (superuser) to delete feedback from list
+    # (Click on Delete button of a feedback)
     if request.method == "POST" and request.POST.get('feedback-to-delete'):
         feedback = Feedback.objects.filter(id=request.POST['feedback-to-delete']).first()
         feedback.delete()
@@ -279,15 +312,22 @@ def blog(request):
         external = request.POST['external']
         justification = request.POST['justification']
 
-        # Check if category / external picklists are selected (value true or false, not default)
+        # Check if category / external picklists are selected
+        # (value true or false, not default)
         if category == 'default' or external == 'default':
             context['errorMsg'] = 'Set value for all fields, please'
             return render(request, 'myappocalypse/blog.html', context=context)
         else:
-            # If all recommendation details are filled out appropriately, create recommendation for admin approval
-            recommendation = Recommendation.objects.create(user=user, name=name, weight=weight, category=category,
-                                                           justification=justification, usefulness=usefulness,
-                                                           external=external, status='Pending')
+            # If all recommendation details are filled out appropriately,
+            # create recommendation for admin approval
+            recommendation = Recommendation.objects.create(user=user,
+                                                           name=name,
+                                                           weight=weight,
+                                                           category=category,
+                                                           justification=justification,
+                                                           usefulness=usefulness,
+                                                           external=external,
+                                                           status='Pending')
             recommendation.save()
         return render(request, 'myappocalypse/blog.html', context=context)
 
@@ -295,7 +335,9 @@ def blog(request):
 
 
 # Profile Page (profile.html)
-# => Page Aim : Allow logged in users to consult their bags, feedbacks and recommendations in one place
+# => Page Aim :
+# Allow logged in users to consult their bags,
+# feedbacks and recommendations in one place
 @login_required
 def profile(request):
     context = {}
@@ -316,16 +358,18 @@ def profile(request):
             bag = Bag.objects.filter(id=request.POST['mybag-to-delete']).first()
             bag.delete()
             return redirect('profile')
-        # Delete a bag, allowed only for recommendation owner
+        # Delete a recommendation, allowed only for recommendation owner
         if request.POST.get('myrecommendations-to-delete'):
             recommendation = Recommendation.objects.filter(id=request.POST['myrecommendations-to-delete']).first()
             recommendation.delete()
             return redirect('profile')
+        # Approve recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-approve') and request.user.is_superuser:
             recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-approve']).first()
             recommendation.status = 'Approved'
             recommendation.save()
             return redirect('profile')
+        # Reject recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-reject') and request.user.is_superuser:
             recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-approve']).first()
             recommendation.status = 'Rejected'
@@ -366,7 +410,9 @@ def get_items_by_company(items):
     items_with_child = items.filter(with_child=True)
     items_with_elder = items.filter(with_elder=True)
     items_with_pet = items.filter(with_pet=True)
-    items_user_company = list(chain(items_with_child, items_with_elder, items_with_pet))
+    items_user_company = list(chain(items_with_child,
+                                    items_with_elder,
+                                    items_with_pet))
     return items_user_company
 
 
@@ -375,7 +421,7 @@ def get_items_by_conditions(items, bag):
     items_user_humaninfra = items.filter(available_infrastructure=bag.available_infrastructure)
     items_user_water = items.filter(available_water=bag.available_water)
     items_user_food = items.filter(available_food=bag.available_food)
-    items_user_condition = list(chain(items_user_humaninfra, items_user_water, items_user_food))
+    items_user_condition = list(chain(items_user_humaninfra,
+                                      items_user_water,
+                                      items_user_food))
     return items_user_condition
-
-
