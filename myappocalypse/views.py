@@ -122,9 +122,7 @@ def packmybag(request):
         comestible_food = request.POST['comestible_food']
 
         # Check if climate / landform / environment picklists are selected
-        # (value true or false, not default)
-        if climate == 'default' or landform == 'default' or environment == 'default' \
-                or human_infra == 'default' or drinking_water == 'default' or comestible_food == 'default':
+        if climate and landform and environment and human_infra and drinking_water and comestible_food:
             context['errorMsg'] = 'Choose all types, please'
             return render(request, 'myappocalypse/packmybag.html', context=context)
         # Check if climate Dry was paired with matching Desert environment
@@ -313,8 +311,7 @@ def blog(request):
         justification = request.POST['justification']
 
         # Check if category / external picklists are selected
-        # (value true or false, not default)
-        if category == 'default' or external == 'default':
+        if category and external:
             context['errorMsg'] = 'Set value for all fields, please'
             return render(request, 'myappocalypse/blog.html', context=context)
         else:
