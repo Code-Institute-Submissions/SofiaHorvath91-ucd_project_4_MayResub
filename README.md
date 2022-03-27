@@ -163,7 +163,7 @@ Sign Up Page\
 User stories :\
 As a not authenticated user with account, I expect to login via standard form or social auth buttons (Facebook, Twitter, Google)\
 As a not authenticated user without account, I expect to be able to create user account via standard form or sign up via social auth buttons (Facebook, Twitter, Google)\
-As an authenticated user, I expect to easily switch account if I use more usernames via standard and social channels
+As an authenticated user, I expect to easily switch account if I use more usernames via standard and social channels\
 As general user I expect to be logged out by clicking on Logout option in navbar
 
 * __Why A Bag page__
@@ -172,9 +172,9 @@ As general user I expect to be logged out by clicking on Logout option in navbar
 Why A Bag Page\
 ![Why A Bag Page](/static/img/readme/page-whyabag.png)
 
-User stories :
-  * As general, particularly a not authenticated user, I expect to learn more about the site's objective
-  * As an admin, I expect to have a site faithful to the mission described on this page
+User stories \
+As general, particularly a not authenticated user, I expect to learn more about the site's objective\
+As an admin, I expect to have a site faithful to the mission described on this page
 
 * __Pack A Bag Page__
   * This page allows the users to profit from the main functionality of the site : they can create a bag based on different parameters in which they can then add items with respect to the max weight of bag (calculated upon user weight).
@@ -182,10 +182,10 @@ User stories :
 Pack A Bag Page\
 ![Pack A Bag Page](/static/img/readme/page-packmybag.png)
 
-User stories :
-  * As an authenticated user, I expect to be able to create a bag easily by providing special details
-  * As an authenticated user, I expect to be navigated through required information to not crash application
-  * As a not authenticated user, I expect to not to see this page
+User stories\
+As an authenticated user, I expect to be able to create a bag easily by providing special details\
+As an authenticated user, I expect to be navigated through required information to not crash application\
+As a not authenticated user, I expect to not to see this page
 
 * __Add Items Page__
   * This page allows user to add items to the newly created or to an existing bag, depending if navigation from Pack My Bag page or Profile/Bag Details pages' edit function. Current weight of bag is dynamically calculated upon adding/removing items to/from bag, and user is alerted is bag's max weight is reached and no more items can be added. While adding items, user may consult the details of the item in a pop-up modal by clicking on the information sign next to it's name. The modal also provides click link to Amazon buying options.
@@ -197,15 +197,15 @@ Add Items Page\
 Add Items Page - Pop-Up Modal with Item Details\
 ![Add Items Page - Pop-Up Modal with Item Details](/static/img/readme/page-mybag_modal_item.png)
 
-User stories :
-  * As an authenticated user, I expect to be able to add items to the newly created or to an existing bag
-  * As an authenticated user, I expect to know the current exact weight of my pag while packing for better planning
-  * As an authenticated user, I expect to be alerted when maximum bag size is reached to be able to rethink choices
-  * As an authenticated user, I expect to be able to consult item details in pop-up modal via clicking on information sign
-  * As an authenticated user, I expect to be offered an Amazon links for buying options of the item while in pop-up modal via clicking on an item's information sign
-  * As an authenticated user, when adding items to new bag, I expect that starting bag weight is zero
-  * As an authenticated user, when editing am existing bag, I expect that the items already in the bag are preselected and bag's actual weight is displayed for further calculation
-  * As a not authenticated user, I expect to not to see this page
+User stories\
+As an authenticated user, I expect to be able to add items to the newly created or to an existing bag\
+As an authenticated user, I expect to know the current exact weight of my pag while packing for better planning\
+As an authenticated user, I expect to be alerted when maximum bag size is reached to be able to rethink choices\
+As an authenticated user, I expect to be able to consult item details in pop-up modal via clicking on information sign\
+As an authenticated user, I expect to be offered an Amazon links for buying options of the item while in pop-up modal via clicking on an item's information sign\
+As an authenticated user, when adding items to new bag, I expect that starting bag weight is zero\
+As an authenticated user, when editing am existing bag, I expect that the items already in the bag are preselected and bag's actual weight is displayed for further calculation\
+As a not authenticated user, I expect to not to see this page
 
 * __Bag Details Page__
   * This page allows user to consult the parameters and items of an existing bag the user owns.  While checking the bag, user may consult the details of the added items in a pop-up modal by clicking on the information sign next to it's name (as on Add Item page's modal). The modal also provides click link to Amazon buying options. The page also gives quick link to modify items or delete bag as well as to new bag creator page.
@@ -213,12 +213,12 @@ User stories :
 Bag Details Page\
 ![Bag Details Page](/static/img/readme/page-mybag_details.png)
 
-User stories :
-  * As an authenticated user, I expect to consult the parameters and items of an existing bag what I own
-  * As an authenticated user, I expect to have quick links for new bag / update bag / delete bag actions
-  * As an authenticated user, I expect to be able to consult item details in pop-up modal via clicking on information sign
-  * As an authenticated user, I expect to be offered an Amazon links for buying options of the item while in pop-up modal via clicking on an item's information sign
-  * As a not authenticated user, I expect to not to see this page
+User stories\
+As an authenticated user, I expect to consult the parameters and items of an existing bag what I own\
+As an authenticated user, I expect to have quick links for new bag / update bag / delete bag actions\
+As an authenticated user, I expect to be able to consult item details in pop-up modal via clicking on information sign\
+As an authenticated user, I expect to be offered an Amazon links for buying options of the item while in pop-up modal via clicking on an item's information sign\
+As a not authenticated user, I expect to not to see this page
 
 * __Profile Page__
   * This page allows user to consult the provided feedbacks, the given recommendations and the created bags in one place, facilitating the record management for the user. Via profile, it is possible to delete any created record, as well as to navigate toward new record creation and for bags, toward detail and edit pages.
@@ -239,16 +239,15 @@ Profile Page - Recommendations as admin\
 Profile Page - My Feedbacks\
 ![Profile Page - My Feedbacks](/static/img/readme/page-profile5.png)
 
-User stories :
-  * As an authenticated user, I expect to consult my provided feedbacks, given recommendations and created bags in one place
-  * As an authenticated user, I expect to have quick links for new inputs / delete inputs, optionally update inputs
-  * As an authenticated admin user, I expect to consult here all the recommendations to be approved or rejected (status Pending)
-  * As an authenticated admin user, I expect to be able to approve or reject pending recommendations, and then clear this item from the Recommendations section
-  * As a not authenticated user, I expect to not to see this page
+User stories\
+As an authenticated user, I expect to consult my provided feedbacks, given recommendations and created bags in one place\
+As an authenticated user, I expect to have quick links for new inputs / delete inputs, optionally update inputs\
+As an authenticated admin user, I expect to consult here all the recommendations to be approved or rejected (status Pending)\
+As an authenticated admin user, I expect to be able to approve or reject pending recommendations, and then clear this item from the Recommendations section\
+As a not authenticated user, I expect to not to see this page
 
 * __Blog Page__
-  * This page allows user to give star-based rating and/or written feedback about the site to share points of improvement and overall satisfaction. User also have the possibility here to recommend an item what the user is missing from the list of existing items. Newly created recommendation appears under My Recommendations section of Profile page. 
-User can also check all exisiting feedbacks, and for own feedbacks in the list, a quick link is provided for removal in case the user wishes to delete it.
+  * This page allows user to give star-based rating and/or written feedback about the site to share points of improvement and overall satisfaction. User also have the possibility here to recommend an item what the user is missing from the list of existing items. Newly created recommendation appears under My Recommendations section of Profile page. User can also check all exisiting feedbacks, and for own feedbacks in the list, a quick link is provided for removal in case the user wishes to delete it.
 
 Blog Page - Leave Your Feedback\
 ![Blog Page - Leave Your Feedback](/static/img/readme/page-blog1.png)
@@ -259,14 +258,14 @@ Blog Page - Recommend an Item\
 Blog Page - Check All Feedbacks\
 ![Blog Page - Check All Feedbacks](/static/img/readme/page-blog3.png)
 
-User stories :
-  * As an authenticated user, I expect to be able to give star-based rating and/or written feedback about the site
-  * As an authenticated user, I expect to be able to recommend an item what the I miss from the list of existing items
-  * As an authenticated user, I expect to the feedbacks and recommendations given here appear in the approprite section of my profile
-  * As an authenticated user, I expect to be able to check all exisiting feedbacks
-  * As an authenticated user, I expect to be able to delete my feedbacks from list of all feedbacks
-  * As an authenticated admin user, I expect to be able to delete any feedback item from list
-  * As a not authenticated user, I expect to not to see this page
+User stories\
+As an authenticated user, I expect to be able to give star-based rating and/or written feedback about the site\
+As an authenticated user, I expect to be able to recommend an item what the I miss from the list of existing items\
+As an authenticated user, I expect to the feedbacks and recommendations given here appear in the approprite section of my profile\
+As an authenticated user, I expect to be able to check all exisiting feedbacks\
+As an authenticated user, I expect to be able to delete my feedbacks from list of all feedbacks\
+As an authenticated admin user, I expect to be able to delete any feedback item from list\
+As a not authenticated user, I expect to not to see this page\
 
 * __Footer__
   * The footer section includes copyrights and it also allows to share this website with other people through social media sites and email via social share buttons. 
@@ -274,8 +273,8 @@ User stories :
 Footer\
 ![Footer](/static/img/readme/page-footer.png)
 
-User stories :
-  * As a general user, I expect to be able to share this site via social media buttons
+User stories\
+As a general user, I expect to be able to share this site via social media buttons
 
 ### 2. Future Features
 * Adding item creation page for admin (for giving option between UI and Django admin site)
