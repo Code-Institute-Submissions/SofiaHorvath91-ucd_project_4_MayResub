@@ -11,3 +11,24 @@ Sign up (even with your social media accounts) and look around, prepare your bag
 Deployed app on [Heroku](https://heroku.com) : https://vast-shore-97005.herokuapp.com / \
 Technologies : Python + Django + HTML + CSS \
 Software : [PyCharm](https://www.jetbrains.com/pycharm/)
+
+## UX
+### 1. User stories
+* Expectations as a user :
+  * be able to navigate through the site easily through any device.
+  * be able to get informed why the application may be useful.
+  * be able to define and pack one or more bags with items.
+  * be able to recommend items if it is missing from the list of available items to pack.
+  * be able to leave star-based rating and/or text comment about the site.
+  * be able to consult / delete own feedbacks / item recommendations.
+  * be able to consult / delete / modify own bags.
+  * be able to see the all own contributions in one place (profile page).
+* Expectations as a site owner :
+  * the site to be tastefully and creatively designed.
+  * the content is presented in an tasteful way (regarding heavy subject).
+  * the site to be clearly structured for easy navigation.
+  * the bag packing function works as intended and handle empty/incorrect user inputs.
+  * the feedback/rating function works as intended and handle empty/incorrect user inputs.
+  * the users' item recommendations for approval / reject to be easily managed.
+  * the users' contributions to be easily controlled by admin.
+  * the users enjoy spending time with the application, get inspired for a real bag and learn something new.
