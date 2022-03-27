@@ -137,8 +137,8 @@ Navbar on Mobile - Logged In\
 ![Navbar mobile](/static/img/readme/navbar-mobile.png)
 
 User stories :\
-- As a not authenticated user, I expect to see the basic links and easily find sign up to see more\
-- As an authenticated user, I expect to see all avaiable site features in navbar
+As a not authenticated user, I expect to see the basic links and easily find sign up to see more\
+As an authenticated user, I expect to see all avaiable site features in navbar
 
 * __Home Page__
   * Presenting MyAPPocalypse, the home page clearly and briefly indicates site objective and also offers entry point to available sites based on  on user's authentication status which allow users to immediately dive into the app. Unregistered or logged out users can know more about the site and/or sign up, logged in users can consult their profile, navigate to the blog or create a new bag.
@@ -149,8 +149,8 @@ Home Page - Logged In\
 ![Home Page](/static/img/readme/page-home-loggin.png)\
 
 User stories :\
-- As a not authenticated user, I expect to understand site's objective and easily find sign up link\
-- As an authenticated user, I expect to easily navigate to my profile and to site actions (bag creation, feedback)
+As a not authenticated user, I expect to understand site's objective and easily find sign up link\
+As an authenticated user, I expect to easily navigate to my profile and to site actions (bag creation, feedback)
 
 * __Login / Sign Up Page__
   * These pages allow user to sign up or to login via standard verification form, or via social media account (Facebook, Twitter, Google).
@@ -160,11 +160,11 @@ Login Page\
 Sign Up Page\
 ![Sign Up Page](/static/img/readme/page-signup.png)\
 
-User stories :
-  * As a not authenticated user with account, I expect to login via standard form or social auth buttons (Facebook, Twitter, Google)
-  * As a not authenticated user without account, I expect to be able to create user account via standard form or sign up via social auth buttons (Facebook, Twitter, Google)
-  * As an authenticated user, I expect to easily switch account if I use more usernames via standard and social channels
-  * As general user I expect to be logged out by clicking on Logout option in navbar
+User stories :\
+As a not authenticated user with account, I expect to login via standard form or social auth buttons (Facebook, Twitter, Google)\
+As a not authenticated user without account, I expect to be able to create user account via standard form or sign up via social auth buttons (Facebook, Twitter, Google)\
+As an authenticated user, I expect to easily switch account if I use more usernames via standard and social channels
+As general user I expect to be logged out by clicking on Logout option in navbar
 
 * __Why A Bag page__
   * This page has the aim of explaining better the site objective, giving a context to the bag packing function, and informing users about the possible advantages of using the app.
