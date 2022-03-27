@@ -310,22 +310,16 @@ def blog(request):
         external = request.POST['external']
         justification = request.POST['justification']
 
-        # Check if category / external picklists are selected
-        if category and external:
-            context['errorMsg'] = 'Set value for all fields, please'
-            return render(request, 'myappocalypse/blog.html', context=context)
-        else:
-            # If all recommendation details are filled out appropriately,
-            # create recommendation for admin approval
-            recommendation = Recommendation.objects.create(user=user,
-                                                           name=name,
-                                                           weight=weight,
-                                                           category=category,
-                                                           justification=justification,
-                                                           usefulness=usefulness,
-                                                           external=external,
-                                                           status='Pending')
-            recommendation.save()
+        # Create recommendation for admin approval
+        recommendation = Recommendation.objects.create(user=user,
+                                                       name=name,
+                                                       weight=weight,
+                                                       category=category,
+                                                       justification=justification,
+                                                       usefulness=usefulness,
+                                                       external=external,
+                                                       status='Pending')
+        recommendation.save()
         return render(request, 'myappocalypse/blog.html', context=context)
 
     return render(request, 'myappocalypse/blog.html', context=context)
