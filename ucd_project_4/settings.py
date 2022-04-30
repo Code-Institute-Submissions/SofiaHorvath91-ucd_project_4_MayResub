@@ -12,9 +12,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')  # Configure path toward sta
 
 SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [".herokuapp.com"]
+ALLOWED_HOSTS = ["vast-shore-97005.herokuapp.com"]
 
 # Application definition
 
@@ -46,7 +46,7 @@ ROOT_URLCONF = 'ucd_project_4.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],  # Configure path toward static html templates
+        'DIRS': [BASE_DIR],  # Configure path toward static html templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -168,7 +168,7 @@ STATICFILES_FINDERS = (
 )
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 # Default primary key field type
 
