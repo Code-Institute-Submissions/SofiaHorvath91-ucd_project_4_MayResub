@@ -342,29 +342,34 @@ def profile(request):
         if request.POST.get('myfeedback-to-delete'):
             feedback = Feedback.objects.filter(id=request.POST['myfeedback-to-delete']).first()
             feedback.delete()
-            return redirect('profile')
+            context['successMsg'] = 'Your feedback was deleted.'
+            return render(request, 'myappocalypse/profile.html', context=context)
         # Delete a bag, allowed only for bag owner
         if request.POST.get('mybag-to-delete'):
             bag = Bag.objects.filter(id=request.POST['mybag-to-delete']).first()
             bag.delete()
-            return redirect('profile')
+            context['successMsg'] = 'Your bag was deleted.'
+            return render(request, 'myappocalypse/profile.html', context=context)
         # Delete a recommendation, allowed only for recommendation owner
         if request.POST.get('myrecommendations-to-delete'):
             recommendation = Recommendation.objects.filter(id=request.POST['myrecommendations-to-delete']).first()
             recommendation.delete()
-            return redirect('profile')
+            context['successMsg'] = 'Your recommendation was deleted.'
+            return render(request, 'myappocalypse/profile.html', context=context)
         # Approve recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-approve') and request.user.is_superuser:
             recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-approve']).first()
             recommendation.status = 'Approved'
             recommendation.save()
-            return redirect('profile')
+            context['successMsg'] = 'You approved the recommendation.'
+            return render(request, 'myappocalypse/profile.html', context=context)
         # Reject recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-reject') and request.user.is_superuser:
             recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-approve']).first()
             recommendation.status = 'Rejected'
             recommendation.save()
-            return redirect('profile')
+            context['successMsg'] = 'You rejected the recommendation.'
+            return render(request, 'myappocalypse/profile.html', context=context)
 
     # Select feedbacks and recommendations
     if request.user.is_superuser:
