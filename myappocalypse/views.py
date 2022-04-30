@@ -296,7 +296,7 @@ def blog(request):
         feedback = Feedback.objects.filter(id=request.POST['feedback-to-delete']).first()
         feedback.delete()
         context['successMsg'] = 'Your feedback was deleted.'
-        return redirect('blog')
+        return render(request, 'myappocalypse/blog.html', context=context)
 
     # Get recommended item from user (Click on Recommend Item button)
     if request.method == "POST" and request.POST.get('item_name'):
