@@ -155,7 +155,7 @@
                                                 <h5 class="bag-label">Condition-specific Items</h5>
                                                  {% for i3 in items_user_condition %}
                                                     {% if i3.category in c%}
-                                                        {% if i in existing_items %}
+                                                        {% if i3 in existing_items %}
                                                         <input type="checkbox" id="{{i3.name}}_checked"
                                                                class="item_checkbox" name="item_checkbox"
                                                                value="{{i3.name}}" checked>
