@@ -285,7 +285,7 @@ def blog(request):
                                                user=user)
             feedback.save()
             context['successMsg'] = 'Feedback created, thank you!'
-            return redirect('blog')
+            return render(request, 'myappocalypse/blog.html', context=context)
         else:
             context['errorMsg'] = 'Please share your feedback or rating!'
             return render(request, 'myappocalypse/blog.html', context=context)
