@@ -46,7 +46,7 @@ ROOT_URLCONF = 'ucd_project_4.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR],  # Configure path toward static html templates
+        'DIRS': [TEMPLATES_DIR],  # Configure path toward static html templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
