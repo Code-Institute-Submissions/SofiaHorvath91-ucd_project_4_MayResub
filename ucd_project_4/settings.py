@@ -12,7 +12,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')  # Configure path toward sta
 
 SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["vast-shore-97005.herokuapp.com"]
 
@@ -75,6 +75,7 @@ DATABASES = {
 #DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 #}
 
