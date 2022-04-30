@@ -242,7 +242,7 @@ def mybag_details(request, id):
                                                    available_water=None,
                                                    available_food=None)
     context['basic_items'] = items_all_company_condition
-    context['items_user_company'] = get_items_by_company(bag.items)
+    context['items_user_company'] = get_items_by_company(bag.items, bag)
     context['items_user_condition'] = get_items_by_conditions(bag.items, bag)
     context['choices'] = get_choices_array()
 
