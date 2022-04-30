@@ -1,5 +1,5 @@
 import os
-#import django_heroku
+import django_heroku
 from decouple import config
 import dj_database_url
 
@@ -174,4 +174,4 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#django_heroku.settings(locals())
+django_heroku.settings(config=locals(), staticfiles=False,logging=False)
