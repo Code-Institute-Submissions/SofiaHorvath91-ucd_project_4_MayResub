@@ -284,6 +284,7 @@ def blog(request):
                                                content=content,
                                                user=user)
             feedback.save()
+            context['successMsg'] = 'Feedback created, thank you!'
             return redirect('blog')
         else:
             context['errorMsg'] = 'Please share your feedback or rating!'
@@ -294,6 +295,7 @@ def blog(request):
     if request.method == "POST" and request.POST.get('feedback-to-delete'):
         feedback = Feedback.objects.filter(id=request.POST['feedback-to-delete']).first()
         feedback.delete()
+        context['successMsg'] = 'Your feedback was deleted.'
         return redirect('blog')
 
     # Get recommended item from user (Click on Recommend Item button)
@@ -316,6 +318,7 @@ def blog(request):
                                                        external=external,
                                                        status='Pending')
         recommendation.save()
+        context['successMsg'] = 'Recommendation created, thank you!'
         return render(request, 'myappocalypse/blog.html', context=context)
 
     return render(request, 'myappocalypse/blog.html', context=context)
