@@ -5,45 +5,49 @@ E501:7:80:line too long (103 > 79 characters)
 E501:67:80:line too long (84 > 79 characters)
 E501:73:80:line too long (88 > 79 characters)
 E501:83:80:line too long (80 > 79 characters)
-E501:125:80:line too long (103 > 79 characters)
+E501:125:80:line too long (82 > 79 characters)
+E501:126:80:line too long (85 > 79 characters)
 E501:127:80:line too long (83 > 79 characters)
-E501:129:80:line too long (82 > 79 characters)
-E501:130:80:line too long (85 > 79 characters)
+E501:129:80:line too long (84 > 79 characters)
+E501:130:80:line too long (87 > 79 characters)
 E501:131:80:line too long (83 > 79 characters)
-E501:133:80:line too long (84 > 79 characters)
-E501:134:80:line too long (87 > 79 characters)
+E501:133:80:line too long (81 > 79 characters)
+E501:134:80:line too long (88 > 79 characters)
 E501:135:80:line too long (83 > 79 characters)
-E501:137:80:line too long (81 > 79 characters)
-E501:138:80:line too long (88 > 79 characters)
-E501:139:80:line too long (83 > 79 characters)
-E501:146:80:line too long (90 > 79 characters)
-E501:147:80:line too long (93 > 79 characters)
-E501:148:80:line too long (102 > 79 characters)
-E501:174:80:line too long (91 > 79 characters)
-E501:192:80:line too long (87 > 79 characters)
-E501:197:80:line too long (83 > 79 characters)
-E501:214:80:line too long (85 > 79 characters)
-E501:220:80:line too long (89 > 79 characters)
-E501:222:80:line too long (81 > 79 characters)
-E501:245:80:line too long (81 > 79 characters)
-E501:257:80:line too long (82 > 79 characters)
-E501:277:80:line too long (95 > 79 characters)
-E501:296:80:line too long (81 > 79 characters)
-E501:299:80:line too long (89 > 79 characters)
-E501:324:80:line too long (87 > 79 characters)
-E501:325:80:line too long (81 > 79 characters)
-E501:343:80:line too long (83 > 79 characters)
-E501:348:80:line too long (92 > 79 characters)
-E501:350:80:line too long (95 > 79 characters)
-E501:355:80:line too long (80 > 79 characters)
-E501:360:80:line too long (114 > 79 characters)
-E501:364:80:line too long (88 > 79 characters)
-E501:365:80:line too long (113 > 79 characters)
-E501:370:80:line too long (87 > 79 characters)
+E501:142:80:line too long (90 > 79 characters)
+E501:143:80:line too long (93 > 79 characters)
+E501:144:80:line too long (102 > 79 characters)
+E501:170:80:line too long (91 > 79 characters)
+E501:188:80:line too long (87 > 79 characters)
+E501:193:80:line too long (83 > 79 characters)
+E501:210:80:line too long (85 > 79 characters)
+E501:216:80:line too long (89 > 79 characters)
+E501:218:80:line too long (81 > 79 characters)
+E501:241:80:line too long (81 > 79 characters)
+E501:253:80:line too long (82 > 79 characters)
+E501:273:80:line too long (95 > 79 characters)
+E501:287:80:line too long (92 > 79 characters)
+E501:293:80:line too long (81 > 79 characters)
+E501:296:80:line too long (89 > 79 characters)
+E501:316:80:line too long (83 > 79 characters)
+E501:321:80:line too long (100 > 79 characters)
+E501:336:80:line too long (83 > 79 characters)
+E501:343:80:line too long (84 > 79 characters)
+E501:347:80:line too long (85 > 79 characters)
+E501:351:80:line too long (92 > 79 characters)
+E501:353:80:line too long (95 > 79 characters)
+E501:356:80:line too long (81 > 79 characters)
+E501:359:80:line too long (80 > 79 characters)
+E501:362:80:line too long (81 > 79 characters)
+E501:365:80:line too long (114 > 79 characters)
+E501:368:80:line too long (81 > 79 characters)
+E501:370:80:line too long (88 > 79 characters)
 E501:371:80:line too long (113 > 79 characters)
-E501:381:80:line too long (84 > 79 characters)
-E501:386:80:line too long (85 > 79 characters)
-E501:418:80:line too long (95 > 79 characters)
+E501:375:80:line too long (81 > 79 characters)
+E501:377:80:line too long (87 > 79 characters)
+E501:378:80:line too long (112 > 79 characters)
+E501:382:80:line too long (81 > 79 characters)
+E501:411:80:line too long (95 > 79 characters)
 
 Code
 =============
@@ -170,10 +174,6 @@ def packmybag(request):
         drinking_water = request.POST['drinking_water']
         comestible_food = request.POST['comestible_food']
 
-        # Check if climate / landform / environment picklists are selected
-        if climate and landform and environment and human_infra and drinking_water and comestible_food:
-            context['errorMsg'] = 'Choose all types, please'
-            return render(request, 'myappocalypse/packmybag.html', context=context)
         # Check if climate Dry was paired with matching Desert environment
         if (climate == 'Dry' and landform != 'Ocean') and environment != 'Desert':
             context['errorMsg'] = 'For Dry climate, please choose Desert environment'
@@ -242,7 +242,7 @@ def add_items(request, id):
                                                          available_water=None,
                                                          available_food=None)
     context['basic_items'] = items_all_company_condition
-    context['items_user_company'] = get_items_by_company(items_by_locale)
+    context['items_user_company'] = get_items_by_company(items_by_locale, bag)
     context['items_user_condition'] = get_items_by_conditions(items_by_locale, bag)
     context['choices'] = get_choices_array()
 
@@ -295,7 +295,7 @@ def mybag_details(request, id):
                                                    available_water=None,
                                                    available_food=None)
     context['basic_items'] = items_all_company_condition
-    context['items_user_company'] = get_items_by_company(bag.items)
+    context['items_user_company'] = get_items_by_company(bag.items, bag)
     context['items_user_condition'] = get_items_by_conditions(bag.items, bag)
     context['choices'] = get_choices_array()
 
@@ -337,7 +337,8 @@ def blog(request):
                                                content=content,
                                                user=user)
             feedback.save()
-            return redirect('blog')
+            context['successMsg'] = 'Feedback #' + str(feedback.id) + ' created, thank you!'
+            return render(request, 'myappocalypse/blog.html', context=context)
         else:
             context['errorMsg'] = 'Please share your feedback or rating!'
             return render(request, 'myappocalypse/blog.html', context=context)
@@ -347,7 +348,8 @@ def blog(request):
     if request.method == "POST" and request.POST.get('feedback-to-delete'):
         feedback = Feedback.objects.filter(id=request.POST['feedback-to-delete']).first()
         feedback.delete()
-        return redirect('blog')
+        context['successMsg'] = 'Feedback was deleted.'
+        return render(request, 'myappocalypse/blog.html', context=context)
 
     # Get recommended item from user (Click on Recommend Item button)
     if request.method == "POST" and request.POST.get('item_name'):
@@ -359,22 +361,17 @@ def blog(request):
         external = request.POST['external']
         justification = request.POST['justification']
 
-        # Check if category / external picklists are selected
-        if category and external:
-            context['errorMsg'] = 'Set value for all fields, please'
-            return render(request, 'myappocalypse/blog.html', context=context)
-        else:
-            # If all recommendation details are filled out appropriately,
-            # create recommendation for admin approval
-            recommendation = Recommendation.objects.create(user=user,
-                                                           name=name,
-                                                           weight=weight,
-                                                           category=category,
-                                                           justification=justification,
-                                                           usefulness=usefulness,
-                                                           external=external,
-                                                           status='Pending')
-            recommendation.save()
+        # Create recommendation for admin approval
+        recommendation = Recommendation.objects.create(user=user,
+                                                       name=name,
+                                                       weight=weight,
+                                                       category=category,
+                                                       justification=justification,
+                                                       usefulness=usefulness,
+                                                       external=external,
+                                                       status='Pending')
+        recommendation.save()
+        context['successMsg'] = 'Recommendation #' + str(recommendation.id) + ' created, thank you!'
         return render(request, 'myappocalypse/blog.html', context=context)
 
     return render(request, 'myappocalypse/blog.html', context=context)
@@ -392,49 +389,52 @@ def profile(request):
     # Select bags created by current user (so deleting bags only allowed for owner)
     context['bags'] = Bag.objects.filter(user=request.user)
 
+    if request.user.is_superuser:
+        # If user is admin (superuser), show all feedbacks
+        # and all recommendations with Pending status, regardless of owner
+        context['feedbacks'] = Feedback.objects.all()
+        context['recommendations'] = Recommendation.objects.filter(status='Pending')
+    else:
+        # If user is standard user, show own feedbacks and recommendations
+        context['feedbacks'] = Feedback.objects.filter(user=request.user)
+        context['recommendations'] = Recommendation.objects.filter(user=request.user)
+
     # Delete object records
     if request.method == "POST":
         # Delete a feedback, allowed for feedback owner / request user and admin / superuser
         if request.POST.get('myfeedback-to-delete'):
             feedback = Feedback.objects.filter(id=request.POST['myfeedback-to-delete']).first()
             feedback.delete()
-            return redirect('profile')
+            context['successMsg'] = 'Feedback was deleted.'
+            return render(request, 'myappocalypse/profile.html', context=context)
         # Delete a bag, allowed only for bag owner
         if request.POST.get('mybag-to-delete'):
             bag = Bag.objects.filter(id=request.POST['mybag-to-delete']).first()
             bag.delete()
-            return redirect('profile')
+            context['successMsg'] = 'Your Bag was deleted.'
+            return render(request, 'myappocalypse/profile.html', context=context)
         # Delete a recommendation, allowed only for recommendation owner
         if request.POST.get('myrecommendations-to-delete'):
             recommendation = Recommendation.objects.filter(id=request.POST['myrecommendations-to-delete']).first()
             recommendation.delete()
-            return redirect('profile')
+            context['successMsg'] = 'Recommendation was deleted.'
+            return render(request, 'myappocalypse/profile.html', context=context)
         # Approve recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-approve') and request.user.is_superuser:
             recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-approve']).first()
             recommendation.status = 'Approved'
             recommendation.save()
-            return redirect('profile')
+            context['successMsg'] = 'You approved the recommendation.'
+            return render(request, 'myappocalypse/profile.html', context=context)
         # Reject recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-reject') and request.user.is_superuser:
-            recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-approve']).first()
+            recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-reject']).first()
             recommendation.status = 'Rejected'
             recommendation.save()
-            return redirect('profile')
-
-    # Select feedbacks and recommendations
-    if request.user.is_superuser:
-        # If user is admin (superuser), show all feedbacks
-        # and all recommendations with Pending status, regardless of owner
-        context['feedbacks'] = Feedback.objects.all()
-        context['recommendations'] = Recommendation.objects.filter(status='Pending')
-        return render(request, 'myappocalypse/profile.html', context=context)
+            context['successMsg'] = 'You rejected the recommendation.'
+            return render(request, 'myappocalypse/profile.html', context=context)
     else:
-        # If user is standard user, show own feedbacks and recommendations
-        context['feedbacks'] = Feedback.objects.filter(user=request.user)
-        context['recommendations'] = Recommendation.objects.filter(user=request.user)
         return render(request, 'myappocalypse/profile.html', context=context)
-
 
 # Helper classes
 
@@ -444,18 +444,15 @@ def get_choices_array():
     choices = Item._meta.get_field('category').choices
     category_choices = []
     for c in choices:
-        if '_' in c[0]:
-            category_choices.append(c[0].replace('_', ' & '))
-        else:
-            category_choices.append(c[0])
+        category_choices.append(c[0])
     return category_choices
 
 
 # Get all items specific to special company
-def get_items_by_company(items):
-    items_with_child = items.filter(with_child=True)
-    items_with_elder = items.filter(with_elder=True)
-    items_with_pet = items.filter(with_pet=True)
+def get_items_by_company(items, bag):
+    items_with_child = items.filter(with_child=bag.with_child)
+    items_with_elder = items.filter(with_elder=bag.with_elder)
+    items_with_pet = items.filter(with_pet=bag.with_pet)
     items_user_company = list(chain(items_with_child,
                                     items_with_elder,
                                     items_with_pet))
