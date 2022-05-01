@@ -70,7 +70,7 @@ The very basic skeleton of the site was modelled by Wireframes via Balsamiq, and
 * [Sign Up / Login Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-login_signup.png)
 ### 6. Style
 * Design & Colours
-  * When planning the project, I wanted a very simple design, not too grim but neither too playful, so I decided to rely on a visually appealing, reddish background image with matching theme, and white text with black border to ease the effect of the heavy subject. I wanted to avoid too much black or too dark theme as I wanted to emphasize the hope and the chance you give to yourself, not the sad conditions what give the context.
+  * When planning the project, I wanted a very simple design, not too grim but neither too playful, so I after firstly goind with a reddish background, I finally decided to choose a simple, but visually appealing blueish background image, and white text with black border to ease the effect of the heavy subject. While the blue shade of the site is rather dark blue, but with some glowing parts and white fonts, the page gives a rassuring, calm atmosphere, emphasizing the importance of being prepared and stable in a dangerous context.
 * Font Selection
   * The main font type was chosen with [Google Fonts](https://fonts.google.com/) and is used across the whole of the website: [Cagliostro](https://fonts.google.com/specimen/Cagliostro?query=Cagliostro). This is a well readable font type which yet gives a practical, yet personal feeling feeling which I found suitable for the subject of the site : the topic itself is pragmatic, but the circonstances are very personal.
 ### 7. Code Structure and Database
@@ -92,7 +92,7 @@ The backend consists of Python built with the Django framework with a database o
 [Postgres](https://www.postgresql.org/) is an open source object-relational database system with powerful features
 [SQLLite](https://www.sqlite.org/index.html) database was used for local development and testing.
 ### 8. Database Models
-The following models were created to represent the database model structure for the website (visual schema made by[DbDesigner](https://app.dbdesigner.net/)):\
+The following models were created to represent the database model structure for the website (visual schema made by [DbDesigner](https://app.dbdesigner.net/)):\
 ![Database models' visual schema](/static/img/readme/database_models_schema.PNG)
 * User Model
   * The User model contains information about the user. It is part of the Django social auth library. As no particular customization was needed ofr User model, get_user_model() lazy loading ws used.
@@ -346,7 +346,7 @@ Passing all Javascript (static/js/js_packmybag.js) code through [Jest](https://j
   * [Jest Test Validation](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jest_testing_test_suite.PNG)
   * [Jest Test Console Error](https://github.com/SofiaHorvath91/ucd-project-2/blob/main/img/readme/jest_testing_console_error.PNG)
 * Python Code\
-Passing the python logic file (hogwarts_quiz/views.py) through the [PEP8 Validator](http://pep8online.com/), errors only due to sometimes long lines (I found that after revision, further breaking would be distracting, and lines stayed in margot in Pycharm tool).\
+Passing the python logic file (myappocalypse/views.py) through the [PEP8 Validator](http://pep8online.com/), errors only due to sometimes long lines (I found that after revision, further breaking would be distracting, and lines stayed in margot in Pycharm tool).\
 Passing the python models through Django unit tests (myappocalypse/test.py) and all tests passed.
   * [PEP8 Validation - Pyhthon View - Text file](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/python_pep8_view.txt)
   * [PEP8 Validation - Python Models - Text file](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/python_pep8_model.txt)
@@ -392,7 +392,7 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 ### 2. Media
 Pictures were treated with [Photoshop](http://www.apsportable.com/photoshop-cs6-portable-download-4/) and [tinyPNG](https://tinypng.com/) to have a better size for online presentation.
 * Site Logo was made by me
-* Background image : [WallpaperSafari](https://wallpapersafari.com/w/rOkxIt)
+* Background image : [VectorStock](https://www.vectorstock.com/royalty-free-vector/world-map-background-on-blue-vector-13276347)
 ### 3. External Codes used as source / inspiration
 * Sticky Menu (Navigation Bar) : [W3Schools](https://www.w3schools.com/howto/howto_js_navbar_sticky.asp)
 * Responsive Menu (Navigation Bar) : [Bootstrap](https://getbootstrap.com/docs/4.4/components/navbar/) (also used for general styling like margins, rows)
