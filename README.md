@@ -75,7 +75,7 @@ The very basic skeleton of the site was modelled by Wireframes via Balsamiq, and
   * The main font type was chosen with [Google Fonts](https://fonts.google.com/) and is used across the whole of the website: [Cagliostro](https://fonts.google.com/specimen/Cagliostro?query=Cagliostro). This is a well readable font type which yet gives a practical, yet personal feeling feeling which I found suitable for the subject of the site : the topic itself is pragmatic, but the circonstances are very personal.
 ### 7. Code Structure and Database
 * Code Structure\
-The project is consisted of one application, MyAPPocalypse, built by using the Django Framework. The business logic is executed by this application, based on the ucd_projct_4 settings, using the statis resources like HTML page frame / CSS stylesheet / Javascript-jQuery script.\
+The project is consisted of one application, MyAPPocalypse, built by using the Django Framework. The business logic is executed by this application, based on the ucd_projct_4 settings, using the static resources like HTML page frame / CSS stylesheet / Javascript-jQuery script.\
 The application is completed by the following files/directories :
   * ucd_project_4: Containing settings.py(Settings) and urls.py(Website urls)
   * templates: Containing the base.html as HTML pages' frame
@@ -91,8 +91,9 @@ The website is a data-centric one with frontend built with HTML, Javascript, CSS
 The backend consists of Python built with the Django framework with a database of a Postgres for the deployed Heroku version (Production)
 [Postgres](https://www.postgresql.org/) is an open source object-relational database system with powerful features
 [SQLLite](https://www.sqlite.org/index.html) database was used for local development and testing.
-* Models\
-The following models were created to represent the database model structure for the website.
+### 8. Database Models
+The following models were created to represent the database model structure for the website:\
+![Please consult here the visual database model schema](/static/img/readme/database_models_schema.PNG), made by [DbDesigner](https://app.dbdesigner.net/)
 * User Model
   * The User model contains information about the user. It is part of the Django social auth library. As no particular customization was needed ofr User model, get_user_model() lazy loading ws used.
 * Climate
