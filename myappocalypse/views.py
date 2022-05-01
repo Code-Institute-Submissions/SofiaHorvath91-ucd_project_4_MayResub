@@ -284,7 +284,7 @@ def blog(request):
                                                content=content,
                                                user=user)
             feedback.save()
-            context['successMsg'] = 'Feedback created, thank you!'
+            context['successMsg'] = 'Feedback #' + feedback.id + ' created, thank you!'
             return render(request, 'myappocalypse/blog.html', context=context)
         else:
             context['errorMsg'] = 'Please share your feedback or rating!'
@@ -295,7 +295,7 @@ def blog(request):
     if request.method == "POST" and request.POST.get('feedback-to-delete'):
         feedback = Feedback.objects.filter(id=request.POST['feedback-to-delete']).first()
         feedback.delete()
-        context['successMsg'] = 'Your feedback was deleted.'
+        context['successMsg'] = 'Feedback #' + feedback.id + ' was deleted.'
         return render(request, 'myappocalypse/blog.html', context=context)
 
     # Get recommended item from user (Click on Recommend Item button)
@@ -318,7 +318,7 @@ def blog(request):
                                                        external=external,
                                                        status='Pending')
         recommendation.save()
-        context['successMsg'] = 'Recommendation created, thank you!'
+        context['successMsg'] = 'Recommendation #' + recommendation.id + 'created, thank you!'
         return render(request, 'myappocalypse/blog.html', context=context)
 
     return render(request, 'myappocalypse/blog.html', context=context)
@@ -352,33 +352,33 @@ def profile(request):
         if request.POST.get('myfeedback-to-delete'):
             feedback = Feedback.objects.filter(id=request.POST['myfeedback-to-delete']).first()
             feedback.delete()
-            context['successMsg'] = 'Your feedback was deleted.'
+            context['successMsg'] = 'Feedback #' + feedback.id + ' was deleted.'
             return render(request, 'myappocalypse/profile.html', context=context)
         # Delete a bag, allowed only for bag owner
         if request.POST.get('mybag-to-delete'):
             bag = Bag.objects.filter(id=request.POST['mybag-to-delete']).first()
             bag.delete()
-            context['successMsg'] = 'Your bag was deleted.'
+            context['successMsg'] = 'Your Bag "' + bag.name + '" was deleted.'
             return render(request, 'myappocalypse/profile.html', context=context)
         # Delete a recommendation, allowed only for recommendation owner
         if request.POST.get('myrecommendations-to-delete'):
             recommendation = Recommendation.objects.filter(id=request.POST['myrecommendations-to-delete']).first()
             recommendation.delete()
-            context['successMsg'] = 'Your recommendation was deleted.'
+            context['successMsg'] = 'Recommendation #' + recommendation.id + ' was deleted.'
             return render(request, 'myappocalypse/profile.html', context=context)
         # Approve recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-approve') and request.user.is_superuser:
             recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-approve']).first()
             recommendation.status = 'Approved'
             recommendation.save()
-            context['successMsg'] = 'You approved the recommendation.'
+            context['successMsg'] = 'You approved the Recommendation #' + recommendation.id
             return render(request, 'myappocalypse/profile.html', context=context)
         # Reject recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-reject') and request.user.is_superuser:
             recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-reject']).first()
             recommendation.status = 'Rejected'
             recommendation.save()
-            context['successMsg'] = 'You rejected the recommendation.'
+            context['successMsg'] = 'You rejected the Recommendation #' + recommendation.id
             return render(request, 'myappocalypse/profile.html', context=context)
     else:
         return render(request, 'myappocalypse/profile.html', context=context)
