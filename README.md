@@ -237,8 +237,11 @@ Profile Page - Recommendations as owner\
 Profile Page - Recommendations as admin\
 ![Profile Page - Recommendations as admin](/static/img/readme/page-profile4.png)
 
-Profile Page - My Feedbacks\
+Profile Page - My Feedbacks as admin (all users' feedbacks visible/deletable)\
 ![Profile Page - My Feedbacks](/static/img/readme/page-profile5.png)
+
+Profile Page - My Feedbacks as authenticated user (own feedbacks visible/deletable)\
+![Profile Page - My Feedbacks](/static/img/readme/page-profile6.png)
 
 User stories\
 As an authenticated user, I expect to consult my provided feedbacks, given recommendations and created bags in one place\
