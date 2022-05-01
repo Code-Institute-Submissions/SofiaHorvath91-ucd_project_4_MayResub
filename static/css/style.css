@@ -124,7 +124,11 @@ nav {
 }
 
 .navbar-light .navbar-toggler{
-   border: 2px solid rgba(0,0,0,.55);
+   border: 2px solid white;
+}
+
+.navbar-light .navbar-toggler-icon{
+    filter: invert(100%) !important;
 }
 
 .nav-link{

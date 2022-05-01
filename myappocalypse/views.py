@@ -318,7 +318,7 @@ def blog(request):
                                                        external=external,
                                                        status='Pending')
         recommendation.save()
-        context['successMsg'] = 'Recommendation #' + str(recommendation.id) + 'created, thank you!'
+        context['successMsg'] = 'Recommendation #' + str(recommendation.id) + ' created, thank you!'
         return render(request, 'myappocalypse/blog.html', context=context)
 
     return render(request, 'myappocalypse/blog.html', context=context)
