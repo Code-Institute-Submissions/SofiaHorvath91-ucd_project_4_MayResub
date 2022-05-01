@@ -319,6 +319,7 @@ As a general user, I expect to be able to share this site via social media butto
   * HTML Markup Validation Service (https://validator.w3.org/)
   * Chrome dev tools (https://developers.google.com/web/tools/chrome-devtools)
   * Responsive Design (http://ami.responsivedesign.is/)
+  * DbDesigner (https://app.dbdesigner.net/)
   * Unittest (https://docs.djangoproject.com/en/3.2/topics/testing/overview/)
   * JSHint (https://jshint.com/)
   * PEP8 (https://www.python.org/dev/peps/pep-0008/)
