@@ -92,8 +92,8 @@ The backend consists of Python built with the Django framework with a database o
 [Postgres](https://www.postgresql.org/) is an open source object-relational database system with powerful features
 [SQLLite](https://www.sqlite.org/index.html) database was used for local development and testing.
 ### 8. Database Models
-The following models were created to represent the database model structure for the website:\
-![Please consult here the visual database model schema](/static/img/readme/database_models_schema.PNG), made by [DbDesigner](https://app.dbdesigner.net/)
+The following models were created to represent the database model structure for the website (visual schema made by[DbDesigner](https://app.dbdesigner.net/)):\
+![Database models' visual schema](/static/img/readme/database_models_schema.PNG)
 * User Model
   * The User model contains information about the user. It is part of the Django social auth library. As no particular customization was needed ofr User model, get_user_model() lazy loading ws used.
 * Climate
