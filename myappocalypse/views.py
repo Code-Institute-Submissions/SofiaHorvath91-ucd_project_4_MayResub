@@ -336,6 +336,16 @@ def profile(request):
     # Select bags created by current user (so deleting bags only allowed for owner)
     context['bags'] = Bag.objects.filter(user=request.user)
 
+    if request.user.is_superuser:
+        # If user is admin (superuser), show all feedbacks
+        # and all recommendations with Pending status, regardless of owner
+        context['feedbacks'] = Feedback.objects.all()
+        context['recommendations'] = Recommendation.objects.filter(status='Pending')
+    else:
+        # If user is standard user, show own feedbacks and recommendations
+        context['feedbacks'] = Feedback.objects.filter(user=request.user)
+        context['recommendations'] = Recommendation.objects.filter(user=request.user)
+
     # Delete object records
     if request.method == "POST":
         # Delete a feedback, allowed for feedback owner / request user and admin / superuser
@@ -371,19 +381,7 @@ def profile(request):
             context['successMsg'] = 'You rejected the recommendation.'
             return render(request, 'myappocalypse/profile.html', context=context)
     else:
-        # Select feedbacks and recommendations
-        if request.user.is_superuser:
-            # If user is admin (superuser), show all feedbacks
-            # and all recommendations with Pending status, regardless of owner
-            context['feedbacks'] = Feedback.objects.all()
-            context['recommendations'] = Recommendation.objects.filter(status='Pending')
-            return render(request, 'myappocalypse/profile.html', context=context)
-        else:
-            # If user is standard user, show own feedbacks and recommendations
-            context['feedbacks'] = Feedback.objects.filter(user=request.user)
-            context['recommendations'] = Recommendation.objects.filter(user=request.user)
-            return render(request, 'myappocalypse/profile.html', context=context)
-
+        return render(request, 'myappocalypse/profile.html', context=context)
 
 # Helper classes
 
