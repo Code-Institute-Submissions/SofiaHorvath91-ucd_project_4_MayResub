@@ -208,6 +208,11 @@ nav {
   margin: 0 0.5em 0 0.5em;
 }
 
+.resp-sharing-button__icon:hover,
+.resp-sharing-button__icon:active{
+    color: black !important;
+}
+
 .resp-sharing-button__icon {
   fill: white;
   stroke: none;
