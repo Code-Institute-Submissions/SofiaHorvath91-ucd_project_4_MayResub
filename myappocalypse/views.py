@@ -365,7 +365,7 @@ def profile(request):
             return render(request, 'myappocalypse/profile.html', context=context)
         # Reject recommendation, allowed only for admin / superuser
         if request.POST.get('recommendations-to-reject') and request.user.is_superuser:
-            recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-approve']).first()
+            recommendation = Recommendation.objects.filter(id=request.POST['recommendations-to-reject']).first()
             recommendation.status = 'Rejected'
             recommendation.save()
             context['successMsg'] = 'You rejected the recommendation.'
