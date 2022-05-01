@@ -370,19 +370,19 @@ def profile(request):
             recommendation.save()
             context['successMsg'] = 'You rejected the recommendation.'
             return render(request, 'myappocalypse/profile.html', context=context)
-
-    # Select feedbacks and recommendations
-    if request.user.is_superuser:
-        # If user is admin (superuser), show all feedbacks
-        # and all recommendations with Pending status, regardless of owner
-        context['feedbacks'] = Feedback.objects.all()
-        context['recommendations'] = Recommendation.objects.filter(status='Pending')
-        return render(request, 'myappocalypse/profile.html', context=context)
     else:
-        # If user is standard user, show own feedbacks and recommendations
-        context['feedbacks'] = Feedback.objects.filter(user=request.user)
-        context['recommendations'] = Recommendation.objects.filter(user=request.user)
-        return render(request, 'myappocalypse/profile.html', context=context)
+        # Select feedbacks and recommendations
+        if request.user.is_superuser:
+            # If user is admin (superuser), show all feedbacks
+            # and all recommendations with Pending status, regardless of owner
+            context['feedbacks'] = Feedback.objects.all()
+            context['recommendations'] = Recommendation.objects.filter(status='Pending')
+            return render(request, 'myappocalypse/profile.html', context=context)
+        else:
+            # If user is standard user, show own feedbacks and recommendations
+            context['feedbacks'] = Feedback.objects.filter(user=request.user)
+            context['recommendations'] = Recommendation.objects.filter(user=request.user)
+            return render(request, 'myappocalypse/profile.html', context=context)
 
 
 # Helper classes
