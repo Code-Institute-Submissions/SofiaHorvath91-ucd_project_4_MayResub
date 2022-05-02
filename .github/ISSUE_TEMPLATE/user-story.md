@@ -12,7 +12,7 @@ As a **role** I can **action** so that **benefit**.
 
 Epic(s) related to User Story :
 
-User Story Point :
+User Story Points :
 
 User Story Task(s) :
 
