@@ -7,4 +7,13 @@ assignees: ''
 
 ---
 
+User Story :
 As a **role** I can **action** so that **benefit**.
+
+Epic(s) related to User Story :
+
+User Story Points :
+
+User Story Task(s) :
+
+User Story Acceptance Criteria(s) :
