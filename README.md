@@ -51,15 +51,15 @@ During the development, regarding tight time-frame, the classic method was used 
   * Labels were also used to create a Priority label to be able to tag high-priority user stories which require more attention and work, as they concern the core functionnalities of the site. 
 ### 4. Agile Method Details
 Please find below the 5 iterations and the user stories with respective story points which was expected to be finalized until the milestone of the given iteration, all stories grouped by epics.\
-**0. Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.**
+* __0. Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.__
 * Epic 'Admin-specific Action'
-  * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45)
-**1. Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use.**
+  * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45) => Priority
+* __1. Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use.__
 * Epic 'User Authentication'
   * [User Story : Basic links' availability for not-authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/1) (SP 40)
   * [User Story : Features' availability for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/2) (SP 40)
-  * [User Story : Login for not-authenticated user with existing account](https://github.com/SofiaHorvath91/ucd_project_4/issues/4) (SP 50)
-  * [User Story : Sign up for not-authenticated user without existing account](https://github.com/SofiaHorvath91/ucd_project_4/issues/5) (SP 50)
+  * [User Story : Login for not-authenticated user with existing account](https://github.com/SofiaHorvath91/ucd_project_4/issues/4) (SP 50) => Priority
+  * [User Story : Sign up for not-authenticated user without existing account](https://github.com/SofiaHorvath91/ucd_project_4/issues/5) (SP 50) => Priority
   * [User Story : Switching between connected accounts (created via standard / social way)](https://github.com/SofiaHorvath91/ucd_project_4/issues/6) (SP 45)
   * [User Story : Logout for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/7) (SP 50)
 * Epic 'Site Structure'
@@ -67,34 +67,34 @@ Please find below the 5 iterations and the user stories with respective story po
   * [User Story : Features' availability for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/2) (SP 40)
   * [User Story : Starting page information](https://github.com/SofiaHorvath91/ucd_project_4/issues/3) (SP 40)
   * [User Story : Understanding site's goal as a general (particularly a not-authenticated) user](https://github.com/SofiaHorvath91/ucd_project_4/issues/8) (SP 35)
-**2. Iteration 2 : Building site's MVC (Model-View-Controller) logic and thus setting up site's main functionalities on backend/frontend.**
+* __2. Iteration 2 : Building site's MVC (Model-View-Controller) logic and thus setting up site's main functionalities on backend/frontend.__
 * Epic 'Main Functionality'
-  * [User Story : Creating a bag function for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/9) (SP 50)
-  * [User Story : Adding items to a bag function for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/10) (SP 50)
+  * [User Story : Creating a bag function for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/9) (SP 50) => Priority
+  * [User Story : Adding items to a bag function for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/10) (SP 50) => Priority
   * [User Story : Consulting current bag weight while adding items to a bag for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/11) (SP 35)
   * [User Story : Opening pop-up modal with item details and Amazon buying option for authenticated user](https://github.com/SofiaHorvath91/ucd_project_4/issues/12) (SP 38)
-  * [User Story : Upon editing existing bag, added items and current weight are displayed for authenticated user](https://github.com/SofiaHorvath91/ucd_project_4/issues/13) (SP 48)
-  * [User Story : Bag Detail page with CRUD quick-actions for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/14) (SP 50)
-  * [User Story : Authentication- / Owner-based record access for authenticated/not-authenticated/admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/20) (SP 48)
+  * [User Story : Upon editing existing bag, added items and current weight are displayed for authenticated user](https://github.com/SofiaHorvath91/ucd_project_4/issues/13) (SP 48) => Priority
+  * [User Story : Bag Detail page with CRUD quick-actions for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/14) (SP 50) => Priority
+  * [User Story : Authentication- / Owner-based record access for authenticated/not-authenticated/admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/20) (SP 48) => Priority
 * Epic 'User Authentication'
-  * [User Story : Authentication- / Owner-based record access for authenticated/not-authenticated/admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/20) (SP 48)
+  * [User Story : Authentication- / Owner-based record access for authenticated/not-authenticated/admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/20) (SP 48) => Priority
 * Epic 'Feedback'
-  * [User Story : Profile page with CRUD quick-actions for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/15) (SP 40)
+  * [User Story : Profile page with CRUD quick-actions for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/15) (SP 40) => Priority
   * [User Story : Profile page with CRUD quick-actions for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/16) (SP 45)
-  * [User Story : Feedback / Recommendation options for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/17) (SP 45)
+  * [User Story : Feedback / Recommendation options for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/17) (SP 45) => Priority
   * [User Story : Feedback management for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/18) (SP 40)
   * [User Story : Sharing site on social media via footer buttons for general users](https://github.com/SofiaHorvath91/ucd_project_4/issues/19) (SP 10)
 * Epic 'Site Structure'
-  * [User Story : Profile page with CRUD quick-actions for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/15) (SP 40)
+  * [User Story : Profile page with CRUD quick-actions for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/15) (SP 40) => Priority
 * Epic 'Admin-specific Action'
   * [User Story : Profile page with CRUD quick-actions for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/16) (SP 45)
   * [User Story : Feedback management for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/18) (SP 40)
-**3. Iteration 3 : Setting up automatic and manual testing, then final deployment of site to Production.**
+* __3. Iteration 3 : Setting up automatic and manual testing, then final deployment of site to Production.__
 * Epic 'Admin-specific Action'
-  * [User Story : Testing of site functionality and design for authenticated admin](https://github.com/SofiaHorvath91/ucd_project_4/issues/27) (SP 35)
-**4. Iteration 4 : Correction of frontend/backend issues after deployment in Production and final deployment for evaluation.**
+  * [User Story : Testing of site functionality and design for authenticated admin](https://github.com/SofiaHorvath91/ucd_project_4/issues/27) (SP 35) => Priority
+* __4. Iteration 4 : Correction of frontend/backend issues after deployment in Production and final deployment for evaluation.__
 * Epics 'Admin-specific Action' and 'Main Functionality'
-  * [User Story : Correcting site functionality errors to ensure smooth site usage for all type of users](https://github.com/SofiaHorvath91/ucd_project_4/issues/28) (SP 50)
+  * [User Story : Correcting site functionality errors to ensure smooth site usage for all type of users](https://github.com/SofiaHorvath91/ucd_project_4/issues/28) (SP 50) => Priority
 
 ## UX
 ### 1. Strategy
