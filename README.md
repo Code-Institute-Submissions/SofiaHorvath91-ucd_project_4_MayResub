@@ -51,11 +51,10 @@ During the development, regarding tight time-frame, the classic method was used 
   * Labels were also used to create a Priority label to be able to tag high-priority user stories which require more attention and work, as they concern the core functionnalities of the site. 
 ### 4. Agile Method Details
 Please find below the 5 iterations and the user stories with respective story points which was expected to be finalized until the milestone of the given iteration, all stories grouped by epics.\
-**Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.**
+* __Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.__
 * Epic 'Admin-specific Action'
   * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45)
-\
-**Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use.**
+* __Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use.__
 * Epic 'User Authentication'
   * [User Story : Basic links' availability for not-authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/1) (SP 40)
   * [User Story : Features' availability for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/2) (SP 40)
@@ -68,8 +67,7 @@ Please find below the 5 iterations and the user stories with respective story po
   * [User Story : Features' availability for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/2) (SP 40)
   * [User Story : Starting page information](https://github.com/SofiaHorvath91/ucd_project_4/issues/3) (SP 40)
   * [User Story : Understanding site's goal as a general (particularly a not-authenticated) user](https://github.com/SofiaHorvath91/ucd_project_4/issues/8) (SP 35)
-\
-**Iteration 2 : Building site's MVC (Model-View-Controller) logic and thus setting up site's main functionalities on backend/frontend.**
+* __Iteration 2 : Building site's MVC (Model-View-Controller) logic and thus setting up site's main functionalities on backend/frontend.__
 * Epic 'Main Functionality'
   * [User Story : Creating a bag function for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/9) (SP 50)
   * [User Story : Adding items to a bag function for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/10) (SP 50)
@@ -90,11 +88,11 @@ Please find below the 5 iterations and the user stories with respective story po
   * [User Story : Profile page with CRUD quick-actions for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/15) (SP 40)
 * Epic 'Admin-specific Action'
   * [User Story : Profile page with CRUD quick-actions for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/16) (SP 45)
-  * [User Story : Feedback management for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/18) (SP 40)\
-**Iteration 3 : Setting up automatic and manual testing, then final deployment of site to Production.**
+  * [User Story : Feedback management for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/18) (SP 40)
+* __Iteration 3 : Setting up automatic and manual testing, then final deployment of site to Production.__
 * Epic 'Admin-specific Action'
-  * [User Story : Testing of site functionality and design for authenticated admin](https://github.com/SofiaHorvath91/ucd_project_4/issues/27) (SP 35)\
-**Iteration 4 : Correction of frontend/backend issues after deployment in Production and final deployment for evaluation.**
+  * [User Story : Testing of site functionality and design for authenticated admin](https://github.com/SofiaHorvath91/ucd_project_4/issues/27) (SP 35)
+* __Iteration 4 : Correction of frontend/backend issues after deployment in Production and final deployment for evaluation.__
 * Epics 'Admin-specific Action' and 'Main Functionality'
   * [User Story : Correcting site functionality errors to ensure smooth site usage for all type of users](https://github.com/SofiaHorvath91/ucd_project_4/issues/28) (SP 50)
 
