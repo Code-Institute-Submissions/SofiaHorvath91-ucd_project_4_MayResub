@@ -56,7 +56,9 @@ Please find below the 5 iterations and the user stories with respective story po
 
 * Epic 'Admin-specific Action'
   * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45) => Priority
-* __1. Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use.__
+
+[1. Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use.](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration1_End_28022022.png)
+
 * Epic 'User Authentication'
   * [User Story : Basic links' availability for not-authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/1) (SP 40)
   * [User Story : Features' availability for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/2) (SP 40)
