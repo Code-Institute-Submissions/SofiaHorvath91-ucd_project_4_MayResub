@@ -32,20 +32,35 @@ Software : [PyCharm](https://www.jetbrains.com/pycharm/)
   * the users' item recommendations for approval / reject to be easily managed.
   * the users' contributions to be easily controlled by admin.
   * the users enjoy spending time with the application, get inspired for a real bag and learn something new.
-### 2. Agile Process
+### 2. Agile Process Overview
 The project was developed in 5 sprints with 5 milestone dates. During the development process, the expectations were mapped to user stories with related user acceptance criteria(s), with associated story points (scale from 10 to 50) and with related tasks to perform, each story belonging to one or more from the 5 epics, a group of stories targeting the same area of development. High-importance user stories were marked as priorities in order to set up an order of execution.
 The aim was to finalize each iteration for the determined milestone, which means the completion of the tasks related to the user stories which are associated to the given iteration until the deadline. The iterations include user stories belonging to more epics, but each iteration has a higher focus on a given epic, mirroring the development of the work. During the finalisation of the user stories belonging to an iteration, the high-priority user stories got more focus and higher level of attention.
-### 2. Agile Tools
+### 3. Agile Tools
 During the development, regarding tight time-frame, the classic method was used with table and post-its, however for better presentation, the development process was translated to Github tools.
 * Github Project = Work Project (1)
   * A project 'UCD Project 4 : MyAppocalypse' was created to contain the agile development work done to build up the application, containing milestones and prioritized user stories belonging to different epics. The project grouped the user stories based on three statuses in a Kanban view : To do / In progress / Done, based on the level of completion.
 * Github Milestones = Iterations / Sprints (5)
   * Milestones were used to represent a work sprint with precised deadline which is served to keep in line the project development in order to respect the final deadline. During each iteration of the work, a different epic was prioritised, allowing the timely build of the full site and the continous testing from the beginning.
+  * The 5 iterations : Iteration 0 / Iteration 1 / Iteration 2 / Iteration 3 / Iteration 4
 * Github Issues = User stories (28)
   * Issues were used to represent user stories, all created using an issue template ('User Story'). A user story contains the description of the story ('as a ... I can ... so that ...'), the related epic(s), the corresponding user story points, the related tasks and the user acceptance criteria(s). Each story belongs to a milestone sprint (iteration), and each story is labeled based on related epic(s), and high-priority stories are further labeled as priorities. All stories are assigned to admin / site owner.
+  * Github Issue template was used to provide a coherent view and content for the user stories, created as Issues.
 * Github Labels = Epics (5) +  High-Priority user stories (13)
   * Labels were used to connect user stories to one or more of the 5 epics, which are groups of stories targeting the same aspect of development. Each epic is represented by a label colored differently to be able to better distinct them, and the 5 epic together include all kind of works which should be done to build the application.
+  * The 5 epics : Admin-specific Action / Feedback / Main Functionality / Site Structure / User Authentication
   * Labels were also used to create a Priority label to be able to tag high-priority user stories which require more attention and work, as they concern the core functionnalities of the site. 
+### 4. Agile Method Details
+__Iteration 0 : __
+* Epic 'Admin-specific Action'
+  * User Story : [Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45)
+__Iteration 1 : __
+__Iteration 2 : __
+__Iteration 3 : __
+__Iteration 4 : __
+
+
+
+
 ## UX
 ### 1. Strategy
 * Purpose of Project
