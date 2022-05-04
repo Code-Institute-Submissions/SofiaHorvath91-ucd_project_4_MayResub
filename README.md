@@ -51,7 +51,7 @@ During the development, regarding tight time-frame, the classic method was used 
   * Labels were also used to create a Priority label to be able to tag high-priority user stories which require more attention and work, as they concern the core functionnalities of the site. 
 ### 4. Agile Method Details
 Please find below the 5 iterations and the user stories with respective story points which was expected to be finalized until the milestone of the given iteration, all stories grouped by epics.\
-* __Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.__
+**0. Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.**
 * Epic 'Admin-specific Action'
   * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45)
 * __Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use.__
