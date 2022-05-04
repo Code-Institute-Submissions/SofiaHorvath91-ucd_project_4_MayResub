@@ -53,7 +53,8 @@ During the development, regarding tight time-frame, the classic method was used 
 Please find below the 5 iterations and the user stories with respective story points which was expected to be finalized until the milestone of the given iteration, all stories grouped by epics.\
 **Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.**
 * Epic 'Admin-specific Action'
-  * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45)\
+  * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45)
+\
 **Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use.**
 * Epic 'User Authentication'
   * [User Story : Basic links' availability for not-authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/1) (SP 40)
@@ -66,7 +67,8 @@ Please find below the 5 iterations and the user stories with respective story po
   * [User Story : Basic links' availability for not-authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/1) (SP 40)
   * [User Story : Features' availability for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/2) (SP 40)
   * [User Story : Starting page information](https://github.com/SofiaHorvath91/ucd_project_4/issues/3) (SP 40)
-  * [User Story : Understanding site's goal as a general (particularly a not-authenticated) user](https://github.com/SofiaHorvath91/ucd_project_4/issues/8) (SP 35)\
+  * [User Story : Understanding site's goal as a general (particularly a not-authenticated) user](https://github.com/SofiaHorvath91/ucd_project_4/issues/8) (SP 35)
+\
 **Iteration 2 : Building site's MVC (Model-View-Controller) logic and thus setting up site's main functionalities on backend/frontend.**
 * Epic 'Main Functionality'
   * [User Story : Creating a bag function for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/9) (SP 50)
