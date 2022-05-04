@@ -52,12 +52,12 @@ During the development, regarding tight time-frame, the classic method was used 
 ### 4. Agile Method Details
 Please find below the 5 iterations and the user stories with respective story points which was expected to be finalized until the milestone of the given iteration, all stories grouped by epics. By clicking on the name of the iterations, you may consult the screenshot of the project dashboard at the end of each iteration, so at each milestone. By clicking on the user stories, you may consult the related Github Issue with all the details about the given story. By clicking on the link of qet to-do user stories, you may consult their list.
 
-[Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.\=> Milestone : 30/01/2022](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration0_End_31012022.png)
+[Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities. => Milestone : 30/01/2022 (1 Story)](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration0_End_31012022.png)
 
 * Epic 'Admin-specific Action'
   * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45) => Priority
 
-[Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use. => Milestone : 28/02/2022](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration1_End_28022022.png)
+[Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use. => Milestone : 28/02/2022 (8 Stories)](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration1_End_28022022.png)
 
 * Epic 'User Authentication'
   * [User Story : Basic links' availability for not-authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/1) (SP 40)
@@ -72,7 +72,7 @@ Please find below the 5 iterations and the user stories with respective story po
   * [User Story : Starting page information](https://github.com/SofiaHorvath91/ucd_project_4/issues/3) (SP 40)
   * [User Story : Understanding site's goal as a general (particularly a not-authenticated) user](https://github.com/SofiaHorvath91/ucd_project_4/issues/8) (SP 35)
 
-[Iteration 2 : Building site's MVC (Model-View-Controller) logic and thus setting up site's main functionalities on backend/frontend. => Milestone : 20/03/2022](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration2_End_20032022.png)
+[Iteration 2 : Building site's MVC (Model-View-Controller) logic and thus setting up site's main functionalities on backend/frontend. => Milestone : 20/03/2022 (12 Stories)](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration2_End_20032022.png)
 
 * Epic 'Main Functionality'
   * [User Story : Creating a bag function for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/9) (SP 50) => Priority
@@ -96,17 +96,17 @@ Please find below the 5 iterations and the user stories with respective story po
   * [User Story : Profile page with CRUD quick-actions for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/16) (SP 45)
   * [User Story : Feedback management for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/18) (SP 40)
 
-[Iteration 3 : Setting up automatic and manual testing, then final deployment of site to Production. => Milestone : 27/03/2022](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration3_End_27032022.png)
+[Iteration 3 : Setting up automatic and manual testing, then final deployment of site to Production. => Milestone : 27/03/2022 (1 Story)](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration3_End_27032022.png)
 
 * Epic 'Admin-specific Action'
   * [User Story : Testing of site functionality and design for authenticated admin](https://github.com/SofiaHorvath91/ucd_project_4/issues/27) (SP 35) => Priority
 
-[Iteration 4 : Correction of frontend/backend issues after deployment in Production and final deployment for evaluation. => Milestone : 05/05/2022](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration4_End_05052022.png)
+[Iteration 4 : Correction of frontend/backend issues after deployment in Production and final deployment for evaluation. => Milestone : 05/05/2022 (6 Stories)](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration4_End_05052022.png)
 
 * Epics 'Admin-specific Action' and 'Main Functionality'
   * [User Story : Correcting site functionality errors to ensure smooth site usage for all type of users](https://github.com/SofiaHorvath91/ucd_project_4/issues/28) (SP 50) => Priority
 
-[User stories left to implement after last Iteration 4](https://github.com/SofiaHorvath91/ucd_project_4/issues?q=label%3APRIORITY+)
+[User stories left to implement after last Iteration 4](https://github.com/SofiaHorvath91/ucd_project_4/issues?q=is%3Aopen+is%3Aissue)
 
 * Epic 'Admin-specific Action'
   * [User Story : Item CRUD / List View Pages for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/21) (SP 28)
