@@ -12,8 +12,8 @@ Deployed app on [Heroku](https://heroku.com) : https://vast-shore-97005.herokuap
 Technologies : Python + Django + HTML + CSS + Javascript/jQuery \
 Software : [PyCharm](https://www.jetbrains.com/pycharm/)
 
-## UX
-### 1. User stories
+## Agile Development
+### 1. Basic expectations
 * Expectations as a user :
   * be able to navigate through the site easily through any device.
   * be able to get informed why the application may be useful.
@@ -32,19 +32,34 @@ Software : [PyCharm](https://www.jetbrains.com/pycharm/)
   * the users' item recommendations for approval / reject to be easily managed.
   * the users' contributions to be easily controlled by admin.
   * the users enjoy spending time with the application, get inspired for a real bag and learn something new.
-### 2. Strategy
+### 2. Agile Process
+The project was developed in 5 sprints with 5 milestone dates. During the development process, the expectations were mapped to user stories with related user acceptance criteria(s), with associated story points (scale from 10 to 50) and with related tasks to perform, each story belonging to one or more from the 5 epics, a group of stories targeting the same area of development. High-importance user stories were marked as priorities in order to set up an order of execution.
+The aim was to finalize each iteration for the determined milestone, which means the completion of the tasks related to the user stories which are associated to the given iteration until the deadline. The iterations include user stories belonging to more epics, but each iteration has a higher focus on a given epic, mirroring the development of the work. During the finalisation of the user stories belonging to an iteration, the high-priority user stories got more focus and higher level of attention.
+### 2. Agile Tools
+During the development, regarding tight time-frame, the classic method was used with table and post-its, however for better presentation, the development process was translated to Github tools.
+* Github Project = Work Project (1)
+  * A project 'UCD Project 4 : MyAppocalypse' was created to contain the agile development work done to build up the application, containing milestones and prioritized user stories belonging to different epics. The project grouped the user stories based on three statuses in a Kanban view : To do / In progress / Done, based on the level of completion.
+* Github Milestones = Iterations / Sprints (5)
+  * Milestones were used to represent a work sprint with precised deadline which is served to keep in line the project development in order to respect the final deadline. During each iteration of the work, a different epic was prioritised, allowing the timely build of the full site and the continous testing from the beginning.
+* Github Issues = User stories (28)
+  * Issues were used to represent user stories, all created using an issue template ('User Story'). A user story contains the description of the story ('as a ... I can ... so that ...'), the related epic(s), the corresponding user story points, the related tasks and the user acceptance criteria(s). Each story belongs to a milestone sprint (iteration), and each story is labeled based on related epic(s), and high-priority stories are further labeled as priorities. All stories are assigned to admin / site owner.
+* Github Labels = Epics (5) +  High-Priority user stories (13)
+  * Labels were used to connect user stories to one or more of the 5 epics, which are groups of stories targeting the same aspect of development. Each epic is represented by a label colored differently to be able to better distinct them, and the 5 epic together include all kind of works which should be done to build the application.
+  * Labels were also used to create a Priority label to be able to tag high-priority user stories which require more attention and work, as they concern the core functionnalities of the site. 
+## UX
+### 1. Strategy
 * Purpose of Project
   * To make sure users have the chance to virtually prepare for a heavy real-life scenario
   * To have users to pack one or more bags with chosen items, depending on user-defined special conditions
   * To allow users leave their toughts and recommendations for further site improvement.
   * To give users an overview and educate them about what is needed in vis-major situations.
-### 3. Scope
+### 2. Scope
 * I wanted a simple, evident and user-friendly UX experience.
 * I wanted clear and informative content.
 * I wanted a visually appealing, yet solid design.
 * I wanted interesting and thought-provoking site description.
 * I wanted smooth and interactive bag-packing and feedback experience.
-### 4. Structure
+### 3. Structure
 * The layout is simple and clear to ensure the easy navigation through site content by users
 * The navigation bar is clear, fixed, visible and responsive with matching site logo. 
 * The content is easy to read, bag packing function and feedback-leaving function are smooth with self-explanatory steps.
@@ -58,7 +73,7 @@ Software : [PyCharm](https://www.jetbrains.com/pycharm/)
 * The Blog page allows users to consult previous feedbacks, as well as the creation of their own star-based / comment feedback(s) and the recommendation of new item(s).
 * The Profile page allows users to see their own bags / feedbacks / recommendations in one place, with quick links for delete / new record / modification.
 * In the Footer, users can find copyrights and the icon buttons to share site on different social media platforms.
-### 5. Skeleton
+### 4. Skeleton
 The very basic skeleton of the site was modelled by Wireframes via Balsamiq, and during site development, additional design elements was added for better UX.
 * [Home Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-home.png)
 * [Why A Bag Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-whyabag.png)
@@ -68,12 +83,12 @@ The very basic skeleton of the site was modelled by Wireframes via Balsamiq, and
 * [Blog Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-blog.png)
 * [Profile Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-profile.png)
 * [Sign Up / Login Page Wireframe](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/balsamiq-login_signup.png)
-### 6. Style
+### 5. Style
 * Design & Colours
   * When planning the project, I wanted a very simple design, not too grim but neither too playful, so I after firstly goind with a reddish background, I finally decided to choose a simple, but visually appealing blueish background image, and white text with black border to ease the effect of the heavy subject. While the blue shade of the site is rather dark blue, but with some glowing parts and white fonts, the page gives a rassuring, calm atmosphere, emphasizing the importance of being prepared and stable in a dangerous context.
 * Font Selection
   * The main font type was chosen with [Google Fonts](https://fonts.google.com/) and is used across the whole of the website: [Cagliostro](https://fonts.google.com/specimen/Cagliostro?query=Cagliostro). This is a well readable font type which yet gives a practical, yet personal feeling feeling which I found suitable for the subject of the site : the topic itself is pragmatic, but the circonstances are very personal.
-### 7. Code Structure and Database
+### 6. Code Structure and Database
 * Code Structure\
 The project is consisted of one application, MyAPPocalypse, built by using the Django Framework. The business logic is executed by this application, based on the ucd_projct_4 settings, using the static resources like HTML page frame / CSS stylesheet / Javascript-jQuery script.\
 The application is completed by the following files/directories :
@@ -91,7 +106,7 @@ The website is a data-centric one with frontend built with HTML, Javascript, CSS
 The backend consists of Python built with the Django framework with a database of a Postgres for the deployed Heroku version (Production)
 [Postgres](https://www.postgresql.org/) is an open source object-relational database system with powerful features
 [SQLLite](https://www.sqlite.org/index.html) database was used for local development and testing.
-### 8. Database Models
+### 7. Database Models
 The following models were created to represent the database model structure for the website (visual schema made by [DbDesigner](https://app.dbdesigner.net/)):\
 ![Database models' visual schema](/static/img/readme/database_models_schema.PNG)
 * User Model
