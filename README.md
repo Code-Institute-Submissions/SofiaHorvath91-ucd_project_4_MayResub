@@ -54,7 +54,7 @@ Please find below the 5 iterations and the user stories with respective story po
 **0. Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.**
 * Epic 'Admin-specific Action'
   * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45)
-* __Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use.__
+**1. Iteration 1 : Setting up the technical skeleton of the site with main framework and APIs to use.**
 * Epic 'User Authentication'
   * [User Story : Basic links' availability for not-authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/1) (SP 40)
   * [User Story : Features' availability for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/2) (SP 40)
@@ -67,7 +67,7 @@ Please find below the 5 iterations and the user stories with respective story po
   * [User Story : Features' availability for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/2) (SP 40)
   * [User Story : Starting page information](https://github.com/SofiaHorvath91/ucd_project_4/issues/3) (SP 40)
   * [User Story : Understanding site's goal as a general (particularly a not-authenticated) user](https://github.com/SofiaHorvath91/ucd_project_4/issues/8) (SP 35)
-* __Iteration 2 : Building site's MVC (Model-View-Controller) logic and thus setting up site's main functionalities on backend/frontend.__
+**2. Iteration 2 : Building site's MVC (Model-View-Controller) logic and thus setting up site's main functionalities on backend/frontend.**
 * Epic 'Main Functionality'
   * [User Story : Creating a bag function for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/9) (SP 50)
   * [User Story : Adding items to a bag function for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/10) (SP 50)
@@ -89,10 +89,10 @@ Please find below the 5 iterations and the user stories with respective story po
 * Epic 'Admin-specific Action'
   * [User Story : Profile page with CRUD quick-actions for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/16) (SP 45)
   * [User Story : Feedback management for authenticated admin users](https://github.com/SofiaHorvath91/ucd_project_4/issues/18) (SP 40)
-* __Iteration 3 : Setting up automatic and manual testing, then final deployment of site to Production.__
+**3. Iteration 3 : Setting up automatic and manual testing, then final deployment of site to Production.**
 * Epic 'Admin-specific Action'
   * [User Story : Testing of site functionality and design for authenticated admin](https://github.com/SofiaHorvath91/ucd_project_4/issues/27) (SP 35)
-* __Iteration 4 : Correction of frontend/backend issues after deployment in Production and final deployment for evaluation.__
+**4. Iteration 4 : Correction of frontend/backend issues after deployment in Production and final deployment for evaluation.**
 * Epics 'Admin-specific Action' and 'Main Functionality'
   * [User Story : Correcting site functionality errors to ensure smooth site usage for all type of users](https://github.com/SofiaHorvath91/ucd_project_4/issues/28) (SP 50)
 
