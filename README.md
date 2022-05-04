@@ -52,8 +52,7 @@ During the development, regarding tight time-frame, the classic method was used 
 ### 4. Agile Method Details
 Please find below the 5 iterations and the user stories with respective story points which was expected to be finalized until the milestone of the given iteration, all stories grouped by epics.
 
-Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.\
-![Iteration 0](/static/img/readme/page-home-loggin.png)
+[Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration0_End_31012022.png)
 
 * Epic 'Admin-specific Action'
   * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45) => Priority
