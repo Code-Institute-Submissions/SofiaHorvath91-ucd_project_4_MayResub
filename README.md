@@ -52,7 +52,7 @@ During the development, regarding tight time-frame, the classic method was used 
 ### 4. Agile Method Details
 Please find below the 5 iterations and the user stories with respective story points which was expected to be finalized until the milestone of the given iteration, all stories grouped by epics. By clicking on the name of the iterations, you may consult the screenshot of the project dashboard at the end of each iteration, so at each milestone. By clicking on the user stories, you may consult the related Github Issue with all the details about the given story. By clicking on the link of qet to-do user stories, you may consult their list.
 
-[Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities. => Milestone : 30/01/2022](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration0_End_31012022.png)
+[Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.\=> Milestone : 30/01/2022](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/Iteration0_End_31012022.png)
 
 * Epic 'Admin-specific Action'
   * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45) => Priority
