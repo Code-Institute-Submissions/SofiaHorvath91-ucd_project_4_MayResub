@@ -50,7 +50,7 @@ During the development, regarding tight time-frame, the classic method was used 
   * The 5 epics : Admin-specific Action / Feedback / Main Functionality / Site Structure / User Authentication
   * Labels were also used to create a Priority label to be able to tag high-priority user stories which require more attention and work, as they concern the core functionnalities of the site. 
 ### 4. Agile Method Details
-* __Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.__
+**Iteration 0 : Brainstorming about site's main theme and lay out site's basic functionalities.**\
 * Epic 'Admin-specific Action'
   * [User Story : Project idea and site draft for site owner (admin)](https://github.com/SofiaHorvath91/ucd_project_4/issues/26) (SP 45)
 * __Iteration 1 : __
