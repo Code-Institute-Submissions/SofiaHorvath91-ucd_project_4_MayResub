@@ -37,15 +37,15 @@ The project was developed in 5 sprints with 5 milestone dates. During the develo
 The aim was to finalize each iteration for the determined milestone, which means the completion of the tasks related to the user stories which are associated to the given iteration until the deadline. The iterations include user stories belonging to more epics, but each iteration has a higher focus on a given epic, mirroring the development of the work. During the finalisation of the user stories belonging to an iteration, the high-priority user stories got more focus and higher level of attention.
 ### 3. Agile Tools
 During the development, regarding tight time-frame, the classic method was used with table and post-its, however for better presentation, the development process was translated to Github tools.
-* Github Project = Work Project (1)
+* [Github Project = Work Project (1)](https://github.com/SofiaHorvath91/ucd_project_4/projects/1)
   * A project 'UCD Project 4 : MyAppocalypse' was created to contain the agile development work done to build up the application, containing milestones and prioritized user stories belonging to different epics. The project grouped the user stories based on three statuses in a Kanban view : To do / In progress / Done, based on the level of completion.
-* Github Milestones = Iterations / Sprints (5)
+* [Github Milestones = Iterations / Sprints (5)](https://github.com/SofiaHorvath91/ucd_project_4/milestones)
   * Milestones were used to represent a work sprint with precised deadline which is served to keep in line the project development in order to respect the final deadline. During each iteration of the work, a different epic was prioritised, allowing the timely build of the full site and the continous testing from the beginning.
   * The 5 iterations : Iteration 0 / Iteration 1 / Iteration 2 / Iteration 3 / Iteration 4
-* Github Issues = User stories (28)
+* [Github Issues = User stories (28)](https://github.com/SofiaHorvath91/ucd_project_4/issues?q=)
   * Issues were used to represent user stories, all created using an issue template ('User Story'). A user story contains the description of the story ('as a ... I can ... so that ...'), the related epic(s), the corresponding user story points, the related tasks and the user acceptance criteria(s). Each story belongs to a milestone sprint (iteration), and each story is labeled based on related epic(s), and high-priority stories are further labeled as priorities. All stories are assigned to admin / site owner.
   * Github Issue template was used to provide a coherent view and content for the user stories, created as Issues.
-* Github Labels = Epics (5) +  High-Priority user stories (13)
+* [Github Labels = Epics (5) +  High-Priority user stories (13)](https://github.com/SofiaHorvath91/ucd_project_4/labels)
   * Labels were used to connect user stories to one or more of the 5 epics, which are groups of stories targeting the same aspect of development. Each epic is represented by a label colored differently to be able to better distinct them, and the 5 epic together include all kind of works which should be done to build the application.
   * The 5 epics : Admin-specific Action / Feedback / Main Functionality / Site Structure / User Authentication
   * Labels were also used to create a Priority label to be able to tag high-priority user stories which require more attention and work, as they concern the core functionnalities of the site. 
