@@ -455,7 +455,7 @@ Passing all Javascript code (static/js/js_packmybag.js) through the [JSHint](htt
 Passing all Javascript (static/js/js_packmybag.js) code through [Jest](https://jestjs.io/) tests (static/js/js_packmybag.test.js) and all tests passed, but one console error was shown as console cannot handle Javascript alert() function.
   * [JSHint Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/jshint-result.PNG)
   * [Jest Test Validation](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/jest_testing_test_suite.PNG)
-  * [Jest Test Console Error](hhttps://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/jest_testing_console_error.PNG)
+  * [Jest Test Console Error](https://github.com/SofiaHorvath91/ucd_project_4/blob/master/static/img/readme/jest_testing_console_error.PNG)
 * Python Code\
 Passing the python logic file (myappocalypse/views.py) through the [PEP8 Validator](http://pep8online.com/), errors only due to sometimes long lines (I found that after revision, further breaking would be distracting, and lines stayed in margot in Pycharm tool).\
 Passing the python models through Django unit tests (myappocalypse/test.py) and all tests passed.
