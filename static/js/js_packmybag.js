@@ -103,7 +103,7 @@ function get_item_from_list(name, list){
 /* Add/remove current item's weight to/from bag weight upon checkin/unchecking item checkbox
 if item cannot be carried externally (out of the bag, in hand or hanged on the bag), update UI DOM element,
 and alert/stop user if no more items can be added as max bag weight would be exceeded (mybag_add_items) */
-function add_itemweight_to_bagweight(id, name, checked, external, weight){
+function add_itemweight_to_bagweight(name, checked, external, weight){
     if(!external){
         if(checked){
             currentBagVars.current_bagweight += parseFloat(weight);
