@@ -117,6 +117,26 @@ Please find below the 5 iterations and the user stories with respective story po
 * Epic 'Site Structure'
   * [User Story : Modal with further information about possible conditions upon bag creation for authenticated user](https://github.com/SofiaHorvath91/ucd_project_4/issues/24) (SP 25)
   * [User Story : Add images to item pop-up modal with item details for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/25) (SP 15)
+### 4. Agile Statistics
+Calculation of the user story points per standard/priority user stories per iterations.
+* Iteration 0 : 1 User Story = Total 45 User Story Points (4% of Total User Story Points)
+  * Standard User Story Points 0 (0%) => Completed 0 (0%) + Uncompleted 0 (0%)
+  * Priority User Story Points 45 (4%) => Completed 45 (4%) + Uncompleted 0 (0%)
+* Iteration 1 : 8 User Stories = Total 350 User Story Points (32% of Total User Story Points)
+  * Standard User Story Points 250 (22%) => Completed 215 (21%) + Uncompleted 35 (1%)
+  * Priority User Story Points 100 (10%) => Completed 100 (10%) + Uncompleted 0 (0%)
+* Iteration 2 : 12 User Stories = Total 499 User Story Points (45% of Total User Story Points)
+  * Standard User Story Points 168 (12%) => Completed 168 (12%) + Uncompleted 0 (0%)
+  * Priority User Story Points 331 (33%) => Completed 331 (33%) + Uncompleted 0 (0%)
+* Iteration 3 : 1 User Story = Total 35 User Story Points (3% of Total)
+  * Standard User Story Points 0 (0%) => Completed 0 (0%) + Uncompleted 0 (0%)
+  * Priority User Story Points 35 (3%) => Completed 35 (3%) + Uncompleted 0 (0%)
+* Iteration 4 : 6 User Stories = Total 173 User Story Points (16% of Total)
+  * Standard User Story Points 93 (9%) => Completed 0 (0%) + Uncompleted 93 (9%)
+  * Priority User Story Points 80 (7%) => Completed 50 (4%) + Uncompleted 30 (3%)
+* **Total User Story Points 1102 : Completed 97% + Uncompleted 3%**
+  * **Standard User Story Points 511 (43%) : Completed 42% + Uncompleted 0%**
+  * **Priority User Story Points 591 (57%) : Completed 54% + Uncompleted 3%**
 
 ## UX
 ### 1. Strategy
