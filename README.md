@@ -118,7 +118,7 @@ Please find below the 5 iterations and the user stories with respective story po
   * [User Story : Modal with further information about possible conditions upon bag creation for authenticated user](https://github.com/SofiaHorvath91/ucd_project_4/issues/24) (SP 25)
   * [User Story : Add images to item pop-up modal with item details for authenticated users](https://github.com/SofiaHorvath91/ucd_project_4/issues/25) (SP 15)
 ### 4. Agile Statistics
-Calculation of the user story points per standard/priority user stories per iterations.
+Calculation of the user story points per standard/priority user stories per iterations to see done and remaining work backlog.
 * Iteration 0 : 1 User Story = Total 45 User Story Points (4% of Total User Story Points)
   * Standard User Story Points 0 (0%) => Completed 0 (0%) + Uncompleted 0 (0%)
   * Priority User Story Points 45 (4%) => Completed 45 (4%) + Uncompleted 0 (0%)
@@ -134,9 +134,9 @@ Calculation of the user story points per standard/priority user stories per iter
 * Iteration 4 : 6 User Stories = Total 173 User Story Points (16% of Total)
   * Standard User Story Points 93 (9%) => Completed 0 (0%) + Uncompleted 93 (9%)
   * Priority User Story Points 80 (7%) => Completed 50 (4%) + Uncompleted 30 (3%)
-* **Total User Story Points 1102 : Completed 97% + Uncompleted 3%**
-  * **Standard User Story Points 511 (43%) : Completed 42% + Uncompleted 0%**
-  * **Priority User Story Points 591 (57%) : Completed 54% + Uncompleted 3%**
+* **Total User Story Points 1102 / 28 User Stories : Completed 989 (88%) + Uncompleted 123 (12%)**
+  * **Standard User Story Points 511 (43%) => Completed 418 (34%) = 10 User Stories + Uncompleted 93 = 5 User Stories (9%)**
+  * **Priority User Story Points 591 (57%) => Completed 571 (54%) = 12 User Stories + Uncompleted 30 = 1 User Story (3%)**
 
 ## UX
 ### 1. Strategy
