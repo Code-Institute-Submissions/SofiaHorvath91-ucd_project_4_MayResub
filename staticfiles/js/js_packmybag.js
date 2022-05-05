@@ -108,7 +108,7 @@ function add_itemweight_to_bagweight(name, checked, external, weight){
         if(checked){
             currentBagVars.current_bagweight += parseFloat(weight);
             if(currentBagVars.current_bagweight > currentBagVars.max_bagweight){
-                document.getElementById(id).checked = false;
+                document.getElementById(name).checked = false;
                 currentBagVars.current_bagweight -= parseFloat(weight);
                 alert("You cannot put more items in the bag, remove items before packing new ones.");
             }
